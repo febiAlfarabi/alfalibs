@@ -14,5 +14,6 @@ public abstract class SimpleStickyBodyViewHolder<F extends Fragment & SimpleFrag
 
     public SimpleStickyBodyViewHolder(F fragment, int resId, ViewGroup viewGroup) {
         super(fragment, resId, viewGroup);
+        // test
     }
 }
