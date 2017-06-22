@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="socialview-core-0.10.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/d7bfed8e35189ae35c7e42493cbb9d62efd0d524/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/d7bfed8e35189ae35c7e42493cbb9d62efd0d524/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hendraanggrian/socialview-core/0.10.0/e542c9c4bcb28ef25ed17e2167d31ec2e33677cb/socialview-core-0.10.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

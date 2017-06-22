@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="reveallayout-0.3.1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/5ae689320eb0c78f9be2af89a23113ec7daf7f46/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/5ae689320eb0c78f9be2af89a23113ec7daf7f46/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hendraanggrian/reveallayout/0.3.1/7580556dab442b21b09a955c563d3343a80c5e14/reveallayout-0.3.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

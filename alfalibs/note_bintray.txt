@@ -1,0 +1,12 @@
+//https://stfalcon.com/en/blog/post/create-and-publish-your-Android-library
+
+To rebuild and upload
+
+.././gradlew clean build bintrayUpload -PbintrayUser=febialfarabi -PbintrayKey=d181aa443a6c1192ff53a456e7d6ca5c95bf051c -PdryRun=false
+
+
+
+
+Tutorial Publish Deploy Maven Gradle Library
+http://www.andevcon.com/news/publishing-android-libraries-to-maven
+

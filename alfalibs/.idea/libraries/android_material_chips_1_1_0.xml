@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="android-material-chips-1.1.0">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/11eaf47af19d55dc298654e3f2358cf6d92ddffb/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/11eaf47af19d55dc298654e3f2358cf6d92ddffb/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.DoodleScheduling/android-material-chips/1.1.0/f947cf21a9678b6b51252bae17583181bca21dd4/android-material-chips-1.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

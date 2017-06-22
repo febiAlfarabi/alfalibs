@@ -1,0 +1,2 @@
+Build JNI
+//https://stackoverflow.com/questions/14156596/ndk-cant-find-the-application-directory

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="bundler-0.4.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/0e5d17bea8b72693103bfe020e2485ac5c297f0c/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/0e5d17bea8b72693103bfe020e2485ac5c297f0c/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hendraanggrian/bundler/0.4.0/dbcb74c0c52c70be1dc84e51d104bb4828aacb65/bundler-0.4.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

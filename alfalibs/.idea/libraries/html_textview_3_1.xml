@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="html-textview-3.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/9466741d97a79b927e1a9d958d7abf63285b8ece/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/9466741d97a79b927e1a9d958d7abf63285b8ece/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.sufficientlysecure/html-textview/3.1/312d2db0eef3ec105c261ad415319451608daa26/html-textview-3.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

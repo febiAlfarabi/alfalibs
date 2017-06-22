@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="smack-extensions-4.2.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.igniterealtime.smack/smack-extensions/4.2.0/3bffdc845de26ab601ac9a92e53c02f8676609fe/smack-extensions-4.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.igniterealtime.smack/smack-extensions/4.2.0/285595c8d6ced29196ea5552148836e69e8d07cc/smack-extensions-4.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

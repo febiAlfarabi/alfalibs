@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="preferencer-0.7.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/4a773d6ee6fa5fe1d1330d091b42a83106d16d9f/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/4a773d6ee6fa5fe1d1330d091b42a83106d16d9f/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hendraanggrian/preferencer/0.7.3/ba82ebaca5c19caae1f49a6c6a3070d286586017/preferencer-0.7.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

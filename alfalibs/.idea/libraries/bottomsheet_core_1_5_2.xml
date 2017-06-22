@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="bottomsheet-core-1.5.2">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/54c9309131dce77bd5d4fd9b88c0077017b5a7f3/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/54c9309131dce77bd5d4fd9b88c0077017b5a7f3/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.flipboard/bottomsheet-core/1.5.2/b29792e0a9ecb8644ab0dbcaab2354ebf607e56a/bottomsheet-core-1.5.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

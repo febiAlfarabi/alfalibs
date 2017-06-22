@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="sublimenavigationviewlibrary-0.0.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/af03b906528b0c1a2a0844b30949d58b2048440e/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/af03b906528b0c1a2a0844b30949d58b2048440e/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.appeaser.sublimenavigationviewlibrary/sublimenavigationviewlibrary/0.0.1/ad830e42a6bd6f7ab72e46b07465202603c986ee/sublimenavigationviewlibrary-0.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

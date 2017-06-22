@@ -1,0 +1,74 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+ext {
+    PUBLISH_GROUP_ID = 'com.alfarabi'
+    PUBLISH_ARTIFACT_ID = 'alfalibs'
+    PUBLISH_VERSION = '0.0.1'
+}
+
+publish {
+    groupId = 'com.alfarabi'
+    artifactId = 'alfalibs'
+    publishVersion = '0.0.1'
+    desc = 'This library contain helpers to android development process, it will simplify complexity of development than always create from scratch.'
+    licences = ['Apache-2.0']
+    uploadName='alfalibs'
+    website = 'https://github.com/febiAlfarabi'
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '25.0.0'
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "0.0.1"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:23.+'
+    compile 'org.fingerlinks.mobile.android:Navigator:0.1.5'
+    compile 'com.appeaser.sublimenavigationviewlibrary:sublimenavigationviewlibrary:0.0.1'
+    provided 'org.projectlombok:lombok:1.16.16'
+    //    compile 'org.projectlombok:lombok:1.16.16'
+    //    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+    testCompile 'junit:junit:4.12'
+}
+repositories {
+    maven {
+        url 'http://dl.bintray.com/dev-fingerlinks/maven'
+    }
+}
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.5.0'
+    }
+}
+
