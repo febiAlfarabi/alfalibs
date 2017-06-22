@@ -10,3 +10,5 @@ To rebuild and upload
 Tutorial Publish Deploy Maven Gradle Library
 http://www.andevcon.com/news/publishing-android-libraries-to-maven
 
+https://github.com/chrisbanes/gradle-mvn-push
+

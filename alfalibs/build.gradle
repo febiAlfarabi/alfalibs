@@ -4,13 +4,13 @@ apply plugin: 'com.novoda.bintray-release'
 ext {
     PUBLISH_GROUP_ID = 'com.alfarabi'
     PUBLISH_ARTIFACT_ID = 'alfalibs'
-    PUBLISH_VERSION = '0.0.1'
+    PUBLISH_VERSION = '1.0.0'
 }
 
 publish {
     groupId = 'com.alfarabi'
     artifactId = 'alfalibs'
-    publishVersion = '0.0.1'
+    publishVersion = '1.0.0'
     desc = 'This library contain helpers to android development process, it will simplify complexity of development than always create from scratch.'
     licences = ['Apache-2.0']
     uploadName='alfalibs'
@@ -25,7 +25,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
-        versionName "0.0.1"
+        versionName "1.0.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -71,4 +71,6 @@ buildscript {
         classpath 'com.novoda:bintray-release:0.5.0'
     }
 }
+
+
 
