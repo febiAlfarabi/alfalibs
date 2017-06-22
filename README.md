@@ -3,11 +3,11 @@ README
 * To use this library, put it in your application build.gradle
 
 
-repositories {
-    maven {
-        url 'https://oss.sonatype.org/content/groups/public'
-    }
-}
+$ repositories {
+$    maven {
+$        url 'https://oss.sonatype.org/content/groups/public'
+$    }
+$ }
 
 compile 'com.github.febialfarabi:alfalibs:1.0.0'
 
