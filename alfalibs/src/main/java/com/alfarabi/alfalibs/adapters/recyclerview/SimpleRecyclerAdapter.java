@@ -20,9 +20,9 @@ import java.util.List;
 
 public class SimpleRecyclerAdapter<OBJ extends Object, F extends Fragment & SimpleFragmentCallback, VH extends SimpleViewHolder> extends RecyclerView.Adapter<VH>{
 
-    private Class<VH> vhClass ;
-    private F fragment ;
-    private List<OBJ> objects ;
+    public Class<VH> vhClass ;
+    public F fragment ;
+    public List<OBJ> objects ;
 
     public SimpleRecyclerAdapter(F fragment, Class<VH> vhClass, List<OBJ> objects) {
         this.vhClass = vhClass;
