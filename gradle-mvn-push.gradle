@@ -45,7 +45,7 @@ afterEvaluate { project ->
             mavenDeployer {
                 beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-                pom.groupId = 'com.alfarabi'
+                pom.groupId = 'com.github.febialfarabi'
                 pom.artifactId = 'alfalibs'
                 pom.version = '1.0.0'
 

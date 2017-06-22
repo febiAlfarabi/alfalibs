@@ -2,13 +2,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
 ext {
-    PUBLISH_GROUP_ID = 'com.alfarabi'
+    PUBLISH_GROUP_ID = 'com.github.febialfarabi'
     PUBLISH_ARTIFACT_ID = 'alfalibs'
     PUBLISH_VERSION = '1.0.0'
 }
 
 publish {
-    groupId = 'com.alfarabi'
+    groupId = 'com.github.febialfarabi'
     artifactId = 'alfalibs'
     publishVersion = '1.0.0'
     desc = 'This library contain helpers to android development process, it will simplify complexity of development than always create from scratch.'
@@ -48,7 +48,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
 //        exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:23.+'
+    compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'org.fingerlinks.mobile.android:Navigator:0.1.5'
     compile 'com.appeaser.sublimenavigationviewlibrary:sublimenavigationviewlibrary:0.0.1'
     provided 'org.projectlombok:lombok:1.16.16'
@@ -71,6 +71,8 @@ buildscript {
         classpath 'com.novoda:bintray-release:0.5.0'
     }
 }
+
+apply from: './../gradle-mvn-push.gradle'
 
 
 
