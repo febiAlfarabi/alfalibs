@@ -15,7 +15,8 @@ README
 compile 'com.github.febialfarabi:alfalibs:1.0.0'
 ```
 
-* We can use these library to simplify our usual big effort to develop our android apps, This Library contains:
+We can use these library to simplify our usual big effort to develop our android apps, This Library contains:
+
 - Fragment and Activity navigation helped by @rebus007 library
 - Navigation Slider View, helped by @vikramkakkar
 - Project Lombok
