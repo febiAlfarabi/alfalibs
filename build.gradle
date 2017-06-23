@@ -22,7 +22,7 @@ allprojects {
 }
 
 configurations.all {
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    resolutionStrategy.cacheChangingModulesFor 5, 'seconds'
 }
 
 //task clean(type: Delete) {

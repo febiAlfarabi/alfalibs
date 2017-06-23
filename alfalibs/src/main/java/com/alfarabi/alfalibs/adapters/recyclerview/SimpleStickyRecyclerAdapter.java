@@ -8,6 +8,7 @@ import com.alfarabi.alfalibs.adapters.recyclerview.viewholder.SimpleStickyHeader
 import com.alfarabi.alfalibs.adapters.recyclerview.viewholder.SimpleViewHolder;
 import com.alfarabi.alfalibs.fragments.interfaze.SimpleFragmentCallback;
 import com.alfarabi.alfalibs.helper.model.StickyHeaderInterface;
+import com.alfarabi.alfalibs.tools.UISimulation;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -49,10 +50,15 @@ public class SimpleStickyRecyclerAdapter<F extends Fragment & SimpleFragmentCall
         return null ;
     }
 
+
+
     @Override
     public void onBindHeaderViewHolder(HVH viewholder, int position) {
 
     }
 
-
+    @Override
+    public int getItemCount() {
+        return UISimulation.size(objects);
+    }
 }
