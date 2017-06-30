@@ -15,7 +15,7 @@ import java.lang.reflect.InvocationTargetException;
 public abstract class BaseTabPagerAdapter<CF extends SimpleBaseFragment> extends FragmentStatePagerAdapter{
 
     public abstract String[] titles();
-    public abstract Class<CF>[] fragmentClasses();
+    public abstract CF[] fragmentClasses();
 
     public BaseTabPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -23,18 +23,7 @@ public abstract class BaseTabPagerAdapter<CF extends SimpleBaseFragment> extends
 
     @Override
     public CF getItem(int position) {
-        CF cf = null;
-        try {
-            cf = fragmentClasses()[position].getConstructor().newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
+        CF cf = fragmentClasses()[position];
         return cf;
     }
 

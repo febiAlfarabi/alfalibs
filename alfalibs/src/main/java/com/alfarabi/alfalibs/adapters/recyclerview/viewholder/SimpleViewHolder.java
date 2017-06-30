@@ -15,19 +15,26 @@ import butterknife.ButterKnife;
  * Created by Alfarabi on 6/15/17.
  */
 
-public abstract class SimpleViewHolder<F extends Fragment & SimpleFragmentCallback> extends RecyclerView.ViewHolder implements SimpleHolderCallback {
+public abstract class SimpleViewHolder<F extends Fragment & SimpleFragmentCallback, O> extends RecyclerView.ViewHolder implements SimpleHolderCallback<O> {
 
 
     protected Fragment fragment ;
 
 
-    public SimpleViewHolder(F fragment, int resId, ViewGroup viewGroup){
-        super(LayoutInflater.from(fragment.getActivity()).inflate(resId, viewGroup, false));
+    public SimpleViewHolder(F fragment, int id, ViewGroup viewGroup){
+        super(LayoutInflater.from(fragment.getActivity()).inflate(id, viewGroup, false));
         this.fragment = fragment ;
         ButterKnife.bind(this, itemView);
     }
 
+
     private SimpleViewHolder(View itemView) {
         super(itemView);
     }
+
+    @Override
+    public void showData(O object) {
+
+    }
+
 }

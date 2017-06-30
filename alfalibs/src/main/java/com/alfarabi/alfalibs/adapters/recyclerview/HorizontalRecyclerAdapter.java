@@ -56,7 +56,7 @@ public class HorizontalRecyclerAdapter<F extends Fragment, VH extends SimpleView
 
     @Override
     public void onBindViewHolder(VH holder, int position) {
-
+        holder.showData(objects);
     }
 
     @Override
