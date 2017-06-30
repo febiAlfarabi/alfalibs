@@ -4,7 +4,7 @@ apply plugin: 'com.novoda.bintray-release'
 ext {
     PUBLISH_GROUP_ID = 'com.github.febialfarabi'
     PUBLISH_ARTIFACT_ID = 'alfalibs'
-    PUBLISH_VERSION = '1.0.2'
+    PUBLISH_VERSION = '1.0.3'
 }
 
 publish {
@@ -25,7 +25,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0.2"
+        versionName "1.0.3"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -58,6 +58,10 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.github.mirrajabi:okhttp-json-mock:1.0'
+    compile 'io.reactivex.rxjava2:rxjava:2.0.2'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     testCompile 'junit:junit:4.12'
@@ -75,6 +79,7 @@ buildscript {
         classpath 'com.novoda:bintray-release:0.5.0'
     }
 }
+
 
 apply from: './../gradle-mvn-push.gradle'
 

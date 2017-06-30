@@ -1,9 +1,11 @@
 package com.alfarabi.alfalibs.http;
 
-import java.util.HashMap;
-import java.util.List;
+import android.content.Context;
 
-import retrofit2.Call;
+import java.util.HashMap;
+
+import ir.mirrajabi.okhttpjsonmock.interceptors.OkHttpMockInterceptor;
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -14,22 +16,49 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public abstract class HttpService {
 
     private static String baseUrl ;
+    private static String otherUrl ;
+
 
     private static final HashMap<String,Retrofit> retroMaps = new HashMap<>() ;
 
-    public static <HTTP> HTTP create(Class<HTTP> clazz, String... baseUrl){
+    public static <HTTP> HTTP create(Class<HTTP> clazz, String... otherUrl){
         if(retroMaps== null){
             throw new NullPointerException("RETROFIT == null");
         }
-        if(HttpService.baseUrl==null && baseUrl==null){
+        if(HttpService.baseUrl==null && otherUrl==null){
             throw new NullPointerException("URL == null");
         }
-        if(baseUrl!=null && baseUrl.length>0){
-            HttpService.baseUrl = baseUrl[0] ;
-            retroMaps.put(HttpService.baseUrl, new Retrofit.Builder().baseUrl(HttpService.baseUrl).addConverterFactory(GsonConverterFactory.create()).build());
+        if(otherUrl!=null && otherUrl.length>0){
+            HttpService.otherUrl = otherUrl[0] ;
+            retroMaps.put(HttpService.otherUrl, new Retrofit.Builder().baseUrl(HttpService.otherUrl).addConverterFactory(GsonConverterFactory.create()).build());
+            return retroMaps.get(HttpService.otherUrl).create(clazz);
+        }else{
+            return retroMaps.get(HttpService.baseUrl).create(clazz);
         }
-        return retroMaps.get(HttpService.baseUrl).create(clazz);
     }
+
+    public static <HTTP> HTTP createMock(Context context, Class<HTTP> clazz, String... otherUrl){
+
+        OkHttpClient mOkHttpClient = new OkHttpClient.Builder().addInterceptor(new OkHttpMockInterceptor(context, 5)).build();
+        if(retroMaps== null){
+            throw new NullPointerException("RETROFIT == null");
+        }
+        if(HttpService.baseUrl==null && otherUrl==null){
+            throw new NullPointerException("URL == null");
+        }
+        if(otherUrl!=null && otherUrl.length>0){
+            HttpService.otherUrl = otherUrl[0] ;
+            retroMaps.put(HttpService.otherUrl, new Retrofit.Builder()
+                    .baseUrl(HttpService.otherUrl).addConverterFactory(GsonConverterFactory.create())
+                    .client(mOkHttpClient)
+                    .build());
+            return retroMaps.get(HttpService.otherUrl).create(clazz);
+        }else{
+            throw new NullPointerException("URL FOR YOUR MOCK == null");
+//            return retroMaps.get(HttpService.baseUrl).create(clazz);
+        }
+    }
+
 
     public static final void init(String baseUrl){
         HttpService.baseUrl = baseUrl ;
