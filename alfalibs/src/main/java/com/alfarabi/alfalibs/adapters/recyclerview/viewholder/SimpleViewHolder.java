@@ -10,15 +10,18 @@ import com.alfarabi.alfalibs.adapters.interfaze.SimpleHolderCallback;
 import com.alfarabi.alfalibs.fragments.interfaze.SimpleFragmentCallback;
 
 import butterknife.ButterKnife;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Created by Alfarabi on 6/15/17.
  */
 
-public abstract class SimpleViewHolder<F extends Fragment & SimpleFragmentCallback, O> extends RecyclerView.ViewHolder implements SimpleHolderCallback<O> {
+public abstract class SimpleViewHolder<F extends Fragment & SimpleFragmentCallback, O, FP> extends RecyclerView.ViewHolder implements SimpleHolderCallback<O, FP> {
 
 
-    protected Fragment fragment ;
+    @Getter@Setter Fragment fragment ;
+    @Getter@Setter O object ;
 
 
     public SimpleViewHolder(F fragment, int id, ViewGroup viewGroup){
@@ -27,14 +30,9 @@ public abstract class SimpleViewHolder<F extends Fragment & SimpleFragmentCallba
         ButterKnife.bind(this, itemView);
     }
 
-
-    private SimpleViewHolder(View itemView) {
-        super(itemView);
-    }
-
     @Override
     public void showData(O object) {
-
+        this.object = object ;
     }
 
 }

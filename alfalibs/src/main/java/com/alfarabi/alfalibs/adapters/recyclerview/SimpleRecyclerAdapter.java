@@ -8,26 +8,40 @@ import android.view.ViewGroup;
 
 import com.alfarabi.alfalibs.adapters.recyclerview.viewholder.SimpleViewHolder;
 import com.alfarabi.alfalibs.fragments.interfaze.SimpleFragmentCallback;
+import com.alfarabi.alfalibs.helper.model.ObjectAdapterInterface;
 import com.alfarabi.alfalibs.tools.Demo;
 import com.alfarabi.alfalibs.tools.UISimulation;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Created by Alfarabi on 6/15/17.
  */
 
-public class SimpleRecyclerAdapter<OBJ extends Object, F extends Fragment & SimpleFragmentCallback, VH extends SimpleViewHolder> extends RecyclerView.Adapter<VH>{
+public class SimpleRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, F extends Fragment & SimpleFragmentCallback, VH extends SimpleViewHolder> extends RecyclerView.Adapter<VH>{
 
-    public Class<VH> vhClass ;
-    public F fragment ;
-    public List<OBJ> objects ;
+    @Getter@Setter Class<VH> vhClass ;
+    @Getter@Setter F fragment ;
+    @Getter List<OBJ> objects ;
+    @Getter@Setter List<OBJ> copiedObjects = new ArrayList<>();
+    @Getter@Setter HashMap<Integer, VH> viewHolders = new HashMap<>();
+
+
 
     public SimpleRecyclerAdapter(F fragment, Class<VH> vhClass, List<OBJ> objects) {
         this.vhClass = vhClass;
         this.fragment = fragment;
         this.objects = objects;
+        copiedObjects.clear();
+        copiedObjects.addAll(objects);
     }
 
     public SimpleRecyclerAdapter initRecyclerView(RecyclerView recyclerView, RecyclerView.LayoutManager layoutManager){
@@ -56,11 +70,53 @@ public class SimpleRecyclerAdapter<OBJ extends Object, F extends Fragment & Simp
 
     @Override
     public void onBindViewHolder(VH holder, int position) {
-        holder.showData(objects);
+        holder.showData(objects.get(position));
+        viewHolders.put(position, holder);
+    }
+
+    public void setObjects(List<OBJ> objects) {
+        this.objects = objects;
+        this.copiedObjects.clear();
+        this.copiedObjects.addAll(this.objects);
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
         return UISimulation.size(objects);
     }
+
+    public void filter(String text){
+        if(objects==null || copiedObjects==null){
+            return;
+        }
+        objects.clear();
+        if(text.isEmpty()){
+            objects.addAll(copiedObjects);
+        } else{
+            text = text.toLowerCase();
+            int cursor = 0;
+            for(OBJ item: copiedObjects){
+                if(!item.isSearchable()){
+                    return;
+                }
+                try {
+                    Class fieldClass = item.getClass();
+                    Field field = fieldClass.getDeclaredField(item.canSearchByField());
+                    String value = (String) field.get(fieldClass);
+                    if(value.toLowerCase().contains(text)){
+                        objects.add(item);
+                    }
+                    if(viewHolders.get(cursor)!=null){
+                        viewHolders.get(cursor).find(text);
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                cursor++;
+            }
+        }
+        notifyDataSetChanged();
+    }
+
 }

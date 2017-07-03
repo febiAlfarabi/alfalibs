@@ -9,7 +9,7 @@ import com.alfarabi.alfalibs.fragments.interfaze.SimpleFragmentCallback;
  * Created by Alfarabi on 6/22/17.
  */
 
-public abstract class SimpleStickyBodyViewHolder<F extends Fragment & SimpleFragmentCallback, O> extends SimpleViewHolder<F, O> {
+public abstract class SimpleStickyBodyViewHolder<F extends Fragment & SimpleFragmentCallback, O, FP> extends SimpleViewHolder<F, O, FP> {
 
 
     public SimpleStickyBodyViewHolder(F fragment, int resId, ViewGroup viewGroup) {
