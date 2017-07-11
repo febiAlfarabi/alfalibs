@@ -2,7 +2,7 @@ package com.alfarabi.alfalibs.tools;
 
 import android.util.Log;
 
-import com.alfarabi.alfalibs.BaseApplication;
+import com.alfarabi.alfalibs.AlfaLibsApplication;
 
 /**
  * Created by Alfarabi on 6/15/17.
@@ -14,7 +14,7 @@ public class WLog {
 
 
     public static void i(String TAG, String message, Throwable... ts){
-        if(!BaseApplication.DEBUG)
+        if(!AlfaLibsApplication.DEBUG)
             return;
         if (ts!=null && ts.length>0){
             for (int i = 0; i < message.length(); i += chunkSize) {
@@ -28,7 +28,7 @@ public class WLog {
     }
 
     public static void d(String TAG, String message, Throwable... ts){
-        if(!BaseApplication.DEBUG)
+        if(!AlfaLibsApplication.DEBUG)
             return;
         if (ts!=null && ts.length>0){
             for (int i = 0; i < message.length(); i += chunkSize) {
@@ -42,7 +42,7 @@ public class WLog {
     }
 
     public static void w(String TAG, String message, Throwable... ts){
-        if(!BaseApplication.DEBUG)
+        if(!AlfaLibsApplication.DEBUG)
             return;
         if (ts!=null && ts.length>0){
             for (int i = 0; i < message.length(); i += chunkSize) {
@@ -56,7 +56,7 @@ public class WLog {
     }
 
     public static void e(String TAG, String message, Throwable... ts){
-        if(!BaseApplication.DEBUG)
+        if(!AlfaLibsApplication.DEBUG)
             return;
         if (ts!=null && ts.length>0){
             for (int i = 0; i < message.length(); i += chunkSize) {
@@ -69,7 +69,7 @@ public class WLog {
         }
     }
     public static void v(String TAG, String message, Throwable... ts){
-        if(!BaseApplication.DEBUG)
+        if(!AlfaLibsApplication.DEBUG)
             return;
         if (ts!=null && ts.length>0){
             for (int i = 0; i < message.length(); i += chunkSize) {

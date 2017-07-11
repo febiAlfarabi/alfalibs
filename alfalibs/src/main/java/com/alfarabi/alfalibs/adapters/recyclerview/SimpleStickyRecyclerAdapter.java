@@ -55,7 +55,9 @@ public class SimpleStickyRecyclerAdapter<F extends Fragment & SimpleFragmentCall
 
     @Override
     public void onBindHeaderViewHolder(HVH holder, int position) {
-        holder.showData(objects.get(position));
+        if(objects!=null && objects.size()>0){
+            holder.showData(objects.get(position));
+        }
     }
 
     @Override

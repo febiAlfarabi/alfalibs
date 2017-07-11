@@ -53,7 +53,6 @@ public class SimpleRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, 
 
     @Override
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {
-
         try {
             return vhClass.getConstructor(fragment.getClass(), ViewGroup.class).newInstance(fragment, parent);
         } catch (InstantiationException e) {
@@ -70,8 +69,10 @@ public class SimpleRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, 
 
     @Override
     public void onBindViewHolder(VH holder, int position) {
-        holder.showData(objects.get(position));
-        viewHolders.put(position, holder);
+        if(objects!=null && objects.size()>0){
+            holder.showData(objects.get(position));
+            viewHolders.put(position, holder);
+        }
     }
 
     public void setObjects(List<OBJ> objects) {

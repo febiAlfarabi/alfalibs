@@ -20,18 +20,18 @@ public interface MockService {
 
     //usage example /users/page=phoneNumbers.json
     @GET(API_VERSION + "/users")
-    Call<ArrayList<UserModel>> getUsers(@Query("page") int page);
+    Observable<ArrayList<UserModel>> getUsers(@Query("page") int page);
 
     //usage example /users/page=1&secondParameter=phoneNumbers.json
     @GET(API_VERSION + "/users")
-    Call<ArrayList<UserModel>> getUsers(@Query("page") int page,
+    Observable<ArrayList<UserModel>> getUsers(@Query("page") int page,
                                               @Query("name") String name);
 
     //usage example /users/1.json
     @GET(API_VERSION + "/users/{userId}")
-    Call<UserModel> getUser(@Path("userId") int userId);
+    Observable<UserModel> getUser(@Path("userId") int userId);
 
     //usage example /users/1/phoneNumbers.json
     @GET(API_VERSION + "/users/{userId}/phoneNumbers")
-    Call<ArrayList<String>> getUserNumbers(@Path("userId") int userId);
+    Observable<ArrayList<String>> getUserNumbers(@Path("userId") int userId);
 }

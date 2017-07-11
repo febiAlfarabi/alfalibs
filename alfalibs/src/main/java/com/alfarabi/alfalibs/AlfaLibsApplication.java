@@ -6,7 +6,7 @@ import android.app.Application;
  * Created by Alfarabi on 6/15/17.
  */
 
-public abstract class BaseApplication extends Application {
+public abstract class AlfaLibsApplication extends Application {
 
     public static boolean DEBUG = true;
     public static String VERSION_NAME;

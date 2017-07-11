@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Alfalibs</string>
+    <string name="swiperecyclerview_has_no_any_action">SwipeRecyclerview doesn\'t contain any action that you set in</string>
+
 </resources>
