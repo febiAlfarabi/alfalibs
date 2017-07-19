@@ -82,6 +82,16 @@ public class SimpleRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, 
         notifyDataSetChanged();
     }
 
+    public void appendObjects(List<OBJ> objects) {
+        if(this.objects==null){
+            this.objects = new ArrayList<OBJ>();
+        }
+        this.objects.addAll(objects);
+        this.copiedObjects.clear();
+        this.copiedObjects.addAll(this.objects);
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return UISimulation.size(objects);

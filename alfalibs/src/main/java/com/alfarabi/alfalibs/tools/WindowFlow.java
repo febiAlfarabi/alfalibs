@@ -103,8 +103,12 @@ public class WindowFlow {
     }
 
     public static boolean canGoBack(FragmentActivity activity){
-        boolean canGoBack = Navigator.with(activity).utils().canGoBack(activity.getSupportFragmentManager());
-        return canGoBack;
+        try{
+            boolean canGoBack = Navigator.with(activity).utils().canGoBack(activity.getSupportFragmentManager());
+            return canGoBack;
+        }catch (Exception e){
+            return false ;
+        }
     }
 
     public static Fragment currentFragment(FragmentActivity activity){

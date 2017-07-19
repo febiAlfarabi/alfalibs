@@ -84,6 +84,16 @@ public class HorizontalRecyclerAdapter<F extends Fragment, VH extends SimpleView
         notifyDataSetChanged();
     }
 
+    public void appendObjects(List<OBJ> objects) {
+        if(this.objects==null){
+            this.objects = new ArrayList<OBJ>();
+        }
+        this.objects.addAll(objects);
+        this.copiedObjects.clear();
+        this.copiedObjects.addAll(this.objects);
+        notifyDataSetChanged();
+    }
+
     public void filter(String text){
         if(objects==null || copiedObjects==null){
             return;

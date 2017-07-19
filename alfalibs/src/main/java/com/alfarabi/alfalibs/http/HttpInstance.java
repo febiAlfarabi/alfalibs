@@ -60,6 +60,28 @@ public abstract class HttpInstance {
             return ((Retrofit)retroMaps.get(HttpInstance.baseUrl)).create(clazz);
         }
     }
+    public static <HTTP> HTTP create(Context context, Class<HTTP> clazz, String... otherUrl) {
+        if(retroMaps == null) {
+            throw new NullPointerException("RETROFIT == null");
+        } else if(baseUrl == null && otherUrl == null) {
+            throw new NullPointerException("URL == null");
+        } else if(otherUrl != null && otherUrl.length > 0) {
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+            if(AlfaLibsApplication.DEBUG){
+                httpClient.addInterceptor(logging);
+            }
+            HttpInstance.otherUrl = otherUrl[0];
+            retroMaps.put(HttpInstance.otherUrl, (new Retrofit.Builder()).baseUrl(
+                    HttpInstance.otherUrl).client(httpClient.build())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .build());
+            return ((Retrofit)retroMaps.get(HttpInstance.otherUrl)).create(clazz);
+        } else {
+            return ((Retrofit)retroMaps.get(HttpInstance.baseUrl)).create(clazz);
+        }
+    }
 
     public static <HTTP> HTTP mock(Context context, Class<HTTP> clazz) {
         if(!retroMaps.containsKey(Initial.DOMAIN_MOCK)) {

@@ -8,6 +8,9 @@ import android.widget.Toast;
 import com.alfarabi.alfalibs.R;
 import com.alfarabi.alfalibs.http.HttpInstance;
 import com.alfarabi.alfalibs.views.AlfaRecyclerView;
+import com.alfarabi.alfalibs.views.interfaze.LoadingInterface;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
@@ -17,7 +20,7 @@ import lombok.Setter;
 
 
 public final class AlfaSwipeRefreshLayout extends android.support.v4.widget.SwipeRefreshLayout
-        implements android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
+        implements android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener, LoadingInterface {
 
     @Nullable private OnRefreshListener listener;
     @Getter@Setter boolean refreshable = true ;
@@ -63,6 +66,7 @@ public final class AlfaSwipeRefreshLayout extends android.support.v4.widget.Swip
         this.listener = listener;
     }
 
+    @Override
     public final <T> void setOnRefreshListener(final Observable<T> observable, final Consumer<? super T> onAny) {
         setOnRefreshListener(() -> {
             if(getChildCount()>0){
@@ -78,6 +82,7 @@ public final class AlfaSwipeRefreshLayout extends android.support.v4.widget.Swip
         });
     }
 
+    @Override
     public final <T> void setOnRefreshListener(final Observable<T> observable, final Consumer<? super T> onAny, final Consumer<? super Throwable> onError) {
         setOnRefreshListener(() -> {
             if(getChildCount()>0){
@@ -96,6 +101,7 @@ public final class AlfaSwipeRefreshLayout extends android.support.v4.widget.Swip
         });
     }
 
+    @Override
     public final <T> void loadFirst(final Observable<T> observable, final Consumer<? super T> onAny) {
         setRefreshable(true);
         setRefreshing(true);
@@ -111,6 +117,7 @@ public final class AlfaSwipeRefreshLayout extends android.support.v4.widget.Swip
         });
     }
 
+    @Override
     public final <T> Disposable loadFirst(final Observable<T> observable, final Consumer<? super T> onAny, final Consumer<? super Throwable> onError) {
         setRefreshable(true);
         setRefreshing(true);
@@ -129,6 +136,7 @@ public final class AlfaSwipeRefreshLayout extends android.support.v4.widget.Swip
         });
     }
 
+    @Override
     public final <T> Disposable load(final Observable<T> observable, final Consumer<? super T> onAny, final Consumer<? super Throwable> onError) {
         setRefreshable(true);
         setRefreshing(true);
