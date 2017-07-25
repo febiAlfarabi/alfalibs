@@ -2,4 +2,32 @@
     <string name="app_name">Alfalibs</string>
     <string name="swiperecyclerview_has_no_any_action">SwipeRecyclerview doesn\'t contain any action that you set in</string>
 
+
+    <!--FONTS FROM ASSETS-->
+    <string name="amatic_bold">Amatic-Bold</string>
+    <string name="amaticsc_regular">AmaticSC-Regular</string>
+    <string name="capture_it">Capture_it</string>
+    <string name="capture_it_2">Capture_it_2</string>
+    <string name="planer_bold_webfont">planer_bold_webfont</string>
+    <string name="planer_reg_webfont">planer_reg_webfont</string>
+    <string name="montserrat_light">Montserrat-Light</string>
+    <string name="montserrat_black_otf">montserrat/Montserrat-Black</string>
+    <string name="montserrat_bold_otf">montserrat/Montserrat-Bold</string>
+    <string name="montserrat_extrabold_otf">montserrat/Montserrat-ExtraBold</string>
+    <string name="montserrat_extralight_otf">montserrat/Montserrat-ExtraLight</string>
+    <string name="montserrat_light_otf">montserrat/Montserrat-Light</string>
+    <string name="montserrat_medium_otf">montserrat/Montserrat-Medium</string>
+    <string name="montserrat_regular_otf">montserrat/Montserrat-Regular</string>
+    <string name="montserrat_semibold_otf">montserrat/Montserrat-SemiBold</string>
+    <string name="montserrat_thin_otf">montserrat/Montserrat-Thin</string>
+    <string name="montserrat_alternates_black_otf">montserrat/MontserratAlternates-Black</string>
+    <string name="montserrat_alternates_bold_otf">montserrat/MontserratAlternates-Bold</string>
+    <string name="montserrat_alternates_extrabold_otf">montserrat/MontserratAlternates-ExtraBold</string>
+    <string name="montserrat_alternates_extralight_otf">montserrat/MontserratAlternates-ExtraLight</string>
+    <string name="montserrat_alternates_light_otf">montserrat/MontserratAlternates-Light</string>
+    <string name="montserrat_alternates_medium_otf">montserrat/MontserratAlternates-Medium</string>
+    <string name="montserrat_alternates_regular_otf">montserrat/MontserratAlternates-Regular</string>
+    <string name="montserrat_alternates_semibold_otf">montserrat/MontserratAlternates-SemiBold</string>
+    <string name="montserrat_alternates_thin_otf">montserrat/MontserratAlternates-Thin</string>
+
 </resources>

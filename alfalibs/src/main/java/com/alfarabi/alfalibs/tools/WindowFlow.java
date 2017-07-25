@@ -7,152 +7,234 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-
-
 import org.fingerlinks.mobile.android.navigator.Navigator;
-import org.fingerlinks.mobile.android.navigator.builder.Builders;
-
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-
-/**
- * Created by Alfarabi on 6/15/17.
- */
+import org.fingerlinks.mobile.android.navigator.builder.Builders.Any.F;
+import org.fingerlinks.mobile.android.navigator.builder.Builders.Any.G;
 
 public class WindowFlow {
-
     public static final String TAG = WindowFlow.class.getName();
 
-    public static Fragment goFirst(FragmentActivity activity, String tag, int id){
-        activity.getSupportFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_ENTER_MASK);
-        if(currentIs(activity,tag)){
-            return currentFragment(activity);
-        }
-        Log.i(TAG, "GO TO = "+tag);
-        Builders.Any.G G = Navigator.with(activity).build();
-        Builders.Any.F F = G.goTo(tag,id).tag(tag);
-        F.addToBackStack();
-        F.replace().commit();
-        return activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
+    public WindowFlow() {
     }
 
-    public static Fragment goTo(FragmentActivity activity, String tag, int id, boolean backStack){
-        activity.getSupportFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_ENTER_MASK);
-        if(currentIs(activity,tag)){
+    public static Fragment goFirst(FragmentActivity activity, String tag, int id) {
+        activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
+        if(currentIs(activity, tag)) {
             return currentFragment(activity);
-        }
-        Log.i(TAG, "GO TO = "+tag);
-        Builders.Any.G G = Navigator.with(activity).build();
-        Builders.Any.F F = G.goTo(tag,id).tag(tag);
-        if(backStack){
+        } else {
+            WLog.i(TAG, "GO TO = " + tag);
+            G G = Navigator.with(activity).build();
+            F F = (F)((F)G.goTo(tag, id)).tag(tag);
             F.addToBackStack();
+            F.replace().commit();
+            return activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
         }
-        F.replace().commit();
-        return activity.getSupportFragmentManager().findFragmentByTag(tag);
     }
 
-    public static Fragment goTo(FragmentActivity activity, Fragment fragment, String tag, int id, boolean backStack){
-        activity.getSupportFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_ENTER_MASK);
-        if(currentIs(activity,tag)){
+    public static Fragment goFirst(FragmentActivity activity, String tag, Bundle bundle, int id) {
+        activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
+        if(currentIs(activity, tag)) {
             return currentFragment(activity);
-        }
-        Log.i(TAG, "GO TO = "+tag);
-        Builders.Any.G G = Navigator.with(activity).build();
-        Builders.Any.F F = G.goTo(fragment,id).tag(tag);
-        if(backStack){
+        } else {
+            WLog.i(TAG, "GO TO = " + tag);
+            G G = Navigator.with(activity).build();
+            F F = (F)((F)G.goTo(tag, bundle, id)).tag(tag);
             F.addToBackStack();
+            F.replace().commit();
+            return activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
         }
-        F.replace().commit();
-        return activity.getSupportFragmentManager().findFragmentByTag(tag);
     }
 
-
-    public static Fragment goTo(FragmentActivity activity, String tag, Bundle bundle, int id, boolean backStack){
-        activity.getSupportFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_ENTER_MASK);
-        if(currentIs(activity, tag)){
+    public static Fragment goTo(FragmentActivity activity, String tag, int id, boolean backStack) {
+        activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
+        if(currentIs(activity, tag)) {
             return currentFragment(activity);
+        } else {
+            WLog.i(TAG, "GO TO = " + tag);
+            G G = Navigator.with(activity).build();
+            F F = (F)((F)G.goTo(tag, id)).tag(tag);
+            if(backStack) {
+                F.addToBackStack();
+            }
+
+            F.add().commit();
+            return activity.getSupportFragmentManager().findFragmentByTag(tag);
         }
-        Log.i(TAG, "GO TO = "+tag);
-        Builders.Any.G G = Navigator.with(activity).build();
-        Builders.Any.F F = G.goTo(tag, bundle, id).tag(tag);
-        if(backStack){
-            F.addToBackStack();
-        }
-        F.replace().commit();
-        return activity.getSupportFragmentManager().findFragmentByTag(tag);
     }
 
-    public static Fragment backstack(FragmentActivity activity){
-        activity.getSupportFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_ENTER_MASK);
+    public static Fragment goTo(FragmentActivity activity, Fragment fragment, String tag, int id, boolean backStack) {
+        activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
+        if(currentIs(activity, tag)) {
+            return currentFragment(activity);
+        } else {
+            WLog.i(TAG, "GO TO = " + tag);
+            G G = Navigator.with(activity).build();
+            F F = (F)((F)G.goTo(fragment, id)).tag(tag);
+            if(backStack) {
+                F.addToBackStack();
+            }
+
+            F.add().commit();
+            return activity.getSupportFragmentManager().findFragmentByTag(tag);
+        }
+    }
+
+    public static Fragment goTo(FragmentActivity activity, String tag, Bundle bundle, int id, boolean backStack) {
+        activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
+        if(currentIs(activity, tag)) {
+            return currentFragment(activity);
+        } else {
+            WLog.i(TAG, "GO TO = " + tag);
+            G G = Navigator.with(activity).build();
+            F F = (F)((F)G.goTo(tag, bundle, id)).tag(tag);
+            if(backStack) {
+                F.addToBackStack();
+            }
+
+            F.add().commit();
+            return activity.getSupportFragmentManager().findFragmentByTag(tag);
+        }
+    }
+
+    /////////
+    public static Fragment goTo(FragmentActivity activity, String tag, int id, boolean backStack, boolean add) {
+        activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
+        if(currentIs(activity, tag)) {
+            return currentFragment(activity);
+        } else {
+            WLog.i(TAG, "GO TO = " + tag);
+            G G = Navigator.with(activity).build();
+            F F = (F)((F)G.goTo(tag, id)).tag(tag);
+            if(backStack) {
+                F.addToBackStack();
+            }
+            if(add){
+                F.add().commit();
+            }else{
+                F.replace().commit();
+
+            }
+            return activity.getSupportFragmentManager().findFragmentByTag(tag);
+        }
+    }
+
+    public static Fragment goTo(FragmentActivity activity, Fragment fragment, String tag, int id, boolean backStack, boolean add) {
+        activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
+        if(currentIs(activity, tag)) {
+            return currentFragment(activity);
+        } else {
+            WLog.i(TAG, "GO TO = " + tag);
+            G G = Navigator.with(activity).build();
+            F F = (F)((F)G.goTo(fragment, id)).tag(tag);
+            if(backStack) {
+                F.addToBackStack();
+            }
+
+            if(add){
+                F.add().commit();
+            }else{
+                F.replace().commit();
+
+            }
+            return activity.getSupportFragmentManager().findFragmentByTag(tag);
+        }
+    }
+
+    public static Fragment goTo(FragmentActivity activity, String tag, Bundle bundle, int id, boolean backStack, boolean add) {
+        activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
+        if(currentIs(activity, tag)) {
+            return currentFragment(activity);
+        } else {
+            WLog.i(TAG, "GO TO = " + tag);
+            G G = Navigator.with(activity).build();
+            F F = (F)((F)G.goTo(tag, bundle, id)).tag(tag);
+            if(backStack) {
+                F.addToBackStack();
+            }
+
+            if(add){
+                F.add().commit();
+            }else{
+                F.replace().commit();
+
+            }
+            return activity.getSupportFragmentManager().findFragmentByTag(tag);
+        }
+    }
+
+    public static Fragment backstack(FragmentActivity activity) {
+        activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
         boolean canGoBack = Navigator.with(activity).utils().canGoBack(activity.getSupportFragmentManager());
-        if(canGoBack){
+        if(canGoBack) {
             Navigator.with(activity).utils().goToPreviousBackStack();
         }
+
         return activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
     }
 
-
-    public static Fragment backstack(FragmentActivity activity, String tag, int id){
-        activity.getSupportFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_ENTER_MASK);
+    public static Fragment backstack(FragmentActivity activity, String tag, int id) {
+        activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
         boolean canGoBack = Navigator.with(activity).utils().canGoBackToSpecificPoint(tag, id, activity.getSupportFragmentManager());
-        if(canGoBack){
+        if(canGoBack) {
             Navigator.with(activity).utils().goBackToSpecificPoint(tag);
         }
+
         return activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
     }
 
-    public static boolean canGoBack(FragmentActivity activity){
-        try{
-            boolean canGoBack = Navigator.with(activity).utils().canGoBack(activity.getSupportFragmentManager());
-            return canGoBack;
-        }catch (Exception e){
-            return false ;
-        }
-    }
-
-    public static Fragment currentFragment(FragmentActivity activity){
-        if(actualFragmentTag(activity)==null){
-            return null;
-        }
-        return activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
-    }
-
-    public static boolean currentIs(FragmentActivity a, Class c){
-        Log.i(TAG, "TAG OF CURRENT FRAGMENT IS = "+actualFragmentTag(a));
+    public static boolean canGoBack(FragmentActivity activity) {
         try {
-            if(c.getName().equalsIgnoreCase(actualFragmentTag(a))){
-                return true ;
-            }
-        }catch (Exception e){
-
+            boolean e = Navigator.with(activity).utils().canGoBack(activity.getSupportFragmentManager());
+            return e;
+        } catch (Exception var2) {
+            return false;
         }
+    }
+
+    public static Fragment currentFragment(FragmentActivity activity) {
+        return actualFragmentTag(activity) == null?null:activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
+    }
+
+    public static boolean currentIs(FragmentActivity a, Class c) {
+        WLog.i(TAG, "TAG OF CURRENT FRAGMENT IS = " + actualFragmentTag(a));
+
+        try {
+            if(c.getName().equalsIgnoreCase(actualFragmentTag(a))) {
+                return true;
+            }
+        } catch (Exception var3) {
+            ;
+        }
+
         return false;
     }
 
-    public static boolean currentIs(FragmentActivity a, String name){
-        Log.i(TAG, "TAG OF CURRENT FRAGMENT IS = "+actualFragmentTag(a));
-        try {
-            if(name.equalsIgnoreCase(actualFragmentTag(a))){
-                return true ;
-            }
-        }catch (Exception e){
+    public static boolean currentIs(FragmentActivity a, String name) {
+        WLog.i(TAG, "TAG OF CURRENT FRAGMENT IS = " + actualFragmentTag(a));
 
+        try {
+            if(name.equalsIgnoreCase(actualFragmentTag(a))) {
+                return true;
+            }
+        } catch (Exception var3) {
+            ;
         }
+
         return false;
     }
 
-    public static <T extends Fragment> T currentFragment(FragmentActivity activity, Class<T> cazz){
+    public static <T extends Fragment> T currentFragment(FragmentActivity activity, Class<T> cazz) {
         return (T) activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
     }
 
-    public static <T extends Fragment> T getFragment(FragmentActivity activity, String tag){
+    public static <T extends Fragment> T getFragment(FragmentActivity activity, String tag) {
         return (T) activity.getSupportFragmentManager().findFragmentByTag(tag);
     }
 
-    public static String actualFragmentTag(FragmentActivity activity){
+    public static String actualFragmentTag(FragmentActivity activity) {
         String tag = Navigator.with(activity).utils().getActualTag();
-        return tag ;
+        return tag;
     }
 
     public static void restart(@NonNull Context context, @NonNull Class<? extends Activity> nextActivityClass) {
@@ -160,33 +242,36 @@ public class WindowFlow {
     }
 
     public static void restart(@NonNull Context context, @NonNull Intent nextActivity) {
-        nextActivity.addFlags(FLAG_ACTIVITY_NEW_TASK); // In case we are called with non-Activity context.
+        nextActivity.addFlags(268435456);
         context.startActivity(nextActivity);
-        if (context instanceof Activity)
-            ((Activity) context).finish();
-        Runtime.getRuntime().exit(0); // Kill kill kill!
+        if(context instanceof Activity) {
+            ((Activity)context).finish();
+        }
+
+        Runtime.getRuntime().exit(0);
     }
-    public static Intent startActivity(Context from, Class to){
+
+    public static Intent startActivity(Context from, Class to) {
         Intent intent = new Intent(from, to);
         from.startActivity(intent);
         ((Activity)from).finish();
         return intent;
     }
 
-    public static Intent startActivity(Context from, Class to, boolean finish){
+    public static Intent startActivity(Context from, Class to, boolean finish) {
         Intent intent = new Intent(from, to);
         from.startActivity(intent);
-        if(finish)
+        if(finish) {
             ((Activity)from).finish();
+        }
+
         return intent;
     }
 
-    public static Intent startActivityForResult(Context from, Class to, int requestCode){
+    public static Intent startActivityForResult(Context from, Class to, int requestCode) {
         Intent intent = new Intent(from, to);
         ((Activity)from).startActivityForResult(intent, requestCode);
         ((Activity)from).finish();
         return intent;
     }
-
-
 }

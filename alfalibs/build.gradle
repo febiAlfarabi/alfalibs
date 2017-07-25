@@ -5,13 +5,13 @@ apply plugin: 'me.tatarka.retrolambda'
 ext {
     PUBLISH_GROUP_ID = 'com.github.febialfarabi'
     PUBLISH_ARTIFACT_ID = 'alfalibs'
-    PUBLISH_VERSION = '1.2.0'
+    PUBLISH_VERSION = '1.2.7'
 }
 
 publish {
     groupId = 'com.github.febialfarabi'
     artifactId = 'alfalibs'
-    publishVersion = '1.2.0'
+    publishVersion = '1.2.7'
     desc = 'This library contain helpers to android development process, it will simplify complexity of development than always create from scratch.'
     licences = ['Apache-2.0']
     uploadName='alfalibs'
@@ -19,14 +19,14 @@ publish {
 }
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion '25.0.0'
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
-        versionName "1.2.0"
+        versionName "1.2.7"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -77,11 +77,17 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     compile 'com.github.markomilos:paginate:0.5.1'
+    compile 'com.yarolegovich:discrete-scrollview:1.2.0'
+    compile 'com.github.soroushjavdan:CustomFontWidgets:29426641f6'
+    compile 'com.github.dmallcott:DismissibleImageView:1.0.1'
     testCompile 'junit:junit:4.12'
 }
 repositories {
     maven {
         url 'http://dl.bintray.com/dev-fingerlinks/maven'
+    }
+    maven {
+        url "https://jitpack.io"
     }
 }
 buildscript {

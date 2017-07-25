@@ -21,7 +21,7 @@ import retrofit2.Response;
 public class MainActivity extends Activity {
     public static final String TAG = MainActivity.class.getName();
 
-    @BindView(R.id.alfarefreshlayout) AlfaSwipeRefreshLayout alfarefreshlayout ;
+//    @BindView(R.id.alfarefreshlayout) AlfaSwipeRefreshLayout alfarefreshlayout ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +37,5 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(alfarefreshlayout==null){
-            WLog.i(TAG, "ALFA REFSRESH LAYOUT NULL");
-        }
-        alfarefreshlayout.load(HttpInstance.create(ExampleService.class, "https://api.github.com").simpleResponse(), t -> {
-
-        }, Throwable::printStackTrace);
-//        alfarefreshlayout.load(HttpInstance.mock(this, MockService.class).getUsers(1), userModels -> {
-////            WLog.i(TAG, new Gson().toJson(userModels));
-//        }, Throwable::printStackTrace);
     }
 }

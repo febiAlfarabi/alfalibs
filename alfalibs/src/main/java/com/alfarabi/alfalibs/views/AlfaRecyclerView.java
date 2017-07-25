@@ -169,42 +169,47 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
         }
     }
 
-    public AlfaRecyclerView withPagination(PaginatonCallBack callBack){
-        paginate = Paginate.with(this, new Paginate.Callbacks() {
-            @Override
-            public void onLoadMore() {
-                try {
-                    callBack.onLoadMore();
-                }catch (Exception e){
+    public void withPagination(PaginatonCallBack callBack){
+        postDelayed(() -> {
+            paginate = Paginate.with(this, new Paginate.Callbacks() {
+                @Override
+                public void onLoadMore() {
+                    try {
+                        if(paginate!=null){
+                            callBack.onLoadMore();
+                        }
+                    }catch (Exception e){
 
+                    }
                 }
-            }
 
-            @Override
-            public boolean isLoading() {
-                return false;
-            }
+                @Override
+                public boolean isLoading() {
+                    return false;
+                }
 
-            @Override
-            public boolean hasLoadedAllItems() {
-                paginate.setHasMoreDataToLoad(true);
-                return false;
-            }
-        }).setLoadingTriggerThreshold(2)
-                .addLoadingListItem(true).setLoadingListItemCreator(new LoadingListItemCreator() {
-            @Override
-            public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-                View view = inflater.inflate(R.layout.loading_list_creator, parent, false);
-                return new LoadingViewHolder(view);
-            }
+                @Override
+                public boolean hasLoadedAllItems() {
+                    if(paginate!=null) {
+                        paginate.setHasMoreDataToLoad(true);
+                    }
+                    return false;
+                }
+            }).setLoadingTriggerThreshold(2)
+                    .addLoadingListItem(true).setLoadingListItemCreator(new LoadingListItemCreator() {
+                        @Override
+                        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+                            View view = inflater.inflate(R.layout.loading_list_creator, parent, false);
+                            return new LoadingViewHolder(view);
+                        }
 
-            @Override
-            public void onBindViewHolder(ViewHolder holder, int position) {
+                        @Override
+                        public void onBindViewHolder(ViewHolder holder, int position) {
 
-            }
-        }).build();
-        return this ;
+                        }
+                    }).build();
+        }, 3000);
     }
 
 

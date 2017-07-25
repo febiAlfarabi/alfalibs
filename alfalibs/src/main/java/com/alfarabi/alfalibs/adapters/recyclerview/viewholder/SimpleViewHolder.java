@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alfarabi.alfalibs.adapters.interfaze.SimpleHolderCallback;
+import com.alfarabi.alfalibs.fragments.SimpleBaseFragment;
 import com.alfarabi.alfalibs.fragments.interfaze.SimpleFragmentCallback;
 
 import butterknife.ButterKnife;
@@ -34,5 +35,17 @@ public abstract class SimpleViewHolder<F extends Fragment & SimpleFragmentCallba
     public void showData(O object) {
         this.object = object ;
     }
+
+    public String getString(int id){
+        return getFragment().getString(id);
+    }
+    public int getInteger(int id){
+        return getFragment().getActivity().getResources().getInteger(id);
+    }
+
+    public <T extends SimpleBaseFragment> T getFragment(Class<T> tClass){
+        return (T) getFragment();
+    }
+
 
 }
