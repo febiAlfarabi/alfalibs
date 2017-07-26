@@ -48,6 +48,13 @@ public class HorizontalRecyclerAdapter<F extends Fragment, VH extends SimpleView
         return this ;
     }
 
+    public HorizontalRecyclerAdapter initRecyclerView(RecyclerView recyclerView, RecyclerView.LayoutManager layoutManager){
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(this);
+        notifyDataSetChanged();
+        return this ;
+    }
+
     @Override
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {
         try {

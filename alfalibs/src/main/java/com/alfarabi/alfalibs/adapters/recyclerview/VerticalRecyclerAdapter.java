@@ -50,6 +50,13 @@ public class VerticalRecyclerAdapter<F extends Fragment, VH extends SimpleViewHo
         return this ;
     }
 
+    public VerticalRecyclerAdapter initRecyclerView(RecyclerView recyclerView, RecyclerView.LayoutManager layoutManager){
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(this);
+        notifyDataSetChanged();
+        return this ;
+    }
+
     public void setObjects(List<OBJ> objects) {
         this.objects = objects;
         this.copiedObjects.clear();
