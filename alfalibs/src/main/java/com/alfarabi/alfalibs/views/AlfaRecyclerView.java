@@ -3,6 +3,8 @@ package com.alfarabi.alfalibs.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -13,6 +15,12 @@ import android.widget.RelativeLayout;
 
 import com.alfarabi.alfalibs.R;
 import com.alfarabi.alfalibs.adapters.recyclerview.viewholder.LoadingViewHolder;
+import com.alfarabi.alfalibs.helper.FindFirstItemInLayoutManagerInterface;
+import com.alfarabi.alfalibs.helper.FindLastItemInLayoutManagerInterface;
+import com.alfarabi.alfalibs.helper.PaginationCompletionInterface;
+import com.alfarabi.alfalibs.helper.PaginationHandler;
+import com.alfarabi.alfalibs.helper.PaginationInterface;
+import com.alfarabi.alfalibs.helper.PaginationScrollListener;
 import com.alfarabi.alfalibs.views.interfaze.EmptyLayoutListener;
 import com.alfarabi.alfalibs.views.interfaze.LoadingInterface;
 import com.paginate.Paginate;
@@ -36,7 +44,8 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
     private View emptyView ;
     private Context context ;
     private AttributeSet attrs ;
-    @Getter@Setter Paginate paginate ;
+//    @Getter@Setter Paginate paginate ;
+    @Getter@Setter PaginationHandler paginationHandler ;
 
 
     public AlfaRecyclerView(Context context) {
@@ -169,48 +178,138 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
         }
     }
 
-    public void withPagination(PaginatonCallBack callBack){
+    /**
+     *
+     *
+     *
+     * @param paginationScrollListener
+     * /************
+
+    This is minimal usage of this component, if you want more usage please see "Home.class"
+
+    1- you must call this method after set adapter and layoutManager into recyclerView
+    2- make sure you call build() method on Builder object
+
+
+
+    new PaginationHandler.Builder()
+    .setRecyclerView(recyclerView)  // set recyclerView that you want to handle pagination
+    .setOffsetCount(5)    // set count pre last to load more happened
+    .setLoadMoreListener(new PaginationInterface() {      // handle loadMore,
+     @Override
+     public void onLoadMore(final PaginationCompletionInterface pageComplete) {
+     //      @Caution => remember to call pageComplete after adding items into list, or get failed response.
+
+     // send your request in any way you want from DB or network
+     new Thread(new Runnable() {
+     @Override
+     public void run() {
+     try {
+     Thread.sleep(5000);
+     } catch (InterruptedException e) {
+     }
+
+
+     Handler handler = new Handler(Looper.getMainLooper());
+     handler.post(new Runnable() {
+     @Override
+     public void run() {
+
+     for (int i = 0; i < 40; i++) {
+     adapterList.add(new Data("test" + (40 * page + i)));
+     }
+
+     adapter.setItems(adapterList);
+     pageComplete.handledDataComplete(++page >= 5);
+     }
+     });
+
+     }
+     }).start();
+     }
+     }).build();
+
+
+
+     */
+
+    public void withPagination(PaginationInterface paginationInterface, int offset, int columnCount){
         postDelayed(() -> {
-            paginate = Paginate.with(this, new Paginate.Callbacks() {
-                @Override
-                public void onLoadMore() {
-                    try {
-                        if(paginate!=null){
-                            callBack.onLoadMore();
-                        }
-                    }catch (Exception e){
+            paginationHandler = new PaginationHandler.Builder().setRecyclerView(this).setOffsetCount(offset).setLoadMoreListener(paginationInterface)
+            // default value is 1
+            .setColumncount(columnCount)
 
+            // this method will return lastVisibleItem method in your layoutManager.
+            .setFindLastItemInLayoutManagerInterface(new FindLastItemInLayoutManagerInterface() {
+                @Override
+                public int findLastVisibleItemPosition() {
+                    if(getLayoutManager() instanceof LinearLayoutManager){
+                        return ((LinearLayoutManager) getLayoutManager()).findLastVisibleItemPosition();
                     }
-                }
-
-                @Override
-                public boolean isLoading() {
-                    return false;
-                }
-
-                @Override
-                public boolean hasLoadedAllItems() {
-                    if(paginate!=null) {
-                        paginate.setHasMoreDataToLoad(true);
+                    if(getLayoutManager() instanceof GridLayoutManager){
+                        return ((GridLayoutManager) getLayoutManager()).findLastVisibleItemPosition();
                     }
-                    return false;
+                    return 0;
                 }
-            }).setLoadingTriggerThreshold(2)
-                    .addLoadingListItem(true).setLoadingListItemCreator(new LoadingListItemCreator() {
-                        @Override
-                        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-                            View view = inflater.inflate(R.layout.loading_list_creator, parent, false);
-                            return new LoadingViewHolder(view);
-                        }
-
-                        @Override
-                        public void onBindViewHolder(ViewHolder holder, int position) {
-
-                        }
-                    }).build();
+            })
+            // if your direction is LOAD_FROM_TOP you must set it instead of above method in custom layoutManager.
+            .setFindFirstItemInLayoutManagerInterface(new FindFirstItemInLayoutManagerInterface() {
+                @Override
+                public int findFirstVisibleItemPosition() {
+                    if(getLayoutManager() instanceof LinearLayoutManager){
+                        return ((LinearLayoutManager) getLayoutManager()).findFirstVisibleItemPosition();
+                    }
+                    if(getLayoutManager() instanceof GridLayoutManager){
+                        return ((GridLayoutManager) getLayoutManager()).findFirstVisibleItemPosition();
+                    }
+                    return 0;
+                }
+            }).build();
         }, 3000);
     }
+
+//    public void withPagination(PaginatonCallBack callBack){
+//        postDelayed(() -> {
+//            paginate = Paginate.with(this, new Paginate.Callbacks() {
+//                @Override
+//                public void onLoadMore() {
+//                    try {
+//                        if(paginate!=null){
+//                            callBack.onLoadMore();
+//                        }
+//                    }catch (Exception e){
+//
+//                    }
+//                }
+//
+//                @Override
+//                public boolean isLoading() {
+//                    return false;
+//                }
+//
+//                @Override
+//                public boolean hasLoadedAllItems() {
+//                    if(paginate!=null) {
+//                        paginate.setHasMoreDataToLoad(true);
+//                    }
+//                    return true;
+//                }
+//            }).setLoadingTriggerThreshold(2)
+//                    .addLoadingListItem(true).setLoadingListItemCreator(new LoadingListItemCreator() {
+//                        @Override
+//                        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//                            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+//                            View view = inflater.inflate(R.layout.loading_list_creator, parent, false);
+//                            return new LoadingViewHolder(view);
+//                        }
+//
+//                        @Override
+//                        public void onBindViewHolder(ViewHolder holder, int position) {
+//
+//                        }
+//                    }).build();
+//        }, 3000);
+//    }
 
 
     @Override
@@ -252,5 +351,6 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
 
     public interface PaginatonCallBack {
         void onLoadMore() throws Exception;
+
     }
 }

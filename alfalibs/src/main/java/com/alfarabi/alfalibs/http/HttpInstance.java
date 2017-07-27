@@ -8,7 +8,11 @@ import com.alfarabi.alfalibs.AlfaLibsApplication;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -16,7 +20,12 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import ir.mirrajabi.okhttpjsonmock.interceptors.OkHttpMockInterceptor;
+import lombok.Getter;
+import lombok.Setter;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -32,12 +41,22 @@ public abstract class HttpInstance {
     private static String baseUrl;
     private static String otherUrl;
     private static final HashMap<String, Retrofit> retroMaps = new HashMap();
+    static @Getter@Setter Gson gson = new GsonBuilder().setLenient().create();
+    static @Getter@Setter HashMap<String, String> headerMap = new HashMap<>();
 
-    private static final Gson gson = new GsonBuilder().setLenient().create();
 
-    public HttpInstance() {
-    }
+    public HttpInstance() {}
 
+
+    /**
+     * This method created for actual request http, this request will call base url which you defined on previous initialization using HttpInstance.init(...)
+     * but you can pass another endpoint in the last of param by example HttpInstance.crteate(Context, ServiceClass.class, "http://wwww.google.com")
+     * @param context
+     * @param clazz
+     * @param otherUrl
+     * @param <HTTP>
+     * @return
+     */
     public static <HTTP> HTTP create(Class<HTTP> clazz, String... otherUrl) {
         if(retroMaps == null) {
             throw new NullPointerException("RETROFIT == null");
@@ -49,27 +68,23 @@ public abstract class HttpInstance {
             if(AlfaLibsApplication.DEBUG){
                 httpClient.addInterceptor(logging);
             }
-            HttpInstance.otherUrl = otherUrl[0];
-            retroMaps.put(HttpInstance.otherUrl, (new Retrofit.Builder()).baseUrl(
-                    HttpInstance.otherUrl).client(httpClient.build())
-                    .addConverterFactory(GsonConverterFactory.create(gson))
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .build());
-            return ((Retrofit)retroMaps.get(HttpInstance.otherUrl)).create(clazz);
-        } else {
-            return ((Retrofit)retroMaps.get(HttpInstance.baseUrl)).create(clazz);
-        }
-    }
-    public static <HTTP> HTTP create(Context context, Class<HTTP> clazz, String... otherUrl) {
-        if(retroMaps == null) {
-            throw new NullPointerException("RETROFIT == null");
-        } else if(baseUrl == null && otherUrl == null) {
-            throw new NullPointerException("URL == null");
-        } else if(otherUrl != null && otherUrl.length > 0) {
-            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-            if(AlfaLibsApplication.DEBUG){
-                httpClient.addInterceptor(logging);
+            if(headerMap!=null && headerMap.size()>0){
+                Interceptor interceptor = new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Request.Builder request = chain.request().newBuilder();
+                        Iterator<Map.Entry<String, String>> iterator = headerMap.entrySet().iterator();
+                        while (iterator.hasNext()){
+                            Map.Entry<String, String> next = iterator.next();
+                            request.addHeader(next.getKey(), next.getValue());
+                        }
+//                        headerMap.forEach((key, value) -> {
+//                            request.addHeader(key, value);
+//                        });
+                        return chain.proceed(request.build());
+                    }
+                };
+                httpClient.addInterceptor(interceptor);
             }
             HttpInstance.otherUrl = otherUrl[0];
             retroMaps.put(HttpInstance.otherUrl, (new Retrofit.Builder()).baseUrl(
@@ -83,15 +98,93 @@ public abstract class HttpInstance {
         }
     }
 
+    /**
+     * This method created for actual request http, this request will call base url which you defined on previous initialization using HttpInstance.init(...)
+     * but you can pass another endpoint in the last of param by example HttpInstance.crteate(Context, ServiceClass.class, "http://wwww.google.com")
+     * @param context
+     * @param clazz
+     * @param otherUrl
+     * @param <HTTP>
+     * @return
+     */
+    public static <HTTP> HTTP create(Context context, Class<HTTP> clazz, String... otherUrl) {
+        if(retroMaps == null) {
+            throw new NullPointerException("RETROFIT == null");
+        } else if(baseUrl == null && otherUrl == null) {
+            throw new NullPointerException("URL == null");
+        } else if(otherUrl != null && otherUrl.length > 0) {
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+            if(AlfaLibsApplication.DEBUG){
+                httpClient.addInterceptor(logging);
+            }
+
+            if(headerMap!=null && headerMap.size()>0){
+                Interceptor interceptor = new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Request.Builder request = chain.request().newBuilder();
+                        Iterator<Map.Entry<String, String>> iterator = headerMap.entrySet().iterator();
+                        while (iterator.hasNext()){
+                            Map.Entry<String, String> next = iterator.next();
+                            request.addHeader(next.getKey(), next.getValue());
+                        }
+//                        headerMap.forEach((key, value) -> {
+//                            request.addHeader(key, value);
+//                        });
+                        return chain.proceed(request.build());
+                    }
+                };
+                httpClient.addInterceptor(interceptor);
+            }
+            HttpInstance.otherUrl = otherUrl[0];
+            retroMaps.put(HttpInstance.otherUrl, (new Retrofit.Builder()).baseUrl(
+                    HttpInstance.otherUrl).client(httpClient.build())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .build());
+            return ((Retrofit)retroMaps.get(HttpInstance.otherUrl)).create(clazz);
+        } else {
+            return ((Retrofit)retroMaps.get(HttpInstance.baseUrl)).create(clazz);
+        }
+    }
+
+    /**
+     * This method especially created for mocking json only, put your file inside assets/api/
+     * and define your service path user Class Service by example ExampleService.class
+     *
+     * @param context
+     * @param clazz
+     * @param <HTTP>
+     * @return
+     */
     public static <HTTP> HTTP mock(Context context, Class<HTTP> clazz) {
         if(!retroMaps.containsKey(Initial.DOMAIN_MOCK)) {
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-            OkHttpClient.Builder mOkHttpClient = new OkHttpClient.Builder().addInterceptor(new OkHttpMockInterceptor(context, 5));
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder().addInterceptor(new OkHttpMockInterceptor(context, 5));
             if(AlfaLibsApplication.DEBUG){
-                mOkHttpClient.addInterceptor(logging);
+                httpClient.addInterceptor(logging);
+            }
+            if(headerMap!=null && headerMap.size()>0){
+                Interceptor interceptor = new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Request.Builder request = chain.request().newBuilder();
+                        Iterator<Map.Entry<String, String>> iterator = headerMap.entrySet().iterator();
+                        while (iterator.hasNext()){
+                            Map.Entry<String, String> next = iterator.next();
+                            request.addHeader(next.getKey(), next.getValue());
+                        }
+//                        headerMap.forEach((key, value) -> {
+//                            request.addHeader(key, value);
+//                        });
+                        return chain.proceed(request.build());
+                    }
+                };
+                httpClient.addInterceptor(interceptor);
             }
             retroMaps.put(Initial.DOMAIN_MOCK,
-                    new Retrofit.Builder().client(mOkHttpClient.build())
+                    new Retrofit.Builder().client(httpClient.build())
 //                            .addConverterFactory(ScalarsConverterFactory.create())
                             .addConverterFactory(GsonConverterFactory.create(gson))
                             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -116,15 +209,62 @@ public abstract class HttpInstance {
         observable = with(observable);
         return observable.subscribe(onAny);
     }
+
+
+    /**
+     *
+     * @param observable its used to passing your request as observable, use this by example HttpInstance.mock(....) or HttpInstance.create(.....)
+     * @param onAny this will be called after request finished and response get already from your request
+     * @param onError On error triggerd
+     * @param <T>
+     * @return
+     */
     public static final <T> Disposable call(Observable<T> observable, Consumer<? super T> onAny, Consumer<? super Throwable> onError){
         observable = with(observable);
         return observable.subscribe(onAny, onError);
     }
 
+    /**
+     * This method used for base url define, its better to define on Application
+     *
+     * @param baseUrl is a string url which you choosed as endpoint,
+     *                by example http://www.google.com
+     */
     public static final void init(String baseUrl) {
         HttpInstance.baseUrl = baseUrl;
-        retroMaps.put(HttpInstance.baseUrl, (new Retrofit.Builder()).baseUrl(HttpInstance.baseUrl).addConverterFactory(GsonConverterFactory.create()).build());
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        if(AlfaLibsApplication.DEBUG){
+            httpClient.addInterceptor(logging);
+        }
+        if(headerMap!=null && headerMap.size()>0){
+            Interceptor interceptor = new Interceptor() {
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+                    Request.Builder request = chain.request().newBuilder();
+                    Iterator<Map.Entry<String, String>> iterator = headerMap.entrySet().iterator();
+                    while (iterator.hasNext()){
+                        Map.Entry<String, String> next = iterator.next();
+                        request.addHeader(next.getKey(), next.getValue());
+                    }
+//                    headerMap.forEach((key, value) -> {
+//                        request.addHeader(key, value);
+//                    });
+                    return chain.proceed(request.build());
+                }
+            };
+            httpClient.addInterceptor(interceptor);
+        }
+        retroMaps.put(HttpInstance.baseUrl, (new Retrofit.Builder()).baseUrl(HttpInstance.baseUrl).client(httpClient.build())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create()).build());
     }
 
+    public static void putHeaderMap(String key, String value) {
+        headerMap.put(key, value);
+        if(baseUrl!=null){
+            init(HttpInstance.baseUrl);
+        }
 
+    }
 }
