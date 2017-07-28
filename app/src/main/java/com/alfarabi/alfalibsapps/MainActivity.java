@@ -3,11 +3,13 @@ package com.alfarabi.alfalibsapps;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.alfarabi.alfalibs.helper.AlfaPagination;
 import com.alfarabi.alfalibs.http.HttpInstance;
 import com.alfarabi.alfalibs.http.mock.ExampleService;
 import com.alfarabi.alfalibs.http.mock.MockService;
 import com.alfarabi.alfalibs.model.UserModel;
 import com.alfarabi.alfalibs.tools.WLog;
+import com.alfarabi.alfalibs.views.AlfaRecyclerView;
 import com.alfarabi.alfalibs.views.AlfaSwipeRefreshLayout;
 import com.google.gson.Gson;
 
@@ -31,7 +33,6 @@ public class MainActivity extends Activity {
 //        HttpInstance.call(HttpInstance.mock(this, MockService.class).getUsers(1), userModels -> {
 //            WLog.i(TAG, new Gson().toJson(userModels));
 //        }, Throwable::printStackTrace);
-
     }
 
     @Override
