@@ -1,5 +1,6 @@
 package com.alfarabi.alfalibs.http;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 
@@ -13,6 +14,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -35,15 +37,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by User on 02/07/2017.
  */
 
-public abstract class HttpInstance {
+public class HttpInstance {
 
     public static final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+    static @Getter@Setter int readTimeout ;
+    static @Getter@Setter int conTimeout ;
+    static @Getter@Setter int writeTimeout ;
     private static String baseUrl;
     private static String otherUrl;
+
     private static final HashMap<String, Retrofit> retroMaps = new HashMap();
     static @Getter@Setter Gson gson = new GsonBuilder().setLenient().create();
     static @Getter@Setter HashMap<String, String> headerMap = new HashMap<>();
 
+    @Getter@Setter public ProgressDialog progressDialog ;
 
     public HttpInstance() {}
 
@@ -51,8 +58,8 @@ public abstract class HttpInstance {
     /**
      * This method created for actual request http, this request will call base url which you defined on previous initialization using HttpInstance.init(...)
      * but you can pass another endpoint in the last of param by example HttpInstance.crteate(Context, ServiceClass.class, "http://wwww.google.com")
-     * @param context
-     * @param clazz
+//     * @param context
+//     * @param clazz
      * @param otherUrl
      * @param <HTTP>
      * @return
@@ -64,7 +71,8 @@ public abstract class HttpInstance {
             throw new NullPointerException("URL == null");
         } else if(otherUrl != null && otherUrl.length > 0) {
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
+                    .connectTimeout(conTimeout, TimeUnit.SECONDS).readTimeout(readTimeout, TimeUnit.SECONDS).writeTimeout(writeTimeout, TimeUnit.SECONDS);
             if(AlfaLibsApplication.DEBUG){
                 httpClient.addInterceptor(logging);
             }
@@ -78,9 +86,6 @@ public abstract class HttpInstance {
                             Map.Entry<String, String> next = iterator.next();
                             request.addHeader(next.getKey(), next.getValue());
                         }
-//                        headerMap.forEach((key, value) -> {
-//                            request.addHeader(key, value);
-//                        });
                         return chain.proceed(request.build());
                     }
                 };
@@ -114,7 +119,7 @@ public abstract class HttpInstance {
             throw new NullPointerException("URL == null");
         } else if(otherUrl != null && otherUrl.length > 0) {
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder().connectTimeout(conTimeout, TimeUnit.SECONDS).readTimeout(readTimeout, TimeUnit.SECONDS).writeTimeout(writeTimeout, TimeUnit.SECONDS);
             if(AlfaLibsApplication.DEBUG){
                 httpClient.addInterceptor(logging);
             }
@@ -161,7 +166,8 @@ public abstract class HttpInstance {
     public static <HTTP> HTTP mock(Context context, Class<HTTP> clazz) {
         if(!retroMaps.containsKey(Initial.DOMAIN_MOCK)) {
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-            OkHttpClient.Builder httpClient = new OkHttpClient.Builder().addInterceptor(new OkHttpMockInterceptor(context, 5));
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder().addInterceptor(new OkHttpMockInterceptor(context, 5))
+                    .connectTimeout(conTimeout, TimeUnit.SECONDS).readTimeout(readTimeout, TimeUnit.SECONDS).writeTimeout(writeTimeout, TimeUnit.SECONDS);
             if(AlfaLibsApplication.DEBUG){
                 httpClient.addInterceptor(logging);
             }
@@ -175,9 +181,6 @@ public abstract class HttpInstance {
                             Map.Entry<String, String> next = iterator.next();
                             request.addHeader(next.getKey(), next.getValue());
                         }
-//                        headerMap.forEach((key, value) -> {
-//                            request.addHeader(key, value);
-//                        });
                         return chain.proceed(request.build());
                     }
                 };
@@ -201,39 +204,17 @@ public abstract class HttpInstance {
         return (O)observable.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public static final <T> Disposable call(Observable<T> observable){
-        observable = with(observable);
-        return observable.subscribe();
-    }
-    public static final <T> Disposable call(Observable<T> observable, Consumer<? super T> onAny){
-        observable = with(observable);
-        return observable.subscribe(onAny);
-    }
-
-
-    /**
-     *
-     * @param observable its used to passing your request as observable, use this by example HttpInstance.mock(....) or HttpInstance.create(.....)
-     * @param onAny this will be called after request finished and response get already from your request
-     * @param onError On error triggerd
-     * @param <T>
-     * @return
-     */
-    public static final <T> Disposable call(Observable<T> observable, Consumer<? super T> onAny, Consumer<? super Throwable> onError){
-        observable = with(observable);
-        return observable.subscribe(onAny, onError);
-    }
-
     /**
      * This method used for base url define, its better to define on Application
      *
      * @param baseUrl is a string url which you choosed as endpoint,
      *                by example http://www.google.com
      */
-    public static final void init(String baseUrl) {
+    public static final void init(String baseUrl, int conTimeout, int readTimeout, int writeTimeout) {
         HttpInstance.baseUrl = baseUrl;
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
+                .connectTimeout(conTimeout, TimeUnit.SECONDS).readTimeout(readTimeout, TimeUnit.SECONDS).writeTimeout(writeTimeout, TimeUnit.SECONDS);
         if(AlfaLibsApplication.DEBUG){
             httpClient.addInterceptor(logging);
         }
@@ -247,9 +228,6 @@ public abstract class HttpInstance {
                         Map.Entry<String, String> next = iterator.next();
                         request.addHeader(next.getKey(), next.getValue());
                     }
-//                    headerMap.forEach((key, value) -> {
-//                        request.addHeader(key, value);
-//                    });
                     return chain.proceed(request.build());
                 }
             };
@@ -263,8 +241,70 @@ public abstract class HttpInstance {
     public static void putHeaderMap(String key, String value) {
         headerMap.put(key, value);
         if(baseUrl!=null){
-            init(HttpInstance.baseUrl);
+            init(HttpInstance.baseUrl, conTimeout, readTimeout, writeTimeout);
         }
-
     }
+
+    public static HttpInstance withProgress(Context context, int... customlayoutProgress){
+        HttpInstance httpInstance = new HttpInstance();
+        if(customlayoutProgress==null || customlayoutProgress.length==0){
+            httpInstance.progressDialog = ProgressDialog.show(context, "", "Loading...");
+        }else{
+            httpInstance.progressDialog = new ProgressDialog(context);
+            httpInstance.progressDialog.getWindow().setContentView(customlayoutProgress[0]);
+            httpInstance.progressDialog.setMessage("Loading...");
+            httpInstance.progressDialog.show();
+        }
+        return  httpInstance ;
+    }
+
+    public <T> Disposable observe(Observable<T> observable){
+        observable = with(observable);
+        return observable.subscribe();
+    }
+    public <T> Disposable observe(Observable<T> observable, Consumer<? super T> onAny){
+        observable = with(observable);
+        return observable.subscribe(t -> {
+            if(progressDialog!=null){
+                progressDialog.dismiss();
+            }
+            onAny.accept(t);
+        });
+    }
+    public <T> Disposable observe(Observable<T> observable, Consumer<? super T> onAny, Consumer<? super Throwable> onError){
+        observable = with(observable);
+        return observable.subscribe(t -> {
+            if(progressDialog!=null){
+                progressDialog.dismiss();
+            }
+            onAny.accept(t);
+        },throwable -> {
+            if(progressDialog!=null){
+                progressDialog.dismiss();
+            }
+            onError.accept(throwable);
+        });
+    }
+    public static <T> Disposable call(Observable<T> observable){
+        HttpInstance httpInstance = new HttpInstance();
+        return httpInstance.observe(observable);
+    }
+    public static <T> Disposable call(Observable<T> observable, Consumer<? super T> onAny){
+        HttpInstance httpInstance = new HttpInstance();
+        return httpInstance.observe(observable, onAny);
+    }
+    /**
+     *
+     * @param observable its used to passing your request as observable, use this by example HttpInstance.mock(....) or HttpInstance.create(.....)
+     * @param onAny this will be called after request finished and response get already from your request
+     * @param onError On error triggerd
+     * @param <T>
+     * @return
+     */
+    public static <T> Disposable call(Observable<T> observable, Consumer<? super T> onAny, Consumer<? super Throwable> onError){
+        HttpInstance httpInstance = new HttpInstance();
+        return httpInstance.observe(observable, onAny, onError);
+    }
+
+
 }

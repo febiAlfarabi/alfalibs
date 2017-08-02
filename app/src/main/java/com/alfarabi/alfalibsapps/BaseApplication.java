@@ -25,6 +25,6 @@ public class BaseApplication extends AlfaLibsApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        HttpInstance.init("https://api.github.com/");
+        HttpInstance.init("https://api.github.com/", 10, 30, 10);
     }
 }

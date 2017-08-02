@@ -33,6 +33,13 @@ public class MainActivity extends Activity {
 //        HttpInstance.call(HttpInstance.mock(this, MockService.class).getUsers(1), userModels -> {
 //            WLog.i(TAG, new Gson().toJson(userModels));
 //        }, Throwable::printStackTrace);
+
+
+        HttpInstance.withProgress(this).observe(HttpInstance.create(MockService.class).getUser(1), userModel -> {
+
+        }, throwable -> {
+            throwable.printStackTrace();
+        });
     }
 
     @Override

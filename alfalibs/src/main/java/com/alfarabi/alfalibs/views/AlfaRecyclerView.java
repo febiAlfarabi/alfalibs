@@ -220,51 +220,6 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
 
 
 
-
-//    private void withPagination(PaginatonCallBack callBack){
-//        postDelayed(() -> {
-//            paginate = Paginate.with(this, new Paginate.Callbacks() {
-//                @Override
-//                public void onLoadMore() {
-//                    try {
-//                        if(paginate!=null){
-//                            callBack.onLoadMore();
-//                        }
-//                    }catch (Exception e){
-//
-//                    }
-//                }
-//
-//                @Override
-//                public boolean isLoading() {
-//                    return false;
-//                }
-//
-//                @Override
-//                public boolean hasLoadedAllItems() {
-//                    if(paginate!=null) {
-//                        paginate.setHasMoreDataToLoad(true);
-//                    }
-//                    return true;
-//                }
-//            }).setLoadingTriggerThreshold(2)
-//                    .addLoadingListItem(true).setLoadingListItemCreator(new LoadingListItemCreator() {
-//                        @Override
-//                        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//                            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-//                            View view = inflater.inflate(R.layout.loading_list_creator, parent, false);
-//                            return new LoadingViewHolder(view);
-//                        }
-//
-//                        @Override
-//                        public void onBindViewHolder(ViewHolder holder, int position) {
-//
-//                        }
-//                    }).build();
-//        }, 3000);
-//    }
-
-
     @Override
     public <T> void setOnRefreshListener(Observable<T> observable, Consumer<? super T> onAny) {
         if(getParent() instanceof AlfaSwipeRefreshLayout){
