@@ -41,13 +41,14 @@ import lombok.Setter;
 
 public final class AlfaRecyclerView<E> extends android.support.v7.widget.RecyclerView implements LoadingInterface {
 
+    private String TAG = AlfaRecyclerView.class.getName();
+
     @Getter List<E> objects ;
     private EmptyLayoutListener emptyLayoutListener ;
-
-    private String TAG = AlfaRecyclerView.class.getName();
-    private View emptyView ;
+    @Getter@Setter View emptyView ;
     private Context context ;
     private AttributeSet attrs ;
+    @Getter@Setter AlfaPagination pagination ;
 //    @Getter@Setter Paginate paginate ;
 
 
@@ -185,39 +186,40 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
     @Getter@Setter PaginationHandler paginationHandler ;
 
     @Getter@Setter int page ;
-    @Getter@Setter int trigger ;
+//    @Getter@Setter int trigger ;
 
-    public void withPagination(AlfaPagination pagination, int offset, int columnCount, int trigger){
-        this.trigger = trigger ;
+    public void withPagination(AlfaPagination pagination, int offset, int columnCount){
+//        this.trigger = trigger ;
+        this.pagination = pagination ;
         postDelayed(() -> {
-            paginationHandler = new PaginationHandler.Builder().setRecyclerView(this).setOffsetCount(offset).setLoadMoreListener(pagination)
-            .setColumncount(columnCount).setFindLastItemInLayoutManagerInterface(new FindLastItemInLayoutManagerInterface() {
-                @Override
-                public int findLastVisibleItemPosition() {
-                    if(getLayoutManager() instanceof LinearLayoutManager){
-                        return ((LinearLayoutManager) getLayoutManager()).findLastVisibleItemPosition();
-                    }
-                    if(getLayoutManager() instanceof GridLayoutManager){
-                        return ((GridLayoutManager) getLayoutManager()).findLastVisibleItemPosition();
-                    }
-                    return 0;
+            paginationHandler = new PaginationHandler.Builder().setRecyclerView(this).setOffsetCount(offset).setLoadMoreListener(this.pagination)
+            .setColumncount(columnCount).setFindLastItemInLayoutManagerInterface(() -> {
+                if(getLayoutManager() instanceof LinearLayoutManager){
+                    return ((LinearLayoutManager) getLayoutManager()).findLastVisibleItemPosition();
                 }
+                if(getLayoutManager() instanceof GridLayoutManager){
+                    return ((GridLayoutManager) getLayoutManager()).findLastVisibleItemPosition();
+                }
+                return 0;
             })
-            .setFindFirstItemInLayoutManagerInterface(new FindFirstItemInLayoutManagerInterface() {
-                @Override
-                public int findFirstVisibleItemPosition() {
-                    if(getLayoutManager() instanceof LinearLayoutManager){
-                        return ((LinearLayoutManager) getLayoutManager()).findFirstVisibleItemPosition();
-                    }
-                    if(getLayoutManager() instanceof GridLayoutManager){
-                        return ((GridLayoutManager) getLayoutManager()).findFirstVisibleItemPosition();
-                    }
-                    return 0;
+            .setFindFirstItemInLayoutManagerInterface(() -> {
+                if(getLayoutManager() instanceof LinearLayoutManager){
+                    return ((LinearLayoutManager) getLayoutManager()).findFirstVisibleItemPosition();
                 }
+                if(getLayoutManager() instanceof GridLayoutManager){
+                    return ((GridLayoutManager) getLayoutManager()).findFirstVisibleItemPosition();
+                }
+                return 0;
             }).build();
         }, 3000);
     }
 
+
+    public void load(PaginationCompletionInterface paginationCompletionInterface){
+        if(paginationHandler!=null){
+            paginationHandler.loadMore(paginationCompletionInterface);
+        }
+    }
 
 
     @Override

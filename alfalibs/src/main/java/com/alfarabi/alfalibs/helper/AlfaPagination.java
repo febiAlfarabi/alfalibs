@@ -18,13 +18,11 @@ import lombok.Setter;
 public abstract class AlfaPagination implements PaginationInterface {
 
     private PaginationCompletionInterface completion ;
-    @Getter @Setter
-    View view ;
+    @Getter @Setter View view ;
 
     private WrapperSpanSizeLookup wrapperSpanSizeLookup ;
     public WrapperAdapter wrapperAdapter ;
-    @Getter@Setter
-    AlfaRecyclerView alfaRecyclerView ;
+    @Getter@Setter AlfaRecyclerView alfaRecyclerView ;
     @Getter@Setter int trigger ;
 
     public AlfaPagination(int trigger){

@@ -146,11 +146,27 @@ public class PaginationHandler {
                         }
                     });
                 }
-
             }
         };
 
         recyclerView.addOnScrollListener(onScrollListener);
+    }
+
+    public void loadMore(PaginationCompletionInterface paginationCompletionInterface){
+        if(paginationInterface!=null){
+            paginationState = PaginationState.LOADING;
+            paginationInterface.onLoadMore(new PaginationCompletionInterface() {
+                @Override
+                public void handledDataComplete(boolean isLast) {
+                    paginationCompletionInterface.handledDataComplete(isLast);
+                    if (isLast) {
+                        paginationState = PaginationState.DONE;
+                    } else {
+                        paginationState = PaginationState.IDLE;
+                    }
+                }
+            });
+        }
     }
 
     private boolean needLoadMore(int firstVisibleItemPosition, int lastVisibleItemPosition) {
