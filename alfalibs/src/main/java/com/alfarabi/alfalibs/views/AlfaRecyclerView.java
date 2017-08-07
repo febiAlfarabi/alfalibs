@@ -3,32 +3,18 @@ package com.alfarabi.alfalibs.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.alfarabi.alfalibs.R;
-import com.alfarabi.alfalibs.adapters.recyclerview.viewholder.LoadingViewHolder;
-import com.alfarabi.alfalibs.helper.AlfaPagination;
-import com.alfarabi.alfalibs.helper.FindFirstItemInLayoutManagerInterface;
-import com.alfarabi.alfalibs.helper.FindLastItemInLayoutManagerInterface;
-import com.alfarabi.alfalibs.helper.PaginationCompletionInterface;
-import com.alfarabi.alfalibs.helper.PaginationHandler;
-import com.alfarabi.alfalibs.helper.PaginationInterface;
-import com.alfarabi.alfalibs.helper.PaginationScrollListener;
-import com.alfarabi.alfalibs.helper.WrapperAdapter;
-import com.alfarabi.alfalibs.helper.WrapperSpanSizeLookup;
+import com.alfarabi.alfalibs.helper.PaginationCallback;
 import com.alfarabi.alfalibs.views.interfaze.EmptyLayoutListener;
 import com.alfarabi.alfalibs.views.interfaze.LoadingInterface;
 import com.paginate.Paginate;
-import com.paginate.recycler.LoadingListItemCreator;
+import com.paginate.recycler.RecyclerPaginate;
 
 import java.util.List;
 
@@ -48,9 +34,9 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
     @Getter@Setter View emptyView ;
     private Context context ;
     private AttributeSet attrs ;
-    @Getter@Setter AlfaPagination pagination ;
+    //    @Getter@Setter AlfaPagination pagination ;
 //    @Getter@Setter Paginate paginate ;
-
+    @Getter@Setter PaginationCallback pagination ;
 
 
     public AlfaRecyclerView(Context context) {
@@ -183,49 +169,26 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
         }
     }
 
-    @Getter@Setter PaginationHandler paginationHandler ;
-
-    @Getter@Setter int page ;
-//    @Getter@Setter int trigger ;
-
-    public void withPagination(AlfaPagination pagination, int offset, int columnCount){
-//        this.trigger = trigger ;
-        this.pagination = pagination ;
-        postDelayed(() -> {
-            paginationHandler = new PaginationHandler.Builder().setRecyclerView(this).setOffsetCount(offset).setLoadMoreListener(this.pagination)
-            .setColumncount(columnCount).setFindLastItemInLayoutManagerInterface(() -> {
-                if(getLayoutManager() instanceof LinearLayoutManager){
-                    return ((LinearLayoutManager) getLayoutManager()).findLastVisibleItemPosition();
-                }
-                if(getLayoutManager() instanceof GridLayoutManager){
-                    return ((GridLayoutManager) getLayoutManager()).findLastVisibleItemPosition();
-                }
-                return 0;
-            })
-            .setFindFirstItemInLayoutManagerInterface(() -> {
-                if(getLayoutManager() instanceof LinearLayoutManager){
-                    return ((LinearLayoutManager) getLayoutManager()).findFirstVisibleItemPosition();
-                }
-                if(getLayoutManager() instanceof GridLayoutManager){
-                    return ((GridLayoutManager) getLayoutManager()).findFirstVisibleItemPosition();
-                }
-                return 0;
-            }).build();
-        }, 3000);
-    }
-
-
-    public void load(PaginationCompletionInterface paginationCompletionInterface){
-        if(paginationHandler!=null){
-            paginationHandler.loadMore(paginationCompletionInterface);
-        }
-    }
-
-
+    //    public void setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener listener) {
+//        if(getParent() instanceof AlfaSwipeRefreshLayout){
+//            ((AlfaSwipeRefreshLayout) getParent()).setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//                @Override
+//                public void onRefresh() {
+//
+//                }
+//            });
+//        }
+//        if(pagination!=null){
+//            pagination.paginationReset();
+//        }
+//    }
     @Override
     public <T> void setOnRefreshListener(Observable<T> observable, Consumer<? super T> onAny) {
         if(getParent() instanceof AlfaSwipeRefreshLayout){
             ((AlfaSwipeRefreshLayout) getParent()).setOnRefreshListener(observable, onAny);
+        }
+        if(pagination!=null){
+            pagination.paginationReset();
         }
     }
 
@@ -233,6 +196,9 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
     public <T> void setOnRefreshListener(Observable<T> observable, Consumer<? super T> onAny, Consumer<? super Throwable> onError) {
         if(getParent() instanceof AlfaSwipeRefreshLayout){
             ((AlfaSwipeRefreshLayout) getParent()).setOnRefreshListener(observable, onAny, onError);
+        }
+        if(pagination!=null){
+            pagination.paginationReset();
         }
     }
 
@@ -259,9 +225,15 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
         return null;
     }
 
-    public interface PaginatonCallBack {
-        void onLoadMore() throws Exception;
-
+    //    public interface PaginatonCallBack {
+//        void onLoadMore() throws Exception;
+//    }
+    public AlfaRecyclerView withPagination(PaginationCallback pagination){
+        this.pagination = pagination ;
+        this.pagination.setAlfaRecyclerView(this);
+        RecyclerPaginate.Builder paginate = Paginate.with(this, pagination);//.build();
+        pagination.setPaginate(paginate.setLoadingTriggerThreshold(1).build());
+        return this ;
     }
 }
 
