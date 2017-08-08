@@ -5,13 +5,13 @@ apply plugin: 'me.tatarka.retrolambda'
 ext {
     PUBLISH_GROUP_ID = 'com.github.febialfarabi'
     PUBLISH_ARTIFACT_ID = 'alfalibs'
-    PUBLISH_VERSION = '1.4.4'
+    PUBLISH_VERSION = '1.4.5'
 }
 
 publish {
     groupId = 'com.github.febialfarabi'
     artifactId = 'alfalibs'
-    publishVersion = '1.4.4'
+    publishVersion = '1.4.5'
     desc = 'This library contain helpers to android development process, it will simplify complexity of development than always create from scratch.'
     licences = ['Apache-2.0']
     uploadName='alfalibs'
@@ -26,7 +26,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
-        versionName "1.4.4"
+        versionName "1.4.5"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 

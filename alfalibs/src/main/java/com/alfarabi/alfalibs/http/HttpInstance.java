@@ -308,6 +308,29 @@ public class HttpInstance {
             onError.accept(throwable);
         });
     }
+    public <T> Disposable observe(Observable<T> observable, Consumer<? super T> onAny, Consumer<? super Throwable> onError, boolean disposePrevious){
+        if(disposable!=null && !disposable.isDisposed() && disposePrevious){
+            observable.unsubscribeOn(Schedulers.io());
+            disposable.dispose();
+            if(progressDialog!=null && progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+        }
+        observable = with(observable);
+        return disposable = observable.subscribe(t -> {
+            if(progressDialog!=null){
+                progressDialog.dismiss();
+            }
+            onAny.accept(t);
+        },throwable -> {
+            if(progressDialog!=null){
+                progressDialog.dismiss();
+            }
+            onError.accept(throwable);
+        });
+    }
+
+
     public static <T> Disposable call(Observable<T> observable){
         if(disposable!=null && !disposable.isDisposed()){
             observable.unsubscribeOn(Schedulers.io());
@@ -339,6 +362,15 @@ public class HttpInstance {
         }
         HttpInstance httpInstance = new HttpInstance();
         return disposable = httpInstance.observe(observable, onAny, onError);
+    }
+
+    public static <T> Disposable call(Observable<T> observable, Consumer<? super T> onAny, Consumer<? super Throwable> onError, boolean disposePrevious){
+        if(disposable!=null && !disposable.isDisposed() && disposePrevious){
+            observable.unsubscribeOn(Schedulers.io());
+            disposable.dispose();
+        }
+        HttpInstance httpInstance = new HttpInstance();
+        return disposable = httpInstance.observe(observable, onAny, onError, disposePrevious);
     }
 
 
