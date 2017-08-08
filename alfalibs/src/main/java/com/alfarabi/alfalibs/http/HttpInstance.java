@@ -9,6 +9,8 @@ import com.alfarabi.alfalibs.AlfaLibsApplication;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.reactivestreams.Subscription;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,6 +22,8 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.internal.schedulers.SchedulerWhen;
+import io.reactivex.internal.schedulers.SingleScheduler;
 import io.reactivex.schedulers.Schedulers;
 import ir.mirrajabi.okhttpjsonmock.interceptors.OkHttpMockInterceptor;
 import lombok.Getter;
@@ -45,6 +49,9 @@ public class HttpInstance {
     static @Getter@Setter int writeTimeout ;
     private static String baseUrl;
     private static String otherUrl;
+    private static  Disposable disposable ;
+
+    private static Subscription subscription ;
 
     private static final HashMap<String, Retrofit> retroMaps = new HashMap();
     static @Getter@Setter Gson gson = new GsonBuilder().setLenient().create();
@@ -58,8 +65,8 @@ public class HttpInstance {
     /**
      * This method created for actual request http, this request will call base url which you defined on previous initialization using HttpInstance.init(...)
      * but you can pass another endpoint in the last of param by example HttpInstance.crteate(Context, ServiceClass.class, "http://wwww.google.com")
-//     * @param context
-//     * @param clazz
+     //     * @param context
+     //     * @param clazz
      * @param otherUrl
      * @param <HTTP>
      * @return
@@ -125,20 +132,14 @@ public class HttpInstance {
             }
 
             if(headerMap!=null && headerMap.size()>0){
-                Interceptor interceptor = new Interceptor() {
-                    @Override
-                    public Response intercept(Chain chain) throws IOException {
-                        Request.Builder request = chain.request().newBuilder();
-                        Iterator<Map.Entry<String, String>> iterator = headerMap.entrySet().iterator();
-                        while (iterator.hasNext()){
-                            Map.Entry<String, String> next = iterator.next();
-                            request.addHeader(next.getKey(), next.getValue());
-                        }
-//                        headerMap.forEach((key, value) -> {
-//                            request.addHeader(key, value);
-//                        });
-                        return chain.proceed(request.build());
+                Interceptor interceptor = chain -> {
+                    Request.Builder request = chain.request().newBuilder();
+                    Iterator<Map.Entry<String, String>> iterator = headerMap.entrySet().iterator();
+                    while (iterator.hasNext()){
+                        Map.Entry<String, String> next = iterator.next();
+                        request.addHeader(next.getKey(), next.getValue());
                     }
+                    return chain.proceed(request.build());
                 };
                 httpClient.addInterceptor(interceptor);
             }
@@ -148,6 +149,7 @@ public class HttpInstance {
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build());
+            ((Retrofit)retroMaps.get(HttpInstance.otherUrl)).create(clazz);
             return ((Retrofit)retroMaps.get(HttpInstance.otherUrl)).create(clazz);
         } else {
             return ((Retrofit)retroMaps.get(HttpInstance.baseUrl)).create(clazz);
@@ -192,7 +194,7 @@ public class HttpInstance {
                             .addConverterFactory(GsonConverterFactory.create(gson))
                             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                             .baseUrl(Initial.DOMAIN_MOCK)
-                    .build());
+                            .build());
         }
         return retroMaps.get(Initial.DOMAIN_MOCK).create(clazz);
     }
@@ -259,12 +261,26 @@ public class HttpInstance {
     }
 
     public <T> Disposable observe(Observable<T> observable){
+        if(disposable!=null && !disposable.isDisposed()){
+            observable.unsubscribeOn(Schedulers.io());
+            disposable.dispose();
+            if(progressDialog!=null && progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+        }
         observable = with(observable);
-        return observable.subscribe();
+        return disposable = observable.subscribe();
     }
     public <T> Disposable observe(Observable<T> observable, Consumer<? super T> onAny){
+        if(disposable!=null && !disposable.isDisposed()){
+            observable.unsubscribeOn(Schedulers.io());
+            disposable.dispose();
+            if(progressDialog!=null && progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+        }
         observable = with(observable);
-        return observable.subscribe(t -> {
+        return disposable = observable.subscribe(t -> {
             if(progressDialog!=null){
                 progressDialog.dismiss();
             }
@@ -272,8 +288,15 @@ public class HttpInstance {
         });
     }
     public <T> Disposable observe(Observable<T> observable, Consumer<? super T> onAny, Consumer<? super Throwable> onError){
+        if(disposable!=null && !disposable.isDisposed()){
+            observable.unsubscribeOn(Schedulers.io());
+            disposable.dispose();
+            if(progressDialog!=null && progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+        }
         observable = with(observable);
-        return observable.subscribe(t -> {
+        return disposable = observable.subscribe(t -> {
             if(progressDialog!=null){
                 progressDialog.dismiss();
             }
@@ -286,12 +309,20 @@ public class HttpInstance {
         });
     }
     public static <T> Disposable call(Observable<T> observable){
+        if(disposable!=null && !disposable.isDisposed()){
+            observable.unsubscribeOn(Schedulers.io());
+            disposable.dispose();
+        }
         HttpInstance httpInstance = new HttpInstance();
-        return httpInstance.observe(observable);
+        return disposable = httpInstance.observe(observable);
     }
     public static <T> Disposable call(Observable<T> observable, Consumer<? super T> onAny){
+        if(disposable!=null && !disposable.isDisposed()){
+            observable.unsubscribeOn(Schedulers.io());
+            disposable.dispose();
+        }
         HttpInstance httpInstance = new HttpInstance();
-        return httpInstance.observe(observable, onAny);
+        return disposable = httpInstance.observe(observable, onAny);
     }
     /**
      *
@@ -302,8 +333,12 @@ public class HttpInstance {
      * @return
      */
     public static <T> Disposable call(Observable<T> observable, Consumer<? super T> onAny, Consumer<? super Throwable> onError){
+        if(disposable!=null && !disposable.isDisposed()){
+            observable.unsubscribeOn(Schedulers.io());
+            disposable.dispose();
+        }
         HttpInstance httpInstance = new HttpInstance();
-        return httpInstance.observe(observable, onAny, onError);
+        return disposable = httpInstance.observe(observable, onAny, onError);
     }
 
 
