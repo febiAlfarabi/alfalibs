@@ -21,7 +21,7 @@ import lombok.Setter;
 public abstract class SimpleViewHolder<F extends Fragment & SimpleFragmentCallback, O, FP> extends RecyclerView.ViewHolder implements SimpleHolderCallback<O, FP> {
 
 
-    @Getter@Setter Fragment fragment ;
+    @Getter@Setter F fragment ;
     @Getter@Setter O object ;
 
 

@@ -2,6 +2,9 @@ package com.alfarabi.alfalibs;
 
 import android.app.Application;
 
+
+import com.devs.acr.AutoErrorReporter;
+
 import net.soroushjavdan.customfontwidgets.FontUtils;
 
 /**
@@ -16,10 +19,18 @@ public abstract class AlfaLibsApplication extends Application {
     protected abstract boolean getBuildConfigDebug();
     protected abstract String getBuildConfigVersionName();
 
+
+    public abstract String emailReportApps();
+    public abstract String subjectLineReportApps();
+
+
     @Override
     public void onCreate() {
         super.onCreate();
         FontUtils.createFonts(this, "fonts");
-
+        AutoErrorReporter.get(this)
+                .setEmailAddresses(emailReportApps())
+                .setEmailSubject(subjectLineReportApps())
+                .start();
     }
 }

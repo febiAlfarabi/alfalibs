@@ -14,6 +14,7 @@ import com.alfarabi.alfalibs.helper.PaginationCallback;
 import com.alfarabi.alfalibs.views.interfaze.EmptyLayoutListener;
 import com.alfarabi.alfalibs.views.interfaze.LoadingInterface;
 import com.paginate.Paginate;
+import com.paginate.recycler.LoadingListItemSpanLookup;
 import com.paginate.recycler.RecyclerPaginate;
 
 import java.util.List;
@@ -228,11 +229,16 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
     //    public interface PaginatonCallBack {
 //        void onLoadMore() throws Exception;
 //    }
-    public AlfaRecyclerView withPagination(PaginationCallback pagination){
+    public AlfaRecyclerView withPagination(PaginationCallback pagination, int trigger, int span){
         this.pagination = pagination ;
         this.pagination.setAlfaRecyclerView(this);
         RecyclerPaginate.Builder paginate = Paginate.with(this, pagination);//.build();
-        pagination.setPaginate(paginate.setLoadingTriggerThreshold(1).build());
+        pagination.setPaginate(paginate.setLoadingTriggerThreshold(trigger).setLoadingListItemSpanSizeLookup(new LoadingListItemSpanLookup() {
+            @Override
+            public int getSpanSize() {
+                return span;
+            }
+        }).build());
         return this ;
     }
 }
