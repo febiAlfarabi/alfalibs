@@ -23,6 +23,16 @@ public class BaseApplication extends AlfaLibsApplication {
     }
 
     @Override
+    public String emailReportApps() {
+        return null;
+    }
+
+    @Override
+    public String subjectLineReportApps() {
+        return null;
+    }
+
+    @Override
     public void onCreate() {
         super.onCreate();
         HttpInstance.init("https://api.github.com/", 10, 30, 10);

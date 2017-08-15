@@ -32,7 +32,11 @@ public class SimpleStickyRecyclerAdapter<F extends Fragment & SimpleFragmentCall
 
     @Override
     public long getHeaderId(int position) {
-        return objects.get(position).getHeaderId();
+        if((objects.get(position) instanceof ObjectAdapterInterface)){
+
+            return objects.get(position).getHeaderId();
+        }
+        return position;
     }
 
     @Override
