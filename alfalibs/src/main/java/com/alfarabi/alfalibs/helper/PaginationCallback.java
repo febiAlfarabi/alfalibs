@@ -58,19 +58,17 @@ public abstract class PaginationCallback implements Paginate.Callbacks {
     }
 
     public void paginationStop(){
-        decreasePage();
-        setLoading(false);
-        setLoadedAllItems(true);
-        paginate.setHasMoreDataToLoad(false);
-        WLog.i(TAG, ":::: PAGINATION STOP ");
-//        alfaRecyclerView.postDelayed(() -> {
-//            paginationReenable();
-//        }, 2000);
+        alfaRecyclerView.postDelayed(() -> {
+            decreasePage();
+            setLoading(false);
+            setLoadedAllItems(true);
+            paginate.setHasMoreDataToLoad(false);
+            WLog.i(TAG, ":::: PAGINATION STOP ");
+        }, 2000);
     }
 
     public void paginationError(){
         decreasePage();
-
         setLoading(false);
         setLoadedAllItems(true);
         paginate.setHasMoreDataToLoad(false);
