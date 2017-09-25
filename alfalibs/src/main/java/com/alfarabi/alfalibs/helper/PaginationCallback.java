@@ -15,12 +15,22 @@ public abstract class PaginationCallback implements Paginate.Callbacks {
 
     public static final String TAG = PaginationCallback.class.getName();
 
-    @Getter@Setter boolean loading ;
-    @Getter@Setter boolean loadedAllItems = false ;
-    @Getter@Setter Paginate paginate ;
+    @Getter@Setter boolean loading = true ;
+//    @Getter@Setter boolean loadedAllItems = false ;
+    @Getter Paginate paginate ;
     @Getter@Setter AlfaRecyclerView alfaRecyclerView ;
+    @Getter@Setter int page = 0;
 
-    @Getter@Setter int page = 1;
+    public void setPaginate(Paginate paginate) {
+        this.paginate = paginate;
+//        paginate.setHasMoreDataToLoad(loading);
+        paginationNext();
+    }
+
+    public int zeroPage(){
+        page = 0;
+        return page ;
+    }
     public int restartPage(){
         page = 1;
         return page ;
@@ -45,51 +55,51 @@ public abstract class PaginationCallback implements Paginate.Callbacks {
 
     @Override
     public boolean hasLoadedAllItems() {
-        return loadedAllItems ;
+        return !loading ;
     }
 
     public void paginationNext(){
-        if(!isLoadedAllItems()){
-            setLoading(true);
-            setLoadedAllItems(false);
-            paginate.setHasMoreDataToLoad(true);
-            WLog.i(TAG, ":::: PAGINATION NEXT ");
-        }
+        setLoading(true);
+        paginate.setHasMoreDataToLoad(loading);
+        onLoadMore();
+        WLog.d(TAG, "--> PAGINATION NEXT ");
     }
 
     public void paginationStop(){
+        decreasePage();
+        setLoading(false);
+//            setLoadedAllItems(true);
+        paginate.setHasMoreDataToLoad(loading);
+        WLog.d(TAG, "--> PAGINATION STOP ");
         alfaRecyclerView.postDelayed(() -> {
-            decreasePage();
-            setLoading(false);
-            setLoadedAllItems(true);
-            paginate.setHasMoreDataToLoad(false);
-            WLog.i(TAG, ":::: PAGINATION STOP ");
+            paginationReenable();
         }, 2000);
     }
 
     public void paginationError(){
         decreasePage();
         setLoading(false);
-        setLoadedAllItems(true);
-        paginate.setHasMoreDataToLoad(false);
-        WLog.i(TAG, ":::: PAGINATION ERROR");
+//        setLoadedAllItems(true);
+        paginate.setHasMoreDataToLoad(loading);
+        WLog.d(TAG, "--> PAGINATION ERROR");
         alfaRecyclerView.postDelayed(() -> {
             paginationReenable();
         }, 2000);
     }
 
     public void paginationReenable(){
-        setLoading(false);
-        setLoadedAllItems(false);
-        WLog.i(TAG, ":::: PAGINATION REENABLE");
-//        paginate.setHasMoreDataToLoad(true);
+        setLoading(true);
+//        setLoadedAllItems(false);
+        paginate.setHasMoreDataToLoad(loading);
+        WLog.d(TAG, "--> PAGINATION REENABLE");
+
     }
 
     public void paginationReset(){
-        setLoading(false);
-        setLoadedAllItems(false);
-        paginate.setHasMoreDataToLoad(true);
-        WLog.i(TAG, ":::: PAGINATION RESET");
+        setLoading(true);
+//        setLoadedAllItems(false);
+        paginate.setHasMoreDataToLoad(loading);
+        WLog.d(TAG, "--> PAGINATION RESET");
     }
 
 //    public int fistPage(){

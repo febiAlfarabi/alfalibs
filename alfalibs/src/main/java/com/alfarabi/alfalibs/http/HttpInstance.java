@@ -2,6 +2,7 @@ package com.alfarabi.alfalibs.http;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 
 
@@ -251,9 +252,18 @@ public class HttpInstance {
         HttpInstance httpInstance = new HttpInstance();
         if(customlayoutProgress==null || customlayoutProgress.length==0){
             httpInstance.progressDialog = ProgressDialog.show(context, "", "Loading...");
+            httpInstance.progressDialog.getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+//            httpInstance.progressDialog = new ProgressDialog(context, ProgressDialog.THEME_HOLO_DARK);
+//            // set indeterminate style
+//            httpInstance.progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//            httpInstance.progressDialog.getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+//            // set title and message
+//            httpInstance.progressDialog.setTitle("");
+//            httpInstance.progressDialog.setMessage("Loading...");
         }else{
             httpInstance.progressDialog = new ProgressDialog(context);
             httpInstance.progressDialog.getWindow().setContentView(customlayoutProgress[0]);
+            httpInstance.progressDialog.getWindow().getDecorView().setBackgroundColor(Color.WHITE);
             httpInstance.progressDialog.setMessage("Loading...");
             httpInstance.progressDialog.show();
         }

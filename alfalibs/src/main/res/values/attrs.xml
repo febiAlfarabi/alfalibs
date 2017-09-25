@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="AlfaRecyclerView">
+        <attr name="loading_view" format="integer"/>
         <attr name="empty_view" format="reference"/>
         <attr name="parent_id" format="integer" />
     </declare-styleable>

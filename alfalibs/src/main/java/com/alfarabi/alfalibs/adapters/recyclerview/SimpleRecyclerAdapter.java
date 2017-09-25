@@ -89,12 +89,17 @@ public class SimpleRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, 
         this.objects.addAll(objects);
         this.copiedObjects.clear();
         this.copiedObjects.addAll(this.objects);
-        notifyDataSetChanged();
+        notifyItemRangeChanged(0, this.objects.size());
     }
 
     @Override
     public int getItemCount() {
         return UISimulation.size(objects);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
     }
 
     public void filter(String text){
@@ -115,7 +120,7 @@ public class SimpleRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, 
                     Class fieldClass = item.getClass();
                     Field field = fieldClass.getDeclaredField(item.canSearchByField());
                     field.setAccessible(true);
-                    String value = (String) field.get(fieldClass);
+                    String value = (String) field.get(item);
                     if(value.toLowerCase().contains(text)){
                         objects.add(item);
                     }

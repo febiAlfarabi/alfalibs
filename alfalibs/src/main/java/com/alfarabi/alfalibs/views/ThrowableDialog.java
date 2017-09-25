@@ -1,4 +1,4 @@
-//package com.alfarabi.alfalibs.views;
+package com.alfarabi.alfalibs.views;//package com.alfarabi.alfalibs.views;
 //
 //import android.content.Context;
 //import android.support.v4.app.Fragment;

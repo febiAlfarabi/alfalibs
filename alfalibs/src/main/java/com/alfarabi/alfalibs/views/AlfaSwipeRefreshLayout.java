@@ -1,14 +1,20 @@
 package com.alfarabi.alfalibs.views;
 import android.content.Context;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.Toast;
 
 
 import com.alfarabi.alfalibs.R;
+import com.alfarabi.alfalibs.helper.SwipeCallback;
 import com.alfarabi.alfalibs.http.HttpInstance;
-import com.alfarabi.alfalibs.views.AlfaRecyclerView;
+import com.alfarabi.alfalibs.tools.WindowFlow;
 import com.alfarabi.alfalibs.views.interfaze.LoadingInterface;
+import com.cjj.MaterialRefreshLayout;
+import com.cjj.MaterialRefreshListener;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 
 import java.util.List;
 
@@ -19,92 +25,123 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-public final class AlfaSwipeRefreshLayout extends android.support.v4.widget.SwipeRefreshLayout
-        implements android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener, LoadingInterface {
+public class AlfaSwipeRefreshLayout extends MaterialRefreshLayout implements LoadingInterface {
 
-    @Nullable private OnRefreshListener listener;
+//    @Nullable private OnRefreshListener listener;
     @Getter@Setter boolean refreshable = true ;
+    private SwipeCallback swipeCallback ;
+    @Getter int page = 0;
+
+    public int startPage(){
+        page = 1 ;
+        return page ;
+    }
+    public int restartPage(){
+        return startPage() ;
+    }
+    public int currentPage(){
+        return page ;
+    }
+    public int increasePage(){
+        page++ ;
+        return page ;
+    }
+    public int decreasePage(){
+        page-- ;
+        return page ;
+    }
+    public int zeroPage(){
+        page = 0  ;
+        return page ;
+    }
+
 
     public AlfaSwipeRefreshLayout(Context context) {
         this(context, null);
         if(refreshable){
-            setOnRefreshListener(() -> {
-                if(getChildCount()>0){
-                    if(getChildAt(0) instanceof AlfaRecyclerView){
-                        ((AlfaRecyclerView) getChildAt(0)).checkIfEmpty();
+            setMaterialRefreshListener(new MaterialRefreshListener() {
+                @Override
+                public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+                    if(getChildCount()>0){
+                        if(getChildAt(0) instanceof AlfaRecyclerView){
+                            ((AlfaRecyclerView) getChildAt(0)).checkIfEmpty();
+                        }
                     }
+                    postDelayed(() -> {
+                        Toast.makeText(getContext(), R.string.swiperecyclerview_has_no_any_action, Toast.LENGTH_SHORT).show();
+                        finishRefresh();
+                    }, 500);
                 }
-                postDelayed(() -> {
-                    Toast.makeText(getContext(), R.string.swiperecyclerview_has_no_any_action, Toast.LENGTH_SHORT).show();
-                    setRefreshing(false);
-                }, 500);
             });
         }
     }
 
     public AlfaSwipeRefreshLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setColorSchemeResources(R.color.blue_A700);
         if(refreshable){
-            setOnRefreshListener(() -> {
+            setMaterialRefreshListener(new MaterialRefreshListener() {
+                @Override
+                public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+                    if(getChildCount()>0){
+                        if(getChildAt(0) instanceof AlfaRecyclerView){
+                            ((AlfaRecyclerView) getChildAt(0)).checkIfEmpty();
+                        }
+                    }
+                    postDelayed(() -> {
+                        Toast.makeText(getContext(), R.string.swiperecyclerview_has_no_any_action, Toast.LENGTH_SHORT).show();
+                        finishRefresh();
+                    }, 500);
+                }
+            });
+        }
+    }
+
+
+    @Override
+    public final <T> void setOnRefreshListener(final Observable<T> observable, final Consumer<? super T> onAny) {
+        setMaterialRefreshListener(new MaterialRefreshListener() {
+            @Override
+            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 if(getChildCount()>0){
                     if(getChildAt(0) instanceof AlfaRecyclerView){
                         ((AlfaRecyclerView) getChildAt(0)).checkIfEmpty();
                     }
                 }
-                postDelayed(() -> {
-                    Toast.makeText(getContext(), R.string.swiperecyclerview_has_no_any_action, Toast.LENGTH_SHORT).show();
-                    setRefreshing(false);
-                }, 500);
-            });
-        }
-    }
-
-    @Override
-    public void setOnRefreshListener(OnRefreshListener listener) {
-        super.setOnRefreshListener(listener);
-        this.listener = listener;
-    }
-
-    @Override
-    public final <T> void setOnRefreshListener(final Observable<T> observable, final Consumer<? super T> onAny) {
-        setOnRefreshListener(() -> {
-            if(getChildCount()>0){
-                if(getChildAt(0) instanceof AlfaRecyclerView){
-                    ((AlfaRecyclerView) getChildAt(0)).checkIfEmpty();
-                }
+                Observable<T> observation = HttpInstance.with(observable);
+                observation.subscribe(t -> {
+                    finishRefresh();
+                    onAny.accept(t);
+                });
             }
-            Observable<T> observation = HttpInstance.with(observable);
-            observation.subscribe(t -> {
-                setRefreshing(false);
-                onAny.accept(t);
-            });
         });
     }
 
     @Override
     public final <T> void setOnRefreshListener(final Observable<T> observable, final Consumer<? super T> onAny, final Consumer<? super Throwable> onError) {
-        setOnRefreshListener(() -> {
-            if(getChildCount()>0){
-                if(getChildAt(0) instanceof AlfaRecyclerView){
-                    ((AlfaRecyclerView) getChildAt(0)).checkIfEmpty();
+        setMaterialRefreshListener(new MaterialRefreshListener() {
+            @Override
+            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+                if(getChildCount()>0){
+                    if(getChildAt(0) instanceof AlfaRecyclerView){
+                        ((AlfaRecyclerView) getChildAt(0)).checkIfEmpty();
+                    }
                 }
+                Observable<T> observation = HttpInstance.with(observable);
+                observation.subscribe(t -> {
+                    finishRefresh();
+                    onAny.accept(t);
+                }, throwable -> {
+                    finishRefresh();
+                    onError.accept(throwable);
+                });
             }
-            Observable<T> observation = HttpInstance.with(observable);
-            observation.subscribe(t -> {
-                setRefreshing(false);
-                onAny.accept(t);
-            }, throwable -> {
-                setRefreshing(false);
-                onError.accept(throwable);
-            });
         });
     }
 
     @Override
     public final <T> void loadFirst(final Observable<T> observable, final Consumer<? super T> onAny) {
         setRefreshable(true);
-        setRefreshing(true);
+        autoRefresh();
         if(getChildCount()>0){
             if(getChildAt(0) instanceof AlfaRecyclerView){
                 ((AlfaRecyclerView) getChildAt(0)).refresh();
@@ -112,7 +149,7 @@ public final class AlfaSwipeRefreshLayout extends android.support.v4.widget.Swip
         }
         Observable<T> observation = HttpInstance.with(observable);
         observation.subscribe(t -> {
-            setRefreshing(false);
+            finishRefresh();
             onAny.accept(t);
         });
     }
@@ -120,7 +157,7 @@ public final class AlfaSwipeRefreshLayout extends android.support.v4.widget.Swip
     @Override
     public final <T> Disposable loadFirst(final Observable<T> observable, final Consumer<? super T> onAny, final Consumer<? super Throwable> onError) {
         setRefreshable(true);
-        setRefreshing(true);
+        autoRefresh();
         if(getChildCount()>0){
             if(getChildAt(0) instanceof AlfaRecyclerView){
                 ((AlfaRecyclerView) getChildAt(0)).refresh();
@@ -128,10 +165,10 @@ public final class AlfaSwipeRefreshLayout extends android.support.v4.widget.Swip
         }
         Observable<T> observation = HttpInstance.with(observable);
         return observation.subscribe(t -> {
-            setRefreshing(false);
+            finishRefresh();
             onAny.accept(t);
         }, throwable -> {
-            setRefreshing(false);
+            finishRefresh();
             onError.accept(throwable);
         });
     }
@@ -139,7 +176,7 @@ public final class AlfaSwipeRefreshLayout extends android.support.v4.widget.Swip
     @Override
     public final <T> Disposable load(final Observable<T> observable, final Consumer<? super T> onAny, final Consumer<? super Throwable> onError) {
         setRefreshable(true);
-        setRefreshing(true);
+        autoRefresh();
         if(getChildCount()>0){
             if(getChildAt(0) instanceof AlfaRecyclerView){
                 ((AlfaRecyclerView) getChildAt(0)).refresh();
@@ -147,23 +184,36 @@ public final class AlfaSwipeRefreshLayout extends android.support.v4.widget.Swip
         }
         Observable<T> observation = HttpInstance.with(observable);
         return observation.subscribe(t -> {
-            setRefreshing(false);
+            finishRefresh();
             onAny.accept(t);
         }, throwable -> {
-            setRefreshing(false);
+            finishRefresh();
             onError.accept(throwable);
         });
     }
 
-    @Override
-    public void onRefresh() {
-        if (listener != null) {
-            listener.onRefresh();
-        }
-    }
 
-    @Override
-    public void setRefreshing(boolean refreshing) {
-        super.setRefreshing(refreshing);
+
+
+    public void setOnSwipeListener(SwipeCallback swipeCallback){
+//        setDirection(swipyRefreshLayoutDirection);
+        this.swipeCallback = swipeCallback ;
+        setMaterialRefreshListener(new MaterialRefreshListener() {
+            @Override
+            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+                startPage();
+                swipeCallback.onSwipeFromTop();
+            }
+
+            @Override
+            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+                super.onRefreshLoadMore(materialRefreshLayout);
+                swipeCallback.onSwipeFromBottom();
+            }
+        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setNestedScrollingEnabled(true);
+        }
+
     }
 }

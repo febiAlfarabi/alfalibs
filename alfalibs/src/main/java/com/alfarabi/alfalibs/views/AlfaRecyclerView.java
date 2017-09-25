@@ -1,5 +1,6 @@
 package com.alfarabi.alfalibs.views;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
@@ -33,11 +34,9 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
     @Getter List<E> objects ;
     private EmptyLayoutListener emptyLayoutListener ;
     @Getter@Setter View emptyView ;
+    @Getter@Setter View loadingView ;
     private Context context ;
     private AttributeSet attrs ;
-    //    @Getter@Setter AlfaPagination pagination ;
-//    @Getter@Setter Paginate paginate ;
-    @Getter@Setter PaginationCallback pagination ;
 
 
     public AlfaRecyclerView(Context context) {
@@ -71,8 +70,12 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
         if(a.getResourceId(R.styleable.AlfaRecyclerView_empty_view, 0)!=0){
             emptyView = LayoutInflater.from(context).inflate(a.getResourceId(R.styleable.AlfaRecyclerView_empty_view, 0), null);
             setEmptyView(emptyView);
-
         }
+        if(a.getResourceId(R.styleable.AlfaRecyclerView_loading_view, 0)!=0){
+            loadingView = ((Activity)context).findViewById(a.getResourceId(R.styleable.AlfaRecyclerView_loading_view, 0));
+            setLoadingView(loadingView);
+        }
+
     }
 
     public void setEmptyView(View view){
@@ -133,11 +136,21 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
             }
 
         }
-        if (emptyView != null && getAdapter() != null) {
+        if (emptyView != null && getAdapter() != null && loadingView!=null) {
+            final boolean emptyViewVisible = getAdapter().getItemCount() == 0;
+            if(loadingView.getVisibility()==VISIBLE){
+                emptyView.setVisibility(emptyViewVisible ? GONE : VISIBLE);
+                setVisibility(emptyViewVisible ? GONE : VISIBLE);
+            }else{
+                emptyView.setVisibility(emptyViewVisible ? VISIBLE : GONE);
+                setVisibility(emptyViewVisible ? GONE : VISIBLE);
+            }
+        }else if (emptyView != null && getAdapter() != null) {
             final boolean emptyViewVisible = getAdapter().getItemCount() == 0;
             emptyView.setVisibility(emptyViewVisible ? VISIBLE : GONE);
             setVisibility(emptyViewVisible ? GONE : VISIBLE);
         }
+
     }
 
 
@@ -170,26 +183,10 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
         }
     }
 
-    //    public void setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener listener) {
-//        if(getParent() instanceof AlfaSwipeRefreshLayout){
-//            ((AlfaSwipeRefreshLayout) getParent()).setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//                @Override
-//                public void onRefresh() {
-//
-//                }
-//            });
-//        }
-//        if(pagination!=null){
-//            pagination.paginationReset();
-//        }
-//    }
     @Override
     public <T> void setOnRefreshListener(Observable<T> observable, Consumer<? super T> onAny) {
         if(getParent() instanceof AlfaSwipeRefreshLayout){
             ((AlfaSwipeRefreshLayout) getParent()).setOnRefreshListener(observable, onAny);
-        }
-        if(pagination!=null){
-            pagination.paginationReset();
         }
     }
 
@@ -197,9 +194,6 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
     public <T> void setOnRefreshListener(Observable<T> observable, Consumer<? super T> onAny, Consumer<? super Throwable> onError) {
         if(getParent() instanceof AlfaSwipeRefreshLayout){
             ((AlfaSwipeRefreshLayout) getParent()).setOnRefreshListener(observable, onAny, onError);
-        }
-        if(pagination!=null){
-            pagination.paginationReset();
         }
     }
 
@@ -226,21 +220,6 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
         return null;
     }
 
-    //    public interface PaginatonCallBack {
-//        void onLoadMore() throws Exception;
-//    }
-    public AlfaRecyclerView withPagination(PaginationCallback pagination, int trigger, int span){
-        this.pagination = pagination ;
-        this.pagination.setAlfaRecyclerView(this);
-        RecyclerPaginate.Builder paginate = Paginate.with(this, pagination);//.build();
-        pagination.setPaginate(paginate.setLoadingTriggerThreshold(trigger).setLoadingListItemSpanSizeLookup(new LoadingListItemSpanLookup() {
-            @Override
-            public int getSpanSize() {
-                return span;
-            }
-        }).build());
-        return this ;
-    }
 }
 
 

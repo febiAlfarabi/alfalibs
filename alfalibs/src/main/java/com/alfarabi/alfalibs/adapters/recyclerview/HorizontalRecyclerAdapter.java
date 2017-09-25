@@ -119,7 +119,7 @@ public class HorizontalRecyclerAdapter<F extends Fragment, VH extends SimpleView
                     Class fieldClass = item.getClass();
                     Field field = fieldClass.getDeclaredField(item.canSearchByField());
                     field.setAccessible(true);
-                    String value = (String) field.get(fieldClass);
+                    String value = (String) field.get(item);
                     if(value.toLowerCase().contains(text)){
                         objects.add(item);
                     }
