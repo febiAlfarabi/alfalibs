@@ -30,4 +30,24 @@
     <string name="montserrat_alternates_semibold_otf">montserrat/MontserratAlternates-SemiBold</string>
     <string name="montserrat_alternates_thin_otf">montserrat/MontserratAlternates-Thin</string>
 
+
+    <string name="required_field">required_field</string>
+    <string name="words_arent_match">Words arent match</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+
+
+    <string name="permission_deniedd">Permission denied.</string>
+    <string name="permission_required">Permission is required</string>
+    <string name="permission_required_or_close">Pasarwarga permission\'s are required to run, please accept them to get best experience of application</string>
+    <string name="sms_permission_required">SMS permission\'s are required to run, please accept it to get best experience of application</string>
+    <string name="maps_permission">To open maps, please grant Ahloo with GPS permission.</string>
+    <string name="service_not_found">Service Not Found</string>
+    <string name="location_not_found">Location not reachable.</string>
+    <string name="location_permission_denied">Location permission denied!</string>
+    <string name="camera_permission">Camera permission denied.</string>
+    <string name="showpicker_permission">To show a picker, please enable reading your external storage.</string>
+    <string name="imagepicker_permission">Permission denied to showProgress image picker.</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+
 </resources>

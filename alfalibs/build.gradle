@@ -5,7 +5,7 @@ apply plugin: 'me.tatarka.retrolambda'
 ext {
     PUBLISH_GROUP_ID = 'com.github.febialfarabi'
     PUBLISH_ARTIFACT_ID = 'alfalibs'
-    PUBLISH_VERSION = '1.6.1'
+    PUBLISH_VERSION = '1.6.2'
 }
 
 publish {
@@ -26,7 +26,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 24
         versionCode 1
-        versionName "1.6.1"
+        versionName "1.6.2"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -85,6 +85,10 @@ dependencies {
     compile 'com.github.omadahealth:swipy:1.2.3@aar'
     compile 'com.cjj.materialrefeshlayout:library:1.3.0'
     compile 'com.github.jrvansuita:CheckNewAppVersionAvailable:v1.0.0'
+    compile 'org.apache.commons:commons-lang3:3.5'
+    compile 'com.google.android.gms:play-services-maps:10.2.1'
+    compile 'com.google.android.gms:play-services-auth:10.2.1'
+
     testCompile 'junit:junit:4.12'
 }
 repositories {
