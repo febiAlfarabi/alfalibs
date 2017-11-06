@@ -66,7 +66,6 @@ public class SimpleRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, 
         }
         return null ;
     }
-
     @Override
     public void onBindViewHolder(VH holder, int position) {
         if(objects!=null && objects.size()>0){
