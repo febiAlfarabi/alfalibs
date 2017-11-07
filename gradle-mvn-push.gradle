@@ -47,7 +47,7 @@ afterEvaluate { project ->
 
                 pom.groupId = 'com.github.febialfarabi'
                 pom.artifactId = 'alfalibs'
-                pom.version = '1.6.8'
+                pom.version = '1.7.1'
 
                 repository(url: getReleaseRepositoryUrl()) {
                     authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())

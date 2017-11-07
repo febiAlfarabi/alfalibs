@@ -28,7 +28,6 @@ public class SimpleStickyRecyclerAdapter<F extends Fragment & SimpleFragmentCall
     public SimpleStickyRecyclerAdapter(F fragment, Class<HVH> headerVh, Class<BVH> bodyVh, List<OBJ> objects) {
         super(fragment, bodyVh, objects);
         this.headerVh = headerVh;
-        setHasStableIds(true);
 
     }
 
