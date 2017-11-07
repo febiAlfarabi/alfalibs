@@ -39,6 +39,7 @@ public class StringStickyRecyclerAdapter<F extends Fragment & SimpleFragmentCall
         this.objects = objects;
         copiedObjects.clear();
         copiedObjects.addAll(objects);
+        setHasStableIds(true);
 
     }
 

@@ -39,6 +39,8 @@ public class HorizontalRecyclerAdapter<F extends Fragment, VH extends SimpleView
         this.objects = objects;
         copiedObjects.clear();
         copiedObjects.addAll(objects);
+        setHasStableIds(true);
+
     }
 
     public HorizontalRecyclerAdapter initRecyclerView(RecyclerView recyclerView){

@@ -52,6 +52,7 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
         } catch (Exception e) {
             e.printStackTrace();
         }
+        setHasFixedSize(true);
     }
 
     public AlfaRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
@@ -63,6 +64,7 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
         } catch (Exception e) {
             e.printStackTrace();
         }
+        setHasFixedSize(true);
     }
 
     public void setEmptyView(Context context, @Nullable AttributeSet attrs) throws Exception{

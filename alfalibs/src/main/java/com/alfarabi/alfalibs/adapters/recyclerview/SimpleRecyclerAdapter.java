@@ -42,12 +42,14 @@ public class SimpleRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, 
         this.objects = objects;
         copiedObjects.clear();
         copiedObjects.addAll(objects);
+        setHasStableIds(true);
     }
 
     public SimpleRecyclerAdapter initRecyclerView(RecyclerView recyclerView, RecyclerView.LayoutManager layoutManager){
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(this);
         notifyDataSetChanged();
+
         return this ;
     }
 

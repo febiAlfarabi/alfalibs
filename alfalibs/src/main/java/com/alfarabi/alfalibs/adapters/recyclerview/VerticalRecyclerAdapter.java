@@ -41,6 +41,7 @@ public class VerticalRecyclerAdapter<F extends Fragment, VH extends SimpleViewHo
         this.objects = objects;
         copiedObjects.clear();
         copiedObjects.addAll(objects);
+        setHasStableIds(true);
     }
 
     public VerticalRecyclerAdapter initRecyclerView(RecyclerView recyclerView){
