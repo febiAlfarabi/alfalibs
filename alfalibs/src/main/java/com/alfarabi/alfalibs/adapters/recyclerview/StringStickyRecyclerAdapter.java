@@ -6,8 +6,7 @@ import android.view.ViewGroup;
 
 import com.alfarabi.alfalibs.adapters.recyclerview.viewholder.SimpleStickyBodyViewHolder;
 import com.alfarabi.alfalibs.adapters.recyclerview.viewholder.SimpleStickyHeaderViewHolder;
-import com.alfarabi.alfalibs.fragments.interfaze.SimpleFragmentCallback;
-import com.alfarabi.alfalibs.helper.model.ObjectAdapterInterface;
+import com.alfarabi.alfalibs.fragments.interfaze.RecyclerCallback;
 import com.alfarabi.alfalibs.tools.UISimulation;
 
 import java.lang.reflect.InvocationTargetException;
@@ -23,7 +22,7 @@ import lombok.Setter;
  * Created by Alfarabi on 6/22/17.
  */
 
-public class StringStickyRecyclerAdapter<F extends Fragment & SimpleFragmentCallback, OBJ extends String
+public class StringStickyRecyclerAdapter<F extends Fragment & RecyclerCallback, OBJ extends String
         , HVH extends SimpleStickyHeaderViewHolder, BVH extends SimpleStickyBodyViewHolder> extends RecyclerView.Adapter<BVH> implements StickyHeaderAdapter<HVH> {
 
     @Getter@Setter Class<HVH> headerVh ;
@@ -31,7 +30,9 @@ public class StringStickyRecyclerAdapter<F extends Fragment & SimpleFragmentCall
     @Getter@Setter F fragment ;
     @Getter List<OBJ> objects ;
     @Getter@Setter List<OBJ> copiedObjects = new ArrayList<>();
-    @Getter@Setter HashMap<Integer, BVH> viewHolders = new HashMap<>();
+    @Getter@Setter HashMap<OBJ, HVH> headerViewHolders = new HashMap<>();
+    @Getter@Setter HashMap<OBJ, BVH> bodyViewHolders = new HashMap<>();
+
     public StringStickyRecyclerAdapter(F fragment, Class<HVH> headerVh, Class<BVH> bodyVh, List<OBJ> objects) {
         this.bodyVh = bodyVh;
         this.headerVh = headerVh;
@@ -76,6 +77,7 @@ public class StringStickyRecyclerAdapter<F extends Fragment & SimpleFragmentCall
     public void onBindHeaderViewHolder(HVH holder, int position) {
         if(objects!=null && objects.size()>0){
             holder.showData(objects.get(position));
+            headerViewHolders.put(objects.get(position), holder);
         }
     }
 
@@ -99,7 +101,7 @@ public class StringStickyRecyclerAdapter<F extends Fragment & SimpleFragmentCall
     public void onBindViewHolder(BVH holder, int position) {
         if(objects!=null && objects.size()>0){
             holder.showData(objects.get(position));
-            viewHolders.put(position, holder);
+            bodyViewHolders.put(objects.get(position), holder);
         }
     }
 

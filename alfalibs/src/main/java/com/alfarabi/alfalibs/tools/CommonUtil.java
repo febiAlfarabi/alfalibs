@@ -183,7 +183,7 @@ public class CommonUtil {
         String imageFileName = getAppName(activity)+ timeStamp + "_";
         File storageDir = activity.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(imageFileName.split("\\.")[0].replace("/", ""),  /* prefix */".jpg",/* suffix */storageDir/* directory */);
-        // Save a file: path for use with ACTION_VIEW intents
+        // Save a file: path for use cook ACTION_VIEW intents
         String mCurrentPhotoPath = image.getAbsolutePath();
         WLog.i(TAG, "PATH "+mCurrentPhotoPath);
         return image;

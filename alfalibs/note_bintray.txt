@@ -13,3 +13,4 @@ http://www.andevcon.com/news/publishing-android-libraries-to-maven
 https://github.com/chrisbanes/gradle-mvn-push
 https://chris.banes.me/2013/08/27/pushing-aars-to-maven-central/
 
+

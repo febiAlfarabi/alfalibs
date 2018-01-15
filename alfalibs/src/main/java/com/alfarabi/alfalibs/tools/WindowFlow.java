@@ -375,4 +375,13 @@ public class WindowFlow {
         ((Activity)from).finish();
         return intent;
     }
+    public static Intent startActivityForResult(Context from, Class to, int requestCode, boolean finish) {
+        Intent intent = new Intent(from, to);
+        ((Activity)from).startActivityForResult(intent, requestCode);
+        if(finish){
+            ((Activity)from).finish();
+        }
+        return intent;
+    }
+
 }

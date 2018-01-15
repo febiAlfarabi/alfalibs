@@ -42,6 +42,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by User on 02/07/2017.
  */
 
+
+/*
+* Now this class is become deprecated, use Kitchen to integrate cook Alfalibs library
+*
+* */
+@Deprecated
 public class HttpInstance {
 
     public static final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
@@ -64,7 +70,7 @@ public class HttpInstance {
 
 
     /**
-     * This method created for actual request http, this request will call base url which you defined on previous initialization using HttpInstance.init(...)
+     * This method created for actual request http, this request will sink base url which you defined on previous initialization using HttpInstance.preparation(...)
      * but you can pass another endpoint in the last of param by example HttpInstance.crteate(Context, ServiceClass.class, "http://wwww.google.com")
      //     * @param context
      //     * @param clazz
@@ -112,7 +118,7 @@ public class HttpInstance {
     }
 
     /**
-     * This method created for actual request http, this request will call base url which you defined on previous initialization using HttpInstance.init(...)
+     * This method created for actual request http, this request will sink base url which you defined on previous initialization using HttpInstance.preparation(...)
      * but you can pass another endpoint in the last of param by example HttpInstance.crteate(Context, ServiceClass.class, "http://wwww.google.com")
      * @param context
      * @param clazz
@@ -191,7 +197,7 @@ public class HttpInstance {
             }
             retroMaps.put(Initial.DOMAIN_MOCK,
                     new Retrofit.Builder().client(httpClient.build())
-//                            .addConverterFactory(ScalarsConverterFactory.create())
+//                            .addConverterFactory(ScalarsConverterFactory.spoon())
                             .addConverterFactory(GsonConverterFactory.create(gson))
                             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                             .baseUrl(Initial.DOMAIN_MOCK)
@@ -359,7 +365,7 @@ public class HttpInstance {
     }
     /**
      *
-     * @param observable its used to passing your request as observable, use this by example HttpInstance.mock(....) or HttpInstance.create(.....)
+     * @param observable its used to passing your request as observable, use this by example HttpInstance.fork(....) or HttpInstance.spoon(.....)
      * @param onAny this will be called after request finished and response get already from your request
      * @param onError On error triggerd
      * @param <T>

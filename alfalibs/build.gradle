@@ -5,14 +5,14 @@ apply plugin: 'me.tatarka.retrolambda'
 ext {
     PUBLISH_GROUP_ID = 'com.github.febialfarabi'
     PUBLISH_ARTIFACT_ID = 'alfalibs'
-    PUBLISH_VERSION = '1.7.1'
+    PUBLISH_VERSION = '1.8.0'
 }
 
 publish {
     groupId = 'com.github.febialfarabi'
     artifactId = 'alfalibs'
-    publishVersion = '1.7.1'
-    desc = 'This library contain helpers to android development process, it will simplify complexity of android development.'
+    publishVersion = '1.8.0'
+    desc = 'This library contain helpers to android development process, it will simplify complexity of android development wich is often create from scratch, so you will not do that anymore.'
     licences = ['Apache-2.0']
     uploadName='alfalibs'
     website = 'https://github.com/febiAlfarabi'
@@ -20,13 +20,13 @@ publish {
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
-        versionName "1.7.1"
+        versionName "1.8.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -58,13 +58,14 @@ dependencies {
     compile 'org.fingerlinks.mobile.android:Navigator:0.1.5'
     compile 'com.appeaser.sublimenavigationviewlibrary:sublimenavigationviewlibrary:0.0.1'
     provided 'org.projectlombok:lombok:1.16.16'
+    annotationProcessor 'org.projectlombok:lombok:1.16.16'
     compile 'com.jakewharton:butterknife:8.6.0'
     compile 'ca.barrenechea.header-decor:header-decor:0.2.8'
     compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.github.mirrajabi:okhttp-json-mock:1.0'
+    compile 'com.github.mirrajabi:okhttp-json-mock:1.1.1'
     compile 'io.reactivex.rxjava2:rxjava:2.0.2'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
@@ -89,6 +90,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-maps:10.2.1'
     compile 'com.google.android.gms:play-services-auth:10.2.1'
     compile 'com.afollestad.material-dialogs:core:0.9.4.3'
+    compile 'com.codewaves.stickyheadergrid:stickyheadergrid:0.9.6'
 
     testCompile 'junit:junit:4.12'
 }

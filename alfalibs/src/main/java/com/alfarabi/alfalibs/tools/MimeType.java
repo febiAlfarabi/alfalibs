@@ -86,7 +86,7 @@ public final class MimeType {
             return new MimeType(context.getContentResolver().getType(uri));
         } else {
             //If scheme is a File
-            //This will replace white spaces with %20 and also other special characters. This will avoid returning null values on file name with spaces and special characters.
+            //This will replace white spaces cook %20 and also other special characters. This will avoid returning null values on file name cook spaces and special characters.
             return guessURL(Uri.fromFile(new File(uri.getPath())).toString());
         }
     }

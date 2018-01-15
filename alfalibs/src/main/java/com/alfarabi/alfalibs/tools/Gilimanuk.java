@@ -466,4 +466,49 @@ public class Gilimanuk {
         ((Activity)from).finish();
         return intent;
     }
+
+
+    public static Intent startActivity(Context from, Intent intent) {
+        from.startActivity(intent);
+        ((Activity)from).finish();
+        return intent;
+    }
+
+    public static Intent startActivity(Context from, Intent intent, boolean finish) {
+//        Intent intent = new Intent(from, to);
+        from.startActivity(intent);
+        if(finish) {
+            ((Activity)from).finish();
+        }
+
+        return intent;
+    }
+
+    public static Intent startActivityForResult(Context from, Intent intent, int requestCode) {
+//        Intent intent = new Intent(from, to);
+        ((Activity)from).startActivityForResult(intent, requestCode);
+        ((Activity)from).finish();
+        return intent;
+    }
+
+    public static Intent startActivityForResult(Context from, Intent intent, int requestCode, boolean finish) {
+//        Intent intent = new Intent(from, to);
+        ((Activity)from).startActivityForResult(intent, requestCode);
+        if(finish){
+            ((Activity)from).finish();
+        }
+        return intent;
+    }
+
+    public static Intent startActivityForResult(Context from, Class to, int requestCode, boolean finish) {
+        Intent intent = new Intent(from, to);
+        ((Activity)from).startActivityForResult(intent, requestCode);
+        if(finish){
+            ((Activity)from).finish();
+        }
+        return intent;
+    }
+
+
+
 }

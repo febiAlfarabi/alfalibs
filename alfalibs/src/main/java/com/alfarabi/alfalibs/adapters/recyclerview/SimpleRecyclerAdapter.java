@@ -1,22 +1,18 @@
 package com.alfarabi.alfalibs.adapters.recyclerview;
 
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.alfarabi.alfalibs.adapters.recyclerview.viewholder.SimpleViewHolder;
-import com.alfarabi.alfalibs.fragments.interfaze.SimpleFragmentCallback;
+import com.alfarabi.alfalibs.fragments.interfaze.RecyclerCallback;
 import com.alfarabi.alfalibs.helper.model.ObjectAdapterInterface;
-import com.alfarabi.alfalibs.tools.Demo;
 import com.alfarabi.alfalibs.tools.UISimulation;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 import lombok.Getter;
@@ -26,13 +22,13 @@ import lombok.Setter;
  * Created by Alfarabi on 6/15/17.
  */
 
-public class SimpleRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, F extends Fragment & SimpleFragmentCallback, VH extends SimpleViewHolder> extends RecyclerView.Adapter<VH>{
+public class SimpleRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, F extends Fragment & RecyclerCallback, VH extends SimpleViewHolder> extends RecyclerView.Adapter<VH>{
 
     @Getter@Setter Class<VH> vhClass ;
     @Getter@Setter F fragment ;
     @Getter List<OBJ> objects ;
     @Getter@Setter List<OBJ> copiedObjects = new ArrayList<>();
-    @Getter@Setter HashMap<Integer, VH> viewHolders = new HashMap<>();
+    @Getter@Setter HashMap<OBJ, VH> viewHolders = new HashMap<>();
 
 
 
@@ -48,7 +44,6 @@ public class SimpleRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(this);
         notifyDataSetChanged();
-
         return this ;
     }
 
@@ -71,7 +66,7 @@ public class SimpleRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, 
     public void onBindViewHolder(VH holder, int position) {
         if(objects!=null && objects.size()>0){
             holder.showData(objects.get(position));
-            viewHolders.put(position, holder);
+            viewHolders.put(objects.get(position), holder);
         }
     }
 
@@ -124,8 +119,8 @@ public class SimpleRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, 
                     if(value.toLowerCase().contains(text)){
                         objects.add(item);
                     }
-                    if(viewHolders.get(cursor)!=null){
-                        viewHolders.get(cursor).find(text);
+                    if(viewHolders.get(item)!=null){
+                        viewHolders.get(item).find(text);
                     }
                 }catch (Exception e){
                     e.printStackTrace();

@@ -1,15 +1,12 @@
 package com.alfarabi.alfalibs.adapters.recyclerview;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import com.alfarabi.alfalibs.adapters.recyclerview.viewholder.SimpleViewHolder;
-import com.alfarabi.alfalibs.fragments.interfaze.SimpleFragmentCallback;
 import com.alfarabi.alfalibs.helper.model.ObjectAdapterInterface;
-import com.alfarabi.alfalibs.tools.Demo;
 import com.alfarabi.alfalibs.tools.UISimulation;
 
 import java.lang.reflect.Field;
@@ -26,6 +23,8 @@ import lombok.Setter;
  * Created by Alfarabi on 6/19/17.
  */
 
+
+@Deprecated
 public class VerticalRecyclerAdapter<F extends Fragment, VH extends SimpleViewHolder, OBJ extends Object & ObjectAdapterInterface> extends RecyclerView.Adapter<VH> {
 
     @Getter@Setter F fragment;
@@ -125,8 +124,8 @@ public class VerticalRecyclerAdapter<F extends Fragment, VH extends SimpleViewHo
                     if(value.toLowerCase().contains(text)){
                         objects.add(item);
                     }
-                    if(viewHolders.get(cursor)!=null){
-                        viewHolders.get(cursor).find(text);
+                    if(viewHolders.get(item)!=null){
+                        viewHolders.get(item).find(text);
                     }
                 }catch (Exception e){
                     e.printStackTrace();

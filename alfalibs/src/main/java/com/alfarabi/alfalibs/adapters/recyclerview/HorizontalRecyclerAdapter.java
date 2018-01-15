@@ -31,7 +31,7 @@ public class HorizontalRecyclerAdapter<F extends Fragment, VH extends SimpleView
     @Getter List<OBJ> objects ;
     @Getter@Setter List<OBJ> copiedObjects = new ArrayList<>();
 
-    @Getter@Setter HashMap<Integer, VH> viewHolders = new HashMap<>();
+    @Getter@Setter HashMap<OBJ, VH> viewHolders = new HashMap<>();
 
     public HorizontalRecyclerAdapter(F fragment, Class<VH> vhClass, List<OBJ> objects) {
         this.fragment = fragment;
@@ -76,7 +76,7 @@ public class HorizontalRecyclerAdapter<F extends Fragment, VH extends SimpleView
     public void onBindViewHolder(VH holder, int position) {
         if(objects!=null && objects.size()>0){
             holder.showData(objects.get(position));
-            viewHolders.put(position, holder);
+            viewHolders.put(objects.get(position), holder);
         }
     }
 
@@ -124,8 +124,8 @@ public class HorizontalRecyclerAdapter<F extends Fragment, VH extends SimpleView
                     if(value.toLowerCase().contains(text)){
                         objects.add(item);
                     }
-                    if(viewHolders.get(cursor)!=null){
-                        viewHolders.get(cursor).find(text);
+                    if(viewHolders.get(item)!=null){
+                        viewHolders.get(item).find(text);
                     }
                 }catch (Exception e){
                     e.printStackTrace();

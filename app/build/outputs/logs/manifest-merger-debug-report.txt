@@ -1,0 +1,327 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:2:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/5223fdabd65fe3d5a3308092c6975bfb/AndroidManifest.xml:2:1-11:12
+MERGED from [:alfalibs] /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/alfalibs/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-21:12
+MERGED from [com.jakewharton:butterknife:8.6.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/butterknife-8.6.0.aar/acadfec8a1323416bf7979134333efcf/AndroidManifest.xml:2:1-7:12
+MERGED from [com.appeaser.sublimenavigationviewlibrary:sublimenavigationviewlibrary:0.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/sublimenavigationviewlibrary-0.0.1.aar/29dbfc0988d8067e4d94e3ff244ee93a/AndroidManifest.xml:2:1-16:12
+MERGED from [ca.barrenechea.header-decor:header-decor:0.2.8] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/header-decor-0.2.8.aar/4015058e3eb582ec6774c3549899af51/AndroidManifest.xml:17:1-29:12
+MERGED from [com.afollestad.material-dialogs:core:0.9.4.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/core-0.9.4.3.aar/f0a3ee7806bb8b29dbd84bdbdc2808c3/AndroidManifest.xml:2:1-15:12
+MERGED from [com.codewaves.stickyheadergrid:stickyheadergrid:0.9.6] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/stickyheadergrid-0.9.6.aar/b08fe41b9d99915e3cc2ab3f239170ad/AndroidManifest.xml:2:1-12:12
+MERGED from [com.android.support:support-v13:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/47b6267eb45d5ef3dadfb8ea1555cb44/AndroidManifest.xml:17:1-31:12
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/library-1.4.0.aar/57877ad5655f52619f8a3ccefafde289/AndroidManifest.xml:6:1-16:12
+MERGED from [org.fingerlinks.mobile.android:Navigator:0.1.5] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/Navigator-0.1.5.aar/70e2944d46a56c68aceb1072b64e585c/AndroidManifest.xml:2:1-15:12
+MERGED from [com.cjj.materialrefeshlayout:library:1.3.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/library-1.3.0.aar/a6d731983cd80b228caee1dd65b761de/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:16:1-25:12
+MERGED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:16:1-26:12
+MERGED from [com.google.android.gms:play-services-auth-base:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-10.2.1.aar/3d024b83c5112f40a0a58cceb3373b62/AndroidManifest.xml:2:1-5:12
+MERGED from [com.google.android.gms:play-services-base:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-base-10.2.1.aar/c985b471c0e7494ee87df57eb12ff7bb/AndroidManifest.xml:16:1-21:12
+MERGED from [com.google.android.gms:play-services-tasks:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-tasks-10.2.1.aar/e835a670bffa0dab46f243169b80ba4e/AndroidManifest.xml:2:1-5:12
+MERGED from [com.google.android.gms:play-services-basement:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-basement-10.2.1.aar/67f70b06b001b68775a97d67d97012e2/AndroidManifest.xml:16:1-23:12
+MERGED from [com.yarolegovich:discrete-scrollview:1.2.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/discrete-scrollview-1.2.0.aar/fa4dffa9a8714d5de7b497a238a2c1d3/AndroidManifest.xml:2:1-12:12
+MERGED from [com.github.dmallcott:DismissibleImageView:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/DismissibleImageView-1.0.1.aar/291a336d9c98030cc50ca944acc8e4d5/AndroidManifest.xml:2:1-17:12
+MERGED from [com.github.jrvansuita:CheckNewAppVersionAvailable:v1.0.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/CheckNewAppVersionAvailable-v1.0.0.aar/2e047df67f162afecf6b7402b360d1d3/AndroidManifest.xml:2:1-17:12
+MERGED from [com.android.support:appcompat-v7:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ce76abb6f2cea5bb37d30e99c0360e5/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-v4:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v4-25.3.1.aar/797b29ed30a49f2158158c43f95c131e/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-fragment-25.3.1.aar/6c92b1e287ccd71e256d3b98664b910a/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.3.1.aar/17e217bd78ab8b43395fc8bbe6aba82b/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.3.1.aar/8fe09ed0a9d9b06940ba365bb19e0e5d/AndroidManifest.xml:17:1-31:12
+MERGED from [com.github.markomilos:paginate:0.5.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/paginate-0.5.1.aar/69d9d8ba420734eac6a25f35c89565cd/AndroidManifest.xml:2:1-8:12
+MERGED from [com.android.support:recyclerview-v7:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/bdca3d97faca9f97d37caf0746cafe4d/AndroidManifest.xml:17:1-26:12
+MERGED from [com.android.support:support-core-ui:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.3.1.aar/c51282b3779b1e8d5c72b6cb058f8b2e/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:percent:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/percent-25.3.1.aar/26096caabacb388082ca5e8479c7d235/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.3.1.aar/f1705d7863cae23910932eb9ba0efdcc/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.3.1.aar/2561c85065235cd4b6ac9126185ca2bd/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-compat:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-compat-25.3.1.aar/6e0b8a17a104d0ad86369d91db1aa407/AndroidManifest.xml:17:1-31:12
+MERGED from [com.github.mirrajabi:okhttp-json-mock:1.1.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/okhttp-json-mock-1.1.1.aar/a2a4adb3b1ed90135c1ec4c69495b9fb/AndroidManifest.xml:2:1-17:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/4e7a147c07deff7fecc226f42e984e61/AndroidManifest.xml:15:1-21:12
+MERGED from [com.github.soroushjavdan:CustomFontWidgets:29426641f6] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/CustomFontWidgets-29426641f6.aar/2ec197f94f34b2456d287d7b1f8fee92/AndroidManifest.xml:2:1-16:12
+MERGED from [com.devs:acr:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/443e55b1a9d5fe9d4e8a509900089bca/AndroidManifest.xml:2:1-21:12
+MERGED from [com.github.orangegangsters:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/b97f9224ab906c59105f471433cc775c/AndroidManifest.xml:2:1-14:12
+MERGED from [com.github.omadahealth:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/eccd13a125a29eb372b6021d6d5e4bff/AndroidManifest.xml:2:1-14:12
+INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:2:1-22:12
+	package
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:3:5-40
+		INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+		INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:2:1-22:12
+		INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:2:1-22:12
+		INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:5:5-20:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/5223fdabd65fe3d5a3308092c6975bfb/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/5223fdabd65fe3d5a3308092c6975bfb/AndroidManifest.xml:9:5-20
+MERGED from [:alfalibs] /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/alfalibs/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:5-19:19
+MERGED from [:alfalibs] /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/alfalibs/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:5-19:19
+MERGED from [com.appeaser.sublimenavigationviewlibrary:sublimenavigationviewlibrary:0.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/sublimenavigationviewlibrary-0.0.1.aar/29dbfc0988d8067e4d94e3ff244ee93a/AndroidManifest.xml:11:5-14:19
+MERGED from [com.appeaser.sublimenavigationviewlibrary:sublimenavigationviewlibrary:0.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/sublimenavigationviewlibrary-0.0.1.aar/29dbfc0988d8067e4d94e3ff244ee93a/AndroidManifest.xml:11:5-14:19
+MERGED from [ca.barrenechea.header-decor:header-decor:0.2.8] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/header-decor-0.2.8.aar/4015058e3eb582ec6774c3549899af51/AndroidManifest.xml:27:5-20
+MERGED from [ca.barrenechea.header-decor:header-decor:0.2.8] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/header-decor-0.2.8.aar/4015058e3eb582ec6774c3549899af51/AndroidManifest.xml:27:5-20
+MERGED from [com.afollestad.material-dialogs:core:0.9.4.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/core-0.9.4.3.aar/f0a3ee7806bb8b29dbd84bdbdc2808c3/AndroidManifest.xml:13:5-20
+MERGED from [com.afollestad.material-dialogs:core:0.9.4.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/core-0.9.4.3.aar/f0a3ee7806bb8b29dbd84bdbdc2808c3/AndroidManifest.xml:13:5-20
+MERGED from [com.android.support:support-v13:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/47b6267eb45d5ef3dadfb8ea1555cb44/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v13:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/47b6267eb45d5ef3dadfb8ea1555cb44/AndroidManifest.xml:29:5-20
+MERGED from [org.fingerlinks.mobile.android:Navigator:0.1.5] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/Navigator-0.1.5.aar/70e2944d46a56c68aceb1072b64e585c/AndroidManifest.xml:11:5-13:44
+MERGED from [org.fingerlinks.mobile.android:Navigator:0.1.5] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/Navigator-0.1.5.aar/70e2944d46a56c68aceb1072b64e585c/AndroidManifest.xml:11:5-13:44
+MERGED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:19:5-25:19
+MERGED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:19:5-25:19
+MERGED from [com.google.android.gms:play-services-base:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-base-10.2.1.aar/c985b471c0e7494ee87df57eb12ff7bb/AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.android.gms:play-services-base:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-base-10.2.1.aar/c985b471c0e7494ee87df57eb12ff7bb/AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.android.gms:play-services-tasks:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-tasks-10.2.1.aar/e835a670bffa0dab46f243169b80ba4e/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-tasks:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-tasks-10.2.1.aar/e835a670bffa0dab46f243169b80ba4e/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-basement-10.2.1.aar/67f70b06b001b68775a97d67d97012e2/AndroidManifest.xml:19:5-21:19
+MERGED from [com.google.android.gms:play-services-basement:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-basement-10.2.1.aar/67f70b06b001b68775a97d67d97012e2/AndroidManifest.xml:19:5-21:19
+MERGED from [com.github.dmallcott:DismissibleImageView:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/DismissibleImageView-1.0.1.aar/291a336d9c98030cc50ca944acc8e4d5/AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.dmallcott:DismissibleImageView:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/DismissibleImageView-1.0.1.aar/291a336d9c98030cc50ca944acc8e4d5/AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.jrvansuita:CheckNewAppVersionAvailable:v1.0.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/CheckNewAppVersionAvailable-v1.0.0.aar/2e047df67f162afecf6b7402b360d1d3/AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.jrvansuita:CheckNewAppVersionAvailable:v1.0.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/CheckNewAppVersionAvailable-v1.0.0.aar/2e047df67f162afecf6b7402b360d1d3/AndroidManifest.xml:11:5-15:19
+MERGED from [com.android.support:appcompat-v7:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ce76abb6f2cea5bb37d30e99c0360e5/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ce76abb6f2cea5bb37d30e99c0360e5/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v4-25.3.1.aar/797b29ed30a49f2158158c43f95c131e/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v4-25.3.1.aar/797b29ed30a49f2158158c43f95c131e/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-fragment-25.3.1.aar/6c92b1e287ccd71e256d3b98664b910a/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-fragment-25.3.1.aar/6c92b1e287ccd71e256d3b98664b910a/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.3.1.aar/17e217bd78ab8b43395fc8bbe6aba82b/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.3.1.aar/17e217bd78ab8b43395fc8bbe6aba82b/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.3.1.aar/8fe09ed0a9d9b06940ba365bb19e0e5d/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.3.1.aar/8fe09ed0a9d9b06940ba365bb19e0e5d/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.3.1.aar/c51282b3779b1e8d5c72b6cb058f8b2e/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.3.1.aar/c51282b3779b1e8d5c72b6cb058f8b2e/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:percent:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/percent-25.3.1.aar/26096caabacb388082ca5e8479c7d235/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:percent:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/percent-25.3.1.aar/26096caabacb388082ca5e8479c7d235/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.3.1.aar/f1705d7863cae23910932eb9ba0efdcc/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.3.1.aar/f1705d7863cae23910932eb9ba0efdcc/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.3.1.aar/2561c85065235cd4b6ac9126185ca2bd/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.3.1.aar/2561c85065235cd4b6ac9126185ca2bd/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-compat:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-compat-25.3.1.aar/6e0b8a17a104d0ad86369d91db1aa407/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-compat-25.3.1.aar/6e0b8a17a104d0ad86369d91db1aa407/AndroidManifest.xml:29:5-20
+MERGED from [com.github.mirrajabi:okhttp-json-mock:1.1.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/okhttp-json-mock-1.1.1.aar/a2a4adb3b1ed90135c1ec4c69495b9fb/AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.mirrajabi:okhttp-json-mock:1.1.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/okhttp-json-mock-1.1.1.aar/a2a4adb3b1ed90135c1ec4c69495b9fb/AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.soroushjavdan:CustomFontWidgets:29426641f6] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/CustomFontWidgets-29426641f6.aar/2ec197f94f34b2456d287d7b1f8fee92/AndroidManifest.xml:11:5-14:19
+MERGED from [com.github.soroushjavdan:CustomFontWidgets:29426641f6] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/CustomFontWidgets-29426641f6.aar/2ec197f94f34b2456d287d7b1f8fee92/AndroidManifest.xml:11:5-14:19
+MERGED from [com.devs:acr:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/443e55b1a9d5fe9d4e8a509900089bca/AndroidManifest.xml:11:5-19:19
+MERGED from [com.devs:acr:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/443e55b1a9d5fe9d4e8a509900089bca/AndroidManifest.xml:11:5-19:19
+MERGED from [com.github.orangegangsters:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/b97f9224ab906c59105f471433cc775c/AndroidManifest.xml:11:5-12:19
+MERGED from [com.github.orangegangsters:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/b97f9224ab906c59105f471433cc775c/AndroidManifest.xml:11:5-12:19
+MERGED from [com.github.omadahealth:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/eccd13a125a29eb372b6021d6d5e4bff/AndroidManifest.xml:11:5-12:19
+MERGED from [com.github.omadahealth:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/eccd13a125a29eb372b6021d6d5e4bff/AndroidManifest.xml:11:5-12:19
+	android:supportsRtl
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:11:9-40
+	android:name
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:12:9-40
+activity#com.alfarabi.alfalibsapps.MainActivity
+ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:13:9-19:20
+	android:name
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:13:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:14:13-18:29
+action#android.intent.action.MAIN
+ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:15:17-69
+	android:name
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:15:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:17:17-77
+	android:name
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:17:27-74
+uses-sdk
+INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/5223fdabd65fe3d5a3308092c6975bfb/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/5223fdabd65fe3d5a3308092c6975bfb/AndroidManifest.xml:5:5-7:41
+MERGED from [:alfalibs] /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/alfalibs/build/intermediates/manifests/full/debug/AndroidManifest.xml:8:5-10:41
+MERGED from [:alfalibs] /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/alfalibs/build/intermediates/manifests/full/debug/AndroidManifest.xml:8:5-10:41
+MERGED from [com.jakewharton:butterknife:8.6.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/butterknife-8.6.0.aar/acadfec8a1323416bf7979134333efcf/AndroidManifest.xml:5:5-43
+MERGED from [com.jakewharton:butterknife:8.6.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/butterknife-8.6.0.aar/acadfec8a1323416bf7979134333efcf/AndroidManifest.xml:5:5-43
+MERGED from [com.appeaser.sublimenavigationviewlibrary:sublimenavigationviewlibrary:0.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/sublimenavigationviewlibrary-0.0.1.aar/29dbfc0988d8067e4d94e3ff244ee93a/AndroidManifest.xml:7:5-9:41
+MERGED from [com.appeaser.sublimenavigationviewlibrary:sublimenavigationviewlibrary:0.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/sublimenavigationviewlibrary-0.0.1.aar/29dbfc0988d8067e4d94e3ff244ee93a/AndroidManifest.xml:7:5-9:41
+MERGED from [ca.barrenechea.header-decor:header-decor:0.2.8] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/header-decor-0.2.8.aar/4015058e3eb582ec6774c3549899af51/AndroidManifest.xml:23:5-25:41
+MERGED from [ca.barrenechea.header-decor:header-decor:0.2.8] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/header-decor-0.2.8.aar/4015058e3eb582ec6774c3549899af51/AndroidManifest.xml:23:5-25:41
+MERGED from [com.afollestad.material-dialogs:core:0.9.4.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/core-0.9.4.3.aar/f0a3ee7806bb8b29dbd84bdbdc2808c3/AndroidManifest.xml:8:5-11:75
+MERGED from [com.afollestad.material-dialogs:core:0.9.4.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/core-0.9.4.3.aar/f0a3ee7806bb8b29dbd84bdbdc2808c3/AndroidManifest.xml:8:5-11:75
+MERGED from [com.codewaves.stickyheadergrid:stickyheadergrid:0.9.6] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/stickyheadergrid-0.9.6.aar/b08fe41b9d99915e3cc2ab3f239170ad/AndroidManifest.xml:8:5-10:41
+MERGED from [com.codewaves.stickyheadergrid:stickyheadergrid:0.9.6] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/stickyheadergrid-0.9.6.aar/b08fe41b9d99915e3cc2ab3f239170ad/AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:support-v13:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/47b6267eb45d5ef3dadfb8ea1555cb44/AndroidManifest.xml:21:5-23:55
+MERGED from [com.android.support:support-v13:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/47b6267eb45d5ef3dadfb8ea1555cb44/AndroidManifest.xml:21:5-23:55
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/library-1.4.0.aar/57877ad5655f52619f8a3ccefafde289/AndroidManifest.xml:12:5-14:41
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/library-1.4.0.aar/57877ad5655f52619f8a3ccefafde289/AndroidManifest.xml:12:5-14:41
+MERGED from [org.fingerlinks.mobile.android:Navigator:0.1.5] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/Navigator-0.1.5.aar/70e2944d46a56c68aceb1072b64e585c/AndroidManifest.xml:7:5-9:41
+MERGED from [org.fingerlinks.mobile.android:Navigator:0.1.5] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/Navigator-0.1.5.aar/70e2944d46a56c68aceb1072b64e585c/AndroidManifest.xml:7:5-9:41
+MERGED from [com.cjj.materialrefeshlayout:library:1.3.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/library-1.3.0.aar/a6d731983cd80b228caee1dd65b761de/AndroidManifest.xml:7:5-9:41
+MERGED from [com.cjj.materialrefeshlayout:library:1.3.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/library-1.3.0.aar/a6d731983cd80b228caee1dd65b761de/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:23:5-43
+MERGED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:23:5-43
+MERGED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-auth-base:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-10.2.1.aar/3d024b83c5112f40a0a58cceb3373b62/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-auth-base:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-10.2.1.aar/3d024b83c5112f40a0a58cceb3373b62/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-base:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-base-10.2.1.aar/c985b471c0e7494ee87df57eb12ff7bb/AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-base:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-base-10.2.1.aar/c985b471c0e7494ee87df57eb12ff7bb/AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-tasks:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-tasks-10.2.1.aar/e835a670bffa0dab46f243169b80ba4e/AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-tasks:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-tasks-10.2.1.aar/e835a670bffa0dab46f243169b80ba4e/AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-basement:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-basement-10.2.1.aar/67f70b06b001b68775a97d67d97012e2/AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-basement:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-basement-10.2.1.aar/67f70b06b001b68775a97d67d97012e2/AndroidManifest.xml:17:5-43
+MERGED from [com.yarolegovich:discrete-scrollview:1.2.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/discrete-scrollview-1.2.0.aar/fa4dffa9a8714d5de7b497a238a2c1d3/AndroidManifest.xml:8:5-10:41
+MERGED from [com.yarolegovich:discrete-scrollview:1.2.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/discrete-scrollview-1.2.0.aar/fa4dffa9a8714d5de7b497a238a2c1d3/AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.dmallcott:DismissibleImageView:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/DismissibleImageView-1.0.1.aar/291a336d9c98030cc50ca944acc8e4d5/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.dmallcott:DismissibleImageView:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/DismissibleImageView-1.0.1.aar/291a336d9c98030cc50ca944acc8e4d5/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.jrvansuita:CheckNewAppVersionAvailable:v1.0.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/CheckNewAppVersionAvailable-v1.0.0.aar/2e047df67f162afecf6b7402b360d1d3/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.jrvansuita:CheckNewAppVersionAvailable:v1.0.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/CheckNewAppVersionAvailable-v1.0.0.aar/2e047df67f162afecf6b7402b360d1d3/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ce76abb6f2cea5bb37d30e99c0360e5/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ce76abb6f2cea5bb37d30e99c0360e5/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v4-25.3.1.aar/797b29ed30a49f2158158c43f95c131e/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v4-25.3.1.aar/797b29ed30a49f2158158c43f95c131e/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-fragment-25.3.1.aar/6c92b1e287ccd71e256d3b98664b910a/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-fragment-25.3.1.aar/6c92b1e287ccd71e256d3b98664b910a/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.3.1.aar/17e217bd78ab8b43395fc8bbe6aba82b/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.3.1.aar/17e217bd78ab8b43395fc8bbe6aba82b/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.3.1.aar/8fe09ed0a9d9b06940ba365bb19e0e5d/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.3.1.aar/8fe09ed0a9d9b06940ba365bb19e0e5d/AndroidManifest.xml:21:5-23:61
+MERGED from [com.github.markomilos:paginate:0.5.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/paginate-0.5.1.aar/69d9d8ba420734eac6a25f35c89565cd/AndroidManifest.xml:6:5-43
+MERGED from [com.github.markomilos:paginate:0.5.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/paginate-0.5.1.aar/69d9d8ba420734eac6a25f35c89565cd/AndroidManifest.xml:6:5-43
+MERGED from [com.android.support:recyclerview-v7:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/bdca3d97faca9f97d37caf0746cafe4d/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/bdca3d97faca9f97d37caf0746cafe4d/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-core-ui:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.3.1.aar/c51282b3779b1e8d5c72b6cb058f8b2e/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.3.1.aar/c51282b3779b1e8d5c72b6cb058f8b2e/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:percent:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/percent-25.3.1.aar/26096caabacb388082ca5e8479c7d235/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:percent:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/percent-25.3.1.aar/26096caabacb388082ca5e8479c7d235/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.3.1.aar/f1705d7863cae23910932eb9ba0efdcc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.3.1.aar/f1705d7863cae23910932eb9ba0efdcc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.3.1.aar/2561c85065235cd4b6ac9126185ca2bd/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.3.1.aar/2561c85065235cd4b6ac9126185ca2bd/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-compat:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-compat-25.3.1.aar/6e0b8a17a104d0ad86369d91db1aa407/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-compat-25.3.1.aar/6e0b8a17a104d0ad86369d91db1aa407/AndroidManifest.xml:21:5-23:58
+MERGED from [com.github.mirrajabi:okhttp-json-mock:1.1.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/okhttp-json-mock-1.1.1.aar/a2a4adb3b1ed90135c1ec4c69495b9fb/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.mirrajabi:okhttp-json-mock:1.1.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/okhttp-json-mock-1.1.1.aar/a2a4adb3b1ed90135c1ec4c69495b9fb/AndroidManifest.xml:7:5-9:41
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/4e7a147c07deff7fecc226f42e984e61/AndroidManifest.xml:19:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/4e7a147c07deff7fecc226f42e984e61/AndroidManifest.xml:19:5-43
+MERGED from [com.github.soroushjavdan:CustomFontWidgets:29426641f6] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/CustomFontWidgets-29426641f6.aar/2ec197f94f34b2456d287d7b1f8fee92/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.soroushjavdan:CustomFontWidgets:29426641f6] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/CustomFontWidgets-29426641f6.aar/2ec197f94f34b2456d287d7b1f8fee92/AndroidManifest.xml:7:5-9:41
+MERGED from [com.devs:acr:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/443e55b1a9d5fe9d4e8a509900089bca/AndroidManifest.xml:7:5-9:41
+MERGED from [com.devs:acr:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/443e55b1a9d5fe9d4e8a509900089bca/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.orangegangsters:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/b97f9224ab906c59105f471433cc775c/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.orangegangsters:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/b97f9224ab906c59105f471433cc775c/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.omadahealth:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/eccd13a125a29eb372b6021d6d5e4bff/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.omadahealth:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/eccd13a125a29eb372b6021d6d5e4bff/AndroidManifest.xml:7:5-9:41
+INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.afollestad.material-dialogs:core:0.9.4.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/core-0.9.4.3.aar/f0a3ee7806bb8b29dbd84bdbdc2808c3/AndroidManifest.xml:11:9-72
+	android:targetSdkVersion
+		INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+		INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+		INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from [:alfalibs] /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/alfalibs/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:5-67
+MERGED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:20:5-66
+	android:name
+		ADDED from [:alfalibs] /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/alfalibs/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:alfalibs] /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/alfalibs/build/intermediates/manifests/full/debug/AndroidManifest.xml:14:5-79
+MERGED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:19:5-78
+MERGED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:19:5-78
+	android:name
+		ADDED from [:alfalibs] /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/alfalibs/build/intermediates/manifests/full/debug/AndroidManifest.xml:14:22-76
+meta-data#android.support.VERSION
+ADDED from [com.android.support:support-v13:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/47b6267eb45d5ef3dadfb8ea1555cb44/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ce76abb6f2cea5bb37d30e99c0360e5/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ce76abb6f2cea5bb37d30e99c0360e5/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-v4:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v4-25.3.1.aar/797b29ed30a49f2158158c43f95c131e/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-v4:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v4-25.3.1.aar/797b29ed30a49f2158158c43f95c131e/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-fragment-25.3.1.aar/6c92b1e287ccd71e256d3b98664b910a/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-fragment-25.3.1.aar/6c92b1e287ccd71e256d3b98664b910a/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.3.1.aar/17e217bd78ab8b43395fc8bbe6aba82b/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.3.1.aar/17e217bd78ab8b43395fc8bbe6aba82b/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.3.1.aar/8fe09ed0a9d9b06940ba365bb19e0e5d/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-core-utils-25.3.1.aar/8fe09ed0a9d9b06940ba365bb19e0e5d/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:recyclerview-v7:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/bdca3d97faca9f97d37caf0746cafe4d/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:recyclerview-v7:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/bdca3d97faca9f97d37caf0746cafe4d/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-core-ui:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.3.1.aar/c51282b3779b1e8d5c72b6cb058f8b2e/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-core-ui-25.3.1.aar/c51282b3779b1e8d5c72b6cb058f8b2e/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:percent:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/percent-25.3.1.aar/26096caabacb388082ca5e8479c7d235/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:percent:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/percent-25.3.1.aar/26096caabacb388082ca5e8479c7d235/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.3.1.aar/f1705d7863cae23910932eb9ba0efdcc/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-25.3.1.aar/f1705d7863cae23910932eb9ba0efdcc/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.3.1.aar/2561c85065235cd4b6ac9126185ca2bd/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.3.1.aar/2561c85065235cd4b6ac9126185ca2bd/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-compat:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-compat-25.3.1.aar/6e0b8a17a104d0ad86369d91db1aa407/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-compat-25.3.1.aar/6e0b8a17a104d0ad86369d91db1aa407/AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:support-v13:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/47b6267eb45d5ef3dadfb8ea1555cb44/AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:support-v13:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/47b6267eb45d5ef3dadfb8ea1555cb44/AndroidManifest.xml:26:9-47
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:21:5-77
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:21:19-51
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:21:52-75
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:20:9-189
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:20:129-162
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:20:163-187
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:20:69-128
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:20:19-68
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:24:9-184
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:24:64-87
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:24:88-182
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:24:18-63
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-base-10.2.1.aar/c985b471c0e7494ee87df57eb12ff7bb/AndroidManifest.xml:19:9-172
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-base-10.2.1.aar/c985b471c0e7494ee87df57eb12ff7bb/AndroidManifest.xml:19:146-170
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-base-10.2.1.aar/c985b471c0e7494ee87df57eb12ff7bb/AndroidManifest.xml:19:86-145
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-base-10.2.1.aar/c985b471c0e7494ee87df57eb12ff7bb/AndroidManifest.xml:19:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-basement-10.2.1.aar/67f70b06b001b68775a97d67d97012e2/AndroidManifest.xml:20:9-121
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-basement-10.2.1.aar/67f70b06b001b68775a97d67d97012e2/AndroidManifest.xml:20:66-119
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-basement-10.2.1.aar/67f70b06b001b68775a97d67d97012e2/AndroidManifest.xml:20:20-65
+activity#com.devs.acr.ErrorReporterActivity
+ADDED from [com.devs:acr:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/443e55b1a9d5fe9d4e8a509900089bca/AndroidManifest.xml:15:9-18:59
+	android:screenOrientation
+		ADDED from [com.devs:acr:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/443e55b1a9d5fe9d4e8a509900089bca/AndroidManifest.xml:17:13-49
+	android:theme
+		ADDED from [com.devs:acr:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/443e55b1a9d5fe9d4e8a509900089bca/AndroidManifest.xml:18:13-56
+	android:name
+		ADDED from [com.devs:acr:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/443e55b1a9d5fe9d4e8a509900089bca/AndroidManifest.xml:16:13-62

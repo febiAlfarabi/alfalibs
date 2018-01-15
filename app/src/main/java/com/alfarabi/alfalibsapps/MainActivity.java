@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-//        HttpInstance.call(HttpInstance.mock(this, MockService.class).getUsers(1), userModels -> {
+//        HttpInstance.sink(HttpInstance.fork(this, MockService.class).getUsers(1), userModels -> {
 //            WLog.i(TAG, new Gson().toJson(userModels));
 //        }, Throwable::printStackTrace);
 
