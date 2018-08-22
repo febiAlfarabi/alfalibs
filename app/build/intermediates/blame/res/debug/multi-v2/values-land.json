@@ -4,6 +4,25 @@
             "outputFile": "/home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
+                    "source": "/home/alfarabi/.gradle/caches/transforms-1/files-1.1/design-25.0.1.aar/8e941bb2b4a3232fab501c55936a3f58/res/values-land/values-land.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "232"
+                    },
+                    "to": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "328",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "505"
+                    }
+                },
+                {
                     "source": "/home/alfarabi/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/0ce76abb6f2cea5bb37d30e99c0360e5/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5",

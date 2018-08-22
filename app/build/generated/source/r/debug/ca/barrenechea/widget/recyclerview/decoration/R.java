@@ -8,21 +8,21 @@ package ca.barrenechea.widget.recyclerview.decoration;
 
 public final class R {
     public static final class attr {
-        public static final int layoutManager = 0x7f03008e;
-        public static final int reverseLayout = 0x7f030134;
-        public static final int spanCount = 0x7f03015f;
-        public static final int stackFromEnd = 0x7f030166;
+        public static final int layoutManager = 0x7f0300b3;
+        public static final int reverseLayout = 0x7f03016b;
+        public static final int spanCount = 0x7f030199;
+        public static final int stackFromEnd = 0x7f0301a0;
     }
     public static final class dimen {
-        public static final int item_touch_helper_max_drag_scroll_per_frame = 0x7f060055;
-        public static final int item_touch_helper_swipe_escape_max_velocity = 0x7f060056;
-        public static final int item_touch_helper_swipe_escape_velocity = 0x7f060057;
+        public static final int item_touch_helper_max_drag_scroll_per_frame = 0x7f06007b;
+        public static final int item_touch_helper_swipe_escape_max_velocity = 0x7f06007c;
+        public static final int item_touch_helper_swipe_escape_velocity = 0x7f06007d;
     }
     public static final class id {
-        public static final int item_touch_helper_previous_elevation = 0x7f08004e;
+        public static final int item_touch_helper_previous_elevation = 0x7f08005e;
     }
     public static final class styleable {
-        public static final int[] RecyclerView = { 0x010100c4, 0x010100f1, 0x7f03008e, 0x7f030134, 0x7f03015f, 0x7f030166 };
+        public static final int[] RecyclerView = { 0x010100c4, 0x010100f1, 0x7f0300b3, 0x7f03016b, 0x7f030199, 0x7f0301a0 };
         public static final int RecyclerView_android_orientation = 0;
         public static final int RecyclerView_android_descendantFocusability = 1;
         public static final int RecyclerView_layoutManager = 2;

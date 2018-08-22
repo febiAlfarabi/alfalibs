@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Alfalibs</string>
     <string name="swiperecyclerview_has_no_any_action">SwipeRecyclerview doesn\'t contain any action that you set in</string>
 
 
@@ -38,16 +37,38 @@
 
     <string name="permission_deniedd">Permission denied.</string>
     <string name="permission_required">Permission is required</string>
-    <string name="permission_required_or_close">Pasarwarga permission\'s are required to run, please accept them to get best experience of application</string>
+    <string name="permission_required_or_close">Permission\'s are required to run, please accept them to get best experience of application</string>
     <string name="sms_permission_required">SMS permission\'s are required to run, please accept it to get best experience of application</string>
-    <string name="maps_permission">To open maps, please grant Ahloo with GPS permission.</string>
+    <string name="maps_permission">To open map, please grant Application with GPS permission.</string>
     <string name="service_not_found">Service Not Found</string>
     <string name="location_not_found">Location not reachable.</string>
     <string name="location_permission_denied">Location permission denied!</string>
     <string name="camera_permission">Camera permission denied.</string>
     <string name="showpicker_permission">To show a picker, please enable reading your external storage.</string>
-    <string name="imagepicker_permission">Permission denied to showProgress image picker.</string>
+    <string name="imagepicker_permission">Permission denied to show progress image picker.</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
     <string name="password">Password</string>
+    <string name="close">Close</string>
+    <string name="yes">Yes</string>
+
+
+    <string name="api_repeat_confirm">Response is getting error, do you want to repeat this request</string>
+
+
+    <string name="timeout">Timeout</string>
+    <string name="connection_timeout">Connection Timeout</string>
+    <string name="server_error">Server Error</string>
+    <string name="retry">Retry</string>
+    <string name="search_hint">Search</string>
+    <string name="error">Error</string>
+    <string name="unexpected_error">Unexpected Error</string>
+    <string name="google_unavailable">Google Service is unavailable on your device, this app wont be run and will be close until you update Google Service</string>
+
+    <string name="title">Title</string>
+    <string name="alert">Alert</string>
+    <string name="subtitle">Subtitle</string>
+
+
+
 </resources>

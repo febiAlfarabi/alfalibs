@@ -1,4 +1,0 @@
-#Mon Jan 15 16:45:04 WIB 2018
-base.0=/home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/build/intermediates/transforms/dexMerger/debug/0
-path.0=classes.dex
-renamed.0=classes.dex

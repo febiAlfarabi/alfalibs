@@ -8,20 +8,20 @@ package com.devs.acr;
 
 public final class R {
     public static final class drawable {
-        public static final int ic_warning_black_36dp = 0x7f070086;
-        public static final int ic_warning_black_48dp = 0x7f070087;
+        public static final int ic_warning_black_36dp = 0x7f07008a;
+        public static final int ic_warning_black_48dp = 0x7f07008b;
     }
     public static final class id {
-        public static final int ll_layout = 0x7f080054;
-        public static final int tv_cancel = 0x7f0800a7;
-        public static final int tv_message = 0x7f0800a8;
-        public static final int tv_report = 0x7f0800a9;
-        public static final int tv_title = 0x7f0800aa;
+        public static final int ll_layout = 0x7f080066;
+        public static final int tv_cancel = 0x7f0800c8;
+        public static final int tv_message = 0x7f0800c9;
+        public static final int tv_report = 0x7f0800ca;
+        public static final int tv_title = 0x7f0800cb;
     }
     public static final class layout {
         public static final int activity_erroe_reporter = 0x7f0a001b;
     }
     public static final class string {
-        public static final int app_name = 0x7f0c0021;
+        public static final int app_name = 0x7f0c0023;
     }
 }

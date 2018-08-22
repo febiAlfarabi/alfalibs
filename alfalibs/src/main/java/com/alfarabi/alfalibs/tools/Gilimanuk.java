@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
 import org.fingerlinks.mobile.android.navigator.Navigator;
+import org.fingerlinks.mobile.android.navigator.builder.Builders;
 import org.fingerlinks.mobile.android.navigator.builder.Builders.Any.F;
 import org.fingerlinks.mobile.android.navigator.builder.Builders.Any.G;
 
@@ -26,6 +27,8 @@ public class Gilimanuk {
     static int popIn = 0 ;
     static int popOut = 0 ;
     static boolean force = false ;
+
+    static Disposable disposable ;
 
     public Gilimanuk() {
 
@@ -61,8 +64,25 @@ public class Gilimanuk {
 
 
     public static void gotoAnotherApps(Context context, @NonNull String packageName) {
-        Observable.fromCallable(() -> {
+//        disposable = Observable.fromCallable(() -> {
+//            Builders.Any.G G = Navigator.with(activity).build();
+//            Builders.Any.F F = (Builders.Any.F)((Builders.Any.F)G.goTo(tag, id)).tag(tag);
+//            func.call();
+//            return F;
+//        }).doFinally(() -> {
+//            WLog.i(TAG, "doFinally(() = " + tag);
+//            disposable.dispose();
+//        }).subscribe(f -> {
+//            f.addToBackStack();
+//            f.replace().commit();
+//        }, throwable -> throwable.printStackTrace());
+
+        disposable = Observable.<Intent>fromCallable(() -> {
             Intent intent = context.getPackageManager().getLaunchIntentForPackage(packageName);
+            return intent;
+        }).doFinally(() -> {
+            disposable.dispose();
+        }).subscribe(intent -> {
             if (intent != null) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
@@ -73,90 +93,109 @@ public class Gilimanuk {
                     context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
                 }
             }
-            return true ;
-        }).subscribeOn(Schedulers.newThread()).subscribe();
+        }, throwable -> throwable.printStackTrace());
 
     }
 
     public static void gotoMarketApps(Context context, @NonNull String packageName) {
-        Observable.fromCallable(() -> {
+        disposable = Observable.fromCallable(() -> true).doFinally(() -> disposable.dispose()).subscribe(intent -> {
             try {
                 context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
             } catch (Exception anfe) {
                 context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
             }
+        }, throwable -> throwable.printStackTrace());
+
+//        Observable.fromCallable(() -> {
+//            try {
+//                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
+//            } catch (Exception anfe) {
+//                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
+//            }
+//            return true ;
+//        }).subscribeOn(Schedulers.newThread()).subscribe();
+    }
+
+    public void goFirst(FragmentActivity activity, String tag, int... id){
+        goFirst(activity, tag, id[0]);
+    }
+    public static void goFirst(FragmentActivity activity, String tag, int id) {
+        disposable = Observable.fromCallable(() -> {
+            activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
+            if(animIn!=0 && animOut!=0 && popIn!=0 && popOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut, popIn, popOut);
+            }else if(animIn!=0 && animOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut);
+            }
+//            return currentIs(activity, tag) && !force;
             return true ;
-        }).subscribeOn(Schedulers.newThread()).subscribe();
-
-
-    }
-
-    public Disposable goFirst(FragmentActivity activity, String tag, int... id){
-        return goFirst(activity, tag, id[0]);
-    }
-    public static Disposable goFirst(FragmentActivity activity, String tag, int id) {
-        return Observable.fromCallable(() -> {
-            FragmentTransaction ft = activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
-            if(currentIs(activity, tag) && !force) {
-                return currentFragment(activity);
-            } else {
-                WLog.i(TAG, "GO TO = " + tag);
-                G G = Navigator.with(activity).build();
-                F F = (F)((F)G.goTo(tag, id)).tag(tag);
-                F.addToBackStack();
-                if(animIn!=0 && animOut!=0 && popIn!=0 && popOut!=0){
-                    F.animation(animIn, animOut, popIn, popOut);
-                }else if(animIn!=0 && animOut!=0){
-                    F.animation(animIn, animOut);
-                }
-                F.replace().commit();
-                Gilimanuk.animIn = 0 ;
-                Gilimanuk.animOut = 0 ;
-                Gilimanuk.popIn = 0 ;
-                Gilimanuk.popOut = 0 ;
-                force = false ;
-                return activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
+        }).subscribe(o -> {
+            WLog.i(TAG, "GO TO = " + tag);
+            G G = Navigator.with(activity).build();
+            F F = (F)((F)G.goTo(tag, id)).tag(tag);
+            F.addToBackStack();
+            if(animIn!=0 && animOut!=0 && popIn!=0 && popOut!=0){
+                F.animation(animIn, animOut, popIn, popOut);
+            }else if(animIn!=0 && animOut!=0){
+                F.animation(animIn, animOut);
             }
-        }).subscribe();
+            F.replace().commit();
+            Gilimanuk.animIn = 0 ;
+            Gilimanuk.animOut = 0 ;
+            Gilimanuk.popIn = 0 ;
+            Gilimanuk.popOut = 0 ;
+            force = false ;
+        }, throwable -> throwable.printStackTrace());
     }
 
-    public Disposable goFirst(FragmentActivity activity, String tag, Bundle bundle, int... id){
-        return goFirst(activity, tag, bundle, id[0]);
+    public void goFirst(FragmentActivity activity, String tag, Bundle bundle, int... id){
+        goFirst(activity, tag, bundle, id[0]);
     }
-    public static Disposable goFirst(FragmentActivity activity, String tag, Bundle bundle, int id) {
-        return Observable.fromCallable(() -> {
+    public static void goFirst(FragmentActivity activity, String tag, Bundle bundle, int id) {
+        disposable = Observable.fromCallable(() -> {
             activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
-            if(currentIs(activity, tag) && !force) {
-                return currentFragment(activity);
-            } else {
-                WLog.i(TAG, "GO TO = " + tag);
-                G G = Navigator.with(activity).build();
-                F F = (F)((F)G.goTo(tag, bundle, id)).tag(tag);
-                F.addToBackStack();
-                if(animIn!=0 && animOut!=0 && popIn!=0 && popOut!=0){
-                    F.animation(animIn, animOut, popIn, popOut);
-                }else if(animIn!=0 && animOut!=0){
-                    F.animation(animIn, animOut);
-                }
-                F.replace().commit();
-                Gilimanuk.animIn = 0 ;
-                Gilimanuk.animOut = 0 ;
-                Gilimanuk.popIn = 0 ;
-                Gilimanuk.popOut = 0 ;
-                force = false ;
-                return activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
+            if(animIn!=0 && animOut!=0 && popIn!=0 && popOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut, popIn, popOut);
+            }else if(animIn!=0 && animOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut);
             }
-        }).subscribe();
+            return true ;
+        }).subscribe(b -> {
+            WLog.i(TAG, "GO TO = " + tag);
+            G G = Navigator.with(activity).build();
+            F F = (F)((F)G.goTo(tag, bundle, id)).tag(tag);
+            F.addToBackStack();
+            if(animIn!=0 && animOut!=0 && popIn!=0 && popOut!=0){
+                F.animation(animIn, animOut, popIn, popOut);
+            }else if(animIn!=0 && animOut!=0){
+                F.animation(animIn, animOut);
+            }
+            F.replace().commit();
+            Gilimanuk.animIn = 0 ;
+            Gilimanuk.animOut = 0 ;
+            Gilimanuk.popIn = 0 ;
+            Gilimanuk.popOut = 0 ;
+            force = false ;
+        }, throwable -> throwable.printStackTrace());
     }
 
-    public Disposable goTo(FragmentActivity activity, String tag, int id, boolean... backStack) {
-        return goTo(activity, tag, id, backStack[0]);
+    public void goTo(FragmentActivity activity, String tag, int id, boolean... backStack) {
+        goTo(activity, tag, id, backStack[0]);
     }
-    public static Disposable goTo(FragmentActivity activity, String tag, int id, boolean backStack) {
-        return Observable.fromCallable(() -> {
+    public static void  goTo(FragmentActivity activity, String tag, int id, boolean backStack) {
+        disposable = Observable.<Boolean>fromCallable(() -> {
             activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
-            if(currentIs(activity, tag) && !force) {
-                return currentFragment(activity);
+            if(animIn!=0 && animOut!=0 && popIn!=0 && popOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut, popIn, popOut);
+            }else if(animIn!=0 && animOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut);
+            }
+            return currentIs(activity, tag) && !force;
+        }).doFinally(() -> {
+            disposable.dispose();
+        }).subscribe(b -> {
+            if(b) {
+                currentFragment(activity);
             } else {
                 WLog.i(TAG, "GO TO = " + tag);
                 G G = Navigator.with(activity).build();
@@ -175,19 +214,27 @@ public class Gilimanuk {
                 Gilimanuk.popIn = 0 ;
                 Gilimanuk.popOut = 0 ;
                 force = false ;
-                return activity.getSupportFragmentManager().findFragmentByTag(tag);
             }
-        }).subscribe();
+        }, throwable -> throwable.printStackTrace());
     }
 
-    public Disposable goTo(FragmentActivity activity, Fragment fragment, String tag, int id, boolean... backStack) {
-        return goTo(activity, fragment, tag, id, backStack[0]);
+    public void goTo(FragmentActivity activity, Fragment fragment, String tag, int id, boolean... backStack) {
+        goTo(activity, fragment, tag, id, backStack[0]);
     }
-    public static Disposable goTo(FragmentActivity activity, Fragment fragment, String tag, int id, boolean backStack) {
-        return Observable.fromCallable(() -> {
+    public static void goTo(FragmentActivity activity, Fragment fragment, String tag, int id, boolean backStack) {
+        disposable = Observable.<Boolean>fromCallable(() -> {
             activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
-            if(currentIs(activity, tag) && !force) {
-                return currentFragment(activity);
+            if(animIn!=0 && animOut!=0 && popIn!=0 && popOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut, popIn, popOut);
+            }else if(animIn!=0 && animOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut);
+            }
+            return currentIs(activity, tag) && !force;
+        }).doFinally(() -> {
+            disposable.dispose();
+        }).subscribe(b -> {
+            if(b) {
+                currentFragment(activity);
             } else {
                 WLog.i(TAG, "GO TO = " + tag);
                 G G = Navigator.with(activity).build();
@@ -206,21 +253,27 @@ public class Gilimanuk {
                 Gilimanuk.popIn = 0 ;
                 Gilimanuk.popOut = 0 ;
                 force = false ;
-                return activity.getSupportFragmentManager().findFragmentByTag(tag);
             }
-        }).subscribe();
-
-
+        }, throwable -> throwable.printStackTrace());
     }
 
-    public static Disposable goTo(FragmentActivity activity, String tag, Bundle bundle, int id, boolean... backStack) {
-        return goTo(activity, tag, bundle, id, backStack[0]);
+    public static void goTo(FragmentActivity activity, String tag, Bundle bundle, int id, boolean... backStack) {
+        goTo(activity, tag, bundle, id, backStack[0]);
     }
-    public static Disposable goTo(FragmentActivity activity, String tag, Bundle bundle, int id, boolean backStack) {
-        return Observable.fromCallable(() -> {
+    public static void goTo(FragmentActivity activity, String tag, Bundle bundle, int id, boolean backStack) {
+        disposable = Observable.<Boolean>fromCallable(() -> {
             activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
-            if(currentIs(activity, tag) && !force) {
-                return currentFragment(activity);
+            if(animIn!=0 && animOut!=0 && popIn!=0 && popOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut, popIn, popOut);
+            }else if(animIn!=0 && animOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut);
+            }
+            return currentIs(activity, tag) && !force;
+        }).doFinally(() -> {
+            disposable.dispose();
+        }).subscribe(b -> {
+            if(b) {
+                currentFragment(activity);
             } else {
                 WLog.i(TAG, "GO TO = " + tag);
                 G G = Navigator.with(activity).build();
@@ -239,19 +292,27 @@ public class Gilimanuk {
                 Gilimanuk.popIn = 0 ;
                 Gilimanuk.popOut = 0 ;
                 force = false ;
-                return activity.getSupportFragmentManager().findFragmentByTag(tag);
             }
-        }).subscribe();
+        }, throwable -> throwable.printStackTrace());
     }
 
-    public Disposable goTo(FragmentActivity activity, String tag, int id, boolean backStack, boolean... add) {
-        return goTo(activity, tag, id, backStack, add[0]);
+    public void goTo(FragmentActivity activity, String tag, int id, boolean backStack, boolean... add) {
+        goTo(activity, tag, id, backStack, add[0]);
     }
-    public static Disposable goTo(FragmentActivity activity, String tag, int id, boolean backStack, boolean add) {
-        return Observable.fromCallable(() -> {
+    public static void goTo(FragmentActivity activity, String tag, int id, boolean backStack, boolean add) {
+        disposable = Observable.<Boolean>fromCallable(() -> {
             activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
-            if(currentIs(activity, tag) && !force) {
-                return currentFragment(activity);
+            if(animIn!=0 && animOut!=0 && popIn!=0 && popOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut, popIn, popOut);
+            }else if(animIn!=0 && animOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut);
+            }
+            return currentIs(activity, tag) && !force;
+        }).doFinally(() -> {
+            disposable.dispose();
+        }).subscribe(b -> {
+            if(b) {
+                currentFragment(activity);
             } else {
                 WLog.i(TAG, "GO TO = " + tag);
                 G G = Navigator.with(activity).build();
@@ -273,19 +334,27 @@ public class Gilimanuk {
                 Gilimanuk.animOut = 0 ;
                 Gilimanuk.popIn = 0 ;
                 Gilimanuk.popOut = 0 ;
-                return activity.getSupportFragmentManager().findFragmentByTag(tag);
             }
-        }).subscribe();
+        }, throwable -> throwable.printStackTrace());
     }
 
-    public Disposable goTo(FragmentActivity activity, Fragment fragment, String tag, int id, boolean backStack, boolean... add) {
-        return goTo(activity, fragment, tag, id, backStack, add[0]);
+    public void goTo(FragmentActivity activity, Fragment fragment, String tag, int id, boolean backStack, boolean... add) {
+        goTo(activity, fragment, tag, id, backStack, add[0]);
     }
-    public static Disposable goTo(FragmentActivity activity, Fragment fragment, String tag, int id, boolean backStack, boolean add) {
-        return Observable.fromCallable(() -> {
+    public static void goTo(FragmentActivity activity, Fragment fragment, String tag, int id, boolean backStack, boolean add) {
+        disposable = Observable.<Boolean>fromCallable(() -> {
             activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
-            if(currentIs(activity, tag) && !force) {
-                return currentFragment(activity);
+            if(animIn!=0 && animOut!=0 && popIn!=0 && popOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut, popIn, popOut);
+            }else if(animIn!=0 && animOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut);
+            }
+            return currentIs(activity, tag) && !force;
+        }).doFinally(() -> {
+            disposable.dispose();
+        }).subscribe(b -> {
+            if(b) {
+                currentFragment(activity);
             } else {
                 WLog.i(TAG, "GO TO = " + tag);
                 G G = Navigator.with(activity).build();
@@ -307,20 +376,27 @@ public class Gilimanuk {
                 Gilimanuk.animOut = 0 ;
                 Gilimanuk.popIn = 0 ;
                 Gilimanuk.popOut = 0 ;
-                return activity.getSupportFragmentManager().findFragmentByTag(tag);
             }
-        }).subscribe();
+        }, throwable -> throwable.printStackTrace());
     }
 
-    public Disposable goTo(FragmentActivity activity, String tag, Bundle bundle, int id, boolean backStack, boolean... add) {
-        return goTo(activity, tag, bundle, id, backStack, add[0]);
+    public void goTo(FragmentActivity activity, String tag, Bundle bundle, int id, boolean backStack, boolean... add) {
+        goTo(activity, tag, bundle, id, backStack, add[0]);
     }
-    public static Disposable goTo(FragmentActivity activity, String tag, Bundle bundle, int id, boolean backStack, boolean add) {
-
-        return Observable.fromCallable(() -> {
+    public static void goTo(FragmentActivity activity, String tag, Bundle bundle, int id, boolean backStack, boolean add) {
+        disposable = Observable.<Boolean>fromCallable(() -> {
             activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
-            if(currentIs(activity, tag) && !force) {
-                return currentFragment(activity);
+            if(animIn!=0 && animOut!=0 && popIn!=0 && popOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut, popIn, popOut);
+            }else if(animIn!=0 && animOut!=0){
+                activity.getSupportFragmentManager().beginTransaction().setCustomAnimations(animIn, animOut);
+            }
+            return currentIs(activity, tag) && !force;
+        }).doFinally(() -> {
+            disposable.dispose();
+        }).subscribe(b -> {
+            if(b) {
+                currentFragment(activity);
             } else {
                 WLog.i(TAG, "GO TO = " + tag);
                 G G = Navigator.with(activity).build();
@@ -342,34 +418,24 @@ public class Gilimanuk {
                 Gilimanuk.animOut = 0 ;
                 Gilimanuk.popIn = 0 ;
                 Gilimanuk.popOut = 0 ;
-                return activity.getSupportFragmentManager().findFragmentByTag(tag);
             }
-        }).subscribe();
+        }, throwable -> throwable.printStackTrace());
     }
 
-    public static Disposable backstack(FragmentActivity activity) {
-        return Observable.fromCallable(() -> {
-            activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
-            boolean canGoBack = Navigator.with(activity).utils().canGoBack(activity.getSupportFragmentManager());
-            if(canGoBack) {
-                Navigator.with(activity).utils().goToPreviousBackStack();
-            }
-
-            return activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
-        }).subscribe();
+    public static void backstack(FragmentActivity activity) {
+        activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
+        boolean canGoBack = Navigator.with(activity).utils().canGoBack(activity.getSupportFragmentManager());
+        if(canGoBack) {
+            Navigator.with(activity).utils().goToPreviousBackStack();
+        }
     }
 
-    public static Disposable backstack(FragmentActivity activity, String tag, int id) {
-        return Observable.fromCallable(() -> {
-            activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
-            boolean canGoBack = Navigator.with(activity).utils().canGoBackToSpecificPoint(tag, id, activity.getSupportFragmentManager());
-            if(canGoBack) {
-                Navigator.with(activity).utils().goBackToSpecificPoint(tag);
-            }
-
-            return activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
-        }).subscribe();
-
+    public static void backstack(FragmentActivity activity, String tag, int id) {
+        activity.getSupportFragmentManager().beginTransaction().setTransition(4096);
+        boolean canGoBack = Navigator.with(activity).utils().canGoBackToSpecificPoint(tag, id, activity.getSupportFragmentManager());
+        if(canGoBack) {
+            Navigator.with(activity).utils().goBackToSpecificPoint(tag);
+        }
     }
 
     public static boolean canGoBack(FragmentActivity activity) {
@@ -434,7 +500,7 @@ public class Gilimanuk {
     }
 
     public static void restart(@NonNull Context context, @NonNull Intent nextActivity) {
-        nextActivity.addFlags(268435456);
+        nextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(nextActivity);
         if(context instanceof Activity) {
             ((Activity)context).finish();

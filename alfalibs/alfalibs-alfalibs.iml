@@ -92,7 +92,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/check-manifest" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/intermediate-jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaPrecompile" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/lint" />
@@ -109,7 +108,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/poms" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 24 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="com.squareup.retrofit2:converter-gson:2.3.0@jar" level="project" />
     <orderEntry type="library" name="com.github.markomilos:paginate-0.5.1" level="project" />
@@ -124,6 +123,7 @@
     <orderEntry type="library" name="org.apache.commons:commons-lang3:3.5@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="com.squareup:javawriter:2.1.1@jar" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-base-10.2.1" level="project" />
+    <orderEntry type="library" name="io.reactivex:rxandroid-1.2.1" level="project" />
     <orderEntry type="library" name="com.android.support:support-compat-25.3.1" level="project" />
     <orderEntry type="library" name="com.squareup.retrofit2:converter-scalars:2.1.0@jar" level="project" />
     <orderEntry type="library" name="com.github.omadahealth:swipy-1.2.3" level="project" />
@@ -135,11 +135,11 @@
     <orderEntry type="library" name="com.android.support:support-core-utils-25.3.1" level="project" />
     <orderEntry type="library" name="com.afollestad.material-dialogs:core-0.9.4.3" level="project" />
     <orderEntry type="library" name="com.android.support:support-v4-25.3.1" level="project" />
-    <orderEntry type="library" name="com.codewaves.stickyheadergrid:stickyheadergrid-0.9.6" level="project" />
     <orderEntry type="library" name="com.github.soroushjavdan:CustomFontWidgets-29426641f6" level="project" />
     <orderEntry type="library" name="com.android.support:support-media-compat-25.3.1" level="project" />
     <orderEntry type="library" name="commons-lang:commons-lang:2.2@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="com.google.code.findbugs:jsr305:2.0.1@jar" level="project" />
+    <orderEntry type="library" name="com.zhy:okhttputils-2.6.2" level="project" />
     <orderEntry type="library" scope="TEST" name="org.hamcrest:hamcrest-core:1.3@jar" level="project" />
     <orderEntry type="library" name="com.squareup.okhttp3:okhttp:3.8.0@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="com.android.support.test.espresso:espresso-core-2.2.2" level="project" />
@@ -149,6 +149,7 @@
     <orderEntry type="library" scope="TEST" name="org.hamcrest:hamcrest-integration:1.3@jar" level="project" />
     <orderEntry type="library" name="com.github.orangegangsters:swipy-1.2.3" level="project" />
     <orderEntry type="library" name="org.jsoup:jsoup:1.9.2@jar" level="project" />
+    <orderEntry type="library" name="com.github.OneCodeLabs:StickyGridHeaders-1.0.2" level="project" />
     <orderEntry type="library" name="com.squareup.retrofit2:adapter-rxjava2:2.2.0@jar" level="project" />
     <orderEntry type="library" name="org.reactivestreams:reactive-streams:1.0.0@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="com.android.support.test.espresso:espresso-idling-resource-2.2.2" level="project" />
@@ -173,13 +174,16 @@
     <orderEntry type="library" name="io.reactivex.rxjava2:rxandroid-2.0.1" level="project" />
     <orderEntry type="library" name="com.cjj.materialrefeshlayout:library-1.3.0" level="project" />
     <orderEntry type="library" name="com.jakewharton:butterknife-8.6.0" level="project" />
+    <orderEntry type="library" name="com.android.support:design-25.0.1" level="project" />
     <orderEntry type="library" scope="TEST" name="org.hamcrest:hamcrest-library:1.3@jar" level="project" />
+    <orderEntry type="library" name="com.android.support:transition-25.0.1" level="project" />
     <orderEntry type="library" name="com.android.support:appcompat-v7-25.3.1" level="project" />
     <orderEntry type="library" scope="TEST" name="com.android.support.test:runner-0.5" level="project" />
     <orderEntry type="library" name="com.github.dmallcott:DismissibleImageView-1.0.1" level="project" />
     <orderEntry type="library" name="org.projectlombok:lombok:1.16.16@jar" level="project" />
     <orderEntry type="library" name="com.github.bumptech.glide:disklrucache:4.0.0-RC1@jar" level="project" />
     <orderEntry type="library" name="com.jakewharton:butterknife-annotations:8.6.0@jar" level="project" />
+    <orderEntry type="library" name="io.reactivex:rxjava:1.3.4@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-annotations:25.3.1@jar" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-maps-10.2.1" level="project" />
   </component>

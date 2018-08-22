@@ -1,6 +1,5 @@
 package com.alfarabi.alfalibs.http;
 
-import android.support.annotation.CallSuper;
 
 import java.util.List;
 

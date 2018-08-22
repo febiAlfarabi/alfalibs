@@ -8,10 +8,12 @@ import android.support.v4.app.Fragment;
 import com.alfarabi.alfalibs.AlfaLibsApplication;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.zhy.http.okhttp.https.HttpsUtils;
 
 import org.reactivestreams.Subscription;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -25,14 +27,22 @@ import io.reactivex.schedulers.Schedulers;
 import ir.mirrajabi.okhttpjsonmock.interceptors.OkHttpMockInterceptor;
 import lombok.Getter;
 import lombok.Setter;
+import okhttp3.CipherSuite;
+import okhttp3.ConnectionSpec;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.functions.Action;
+import rx.functions.Action1;
+import rx.functions.Action2;
+import rx.functions.Action3;
+import rx.functions.Func2;
 
 /**
  * Created by User on 02/07/2017.
@@ -58,8 +68,11 @@ public class Kitchen {
     static @Getter@Setter int writeTimeout ;
     private static String prodUrl;
     private static String passedUrl;
+    private static boolean usingHttps;
     private static  Disposable disposable ;
 
+
+    public static boolean connected = true ;
 
     private static final HashMap<String, Retrofit> retroMaps = new HashMap();
     static @Getter@Setter Gson gson = new GsonBuilder().setLenient().create();
@@ -69,9 +82,10 @@ public class Kitchen {
 
     private int kitchenMode = LIVE_MODE;
 
-    public Kitchen() {
 
-    }
+    private static Response currentResponse ;
+
+    public Kitchen() {}
 
 
     /**
@@ -84,6 +98,7 @@ public class Kitchen {
      * @return
      */
     private static <HTTP> HTTP arange(Class<HTTP> clazz, String... passedUrl) {
+        Kitchen.currentResponse = null ;
         if(retroMaps == null) {
             throw new NullPointerException("RETROFIT == null");
         } else if(prodUrl == null && passedUrl == null) {
@@ -95,6 +110,19 @@ public class Kitchen {
             if(AlfaLibsApplication.DEBUG){
                 httpClient.addInterceptor(logging);
             }
+            if(Kitchen.usingHttps){
+                HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
+                httpClient.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager);
+                ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+                        .tlsVersions(TlsVersion.TLS_1_2)
+                        .cipherSuites(
+                                CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                                CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                                CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
+                        .build();
+                httpClient.connectionSpecs(Collections.singletonList(spec));
+            }
+
             if(headerMap!=null && headerMap.size()>0){
 
                 CustomInterceptor interceptor = new CustomInterceptor() {
@@ -106,7 +134,8 @@ public class Kitchen {
                             Map.Entry<String, String> next = iterator.next();
                             request.addHeader(next.getKey(), next.getValue());
                         }
-                        return chain.proceed(request.build());
+                        Kitchen.currentResponse = chain.proceed(request.build());
+                        return Kitchen.currentResponse;
                     }
                 };
                 httpClient.addInterceptor(interceptor);
@@ -133,6 +162,7 @@ public class Kitchen {
      * @return
      */
     public static <HTTP> HTTP arange(Context context, Class<HTTP> clazz, String... passedUrl) {
+        Kitchen.currentResponse = null ;
         if(retroMaps == null) {
             throw new NullPointerException("RETROFIT == null");
         } else if(prodUrl == null && passedUrl == null) {
@@ -143,6 +173,18 @@ public class Kitchen {
             if(AlfaLibsApplication.DEBUG){
                 httpClient.addInterceptor(logging);
             }
+            if(Kitchen.usingHttps){
+                HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
+                httpClient.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager);
+                ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+                        .tlsVersions(TlsVersion.TLS_1_2)
+                        .cipherSuites(
+                                CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                                CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                                CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
+                        .build();
+                httpClient.connectionSpecs(Collections.singletonList(spec));
+            }
 
             if(headerMap!=null && headerMap.size()>0){
                 Interceptor interceptor = chain -> {
@@ -152,7 +194,8 @@ public class Kitchen {
                         Map.Entry<String, String> next = iterator.next();
                         request.addHeader(next.getKey(), next.getValue());
                     }
-                    return chain.proceed(request.build());
+                    Kitchen.currentResponse = chain.proceed(request.build());
+                    return Kitchen.currentResponse;
                 };
                 httpClient.addInterceptor(interceptor);
             }
@@ -162,7 +205,6 @@ public class Kitchen {
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build());
-            ((Retrofit)retroMaps.get(Kitchen.passedUrl)).create(clazz);
             return ((Retrofit)retroMaps.get(Kitchen.passedUrl)).create(clazz);
         } else {
             return ((Retrofit)retroMaps.get(Kitchen.prodUrl)).create(clazz);
@@ -170,6 +212,7 @@ public class Kitchen {
     }
 
     public static <HTTP> HTTP arange(Context context, Class<HTTP> clazz, int kitchenMode, String... passedUrl) {
+        Kitchen.currentResponse = null ;
         if(retroMaps == null) {
             throw new NullPointerException("RETROFIT == null");
         } else if(prodUrl == null && passedUrl == null) {
@@ -180,6 +223,19 @@ public class Kitchen {
             if(AlfaLibsApplication.DEBUG){
                 httpClient.addInterceptor(logging);
             }
+            if(Kitchen.usingHttps){
+                HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
+                httpClient.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager);
+                ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+                        .tlsVersions(TlsVersion.TLS_1_2)
+                        .cipherSuites(
+                                CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                                CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                                CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
+                        .build();
+                httpClient.connectionSpecs(Collections.singletonList(spec));
+            }
+
 
             if(headerMap!=null && headerMap.size()>0){
                 Interceptor interceptor = chain -> {
@@ -189,9 +245,9 @@ public class Kitchen {
                         Map.Entry<String, String> next = iterator.next();
                         request.addHeader(next.getKey(), next.getValue());
                     }
-                    return chain.proceed(request.build());
+                    Kitchen.currentResponse = chain.proceed(request.build());
+                    return Kitchen.currentResponse;
                 };
-                httpClient.addInterceptor(interceptor);
             }
             Kitchen.passedUrl = passedUrl[0];
             retroMaps.put(Kitchen.passedUrl, (new Retrofit.Builder()).baseUrl(
@@ -199,7 +255,6 @@ public class Kitchen {
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build());
-            ((Retrofit)retroMaps.get(Kitchen.passedUrl)).create(clazz);
             return ((Retrofit)retroMaps.get(Kitchen.passedUrl)).create(clazz);
         } else {
             if(kitchenMode==MOCK_MODE){
@@ -219,6 +274,7 @@ public class Kitchen {
      * @return
      */
     private static <HTTP> HTTP mock(Context context, Class<HTTP> clazz) {
+        Kitchen.currentResponse = null ;
         if(!retroMaps.containsKey(Initial.DOMAIN_MOCK)) {
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder().addInterceptor(new OkHttpMockInterceptor(context, 5))
@@ -226,6 +282,19 @@ public class Kitchen {
             if(AlfaLibsApplication.DEBUG){
                 httpClient.addInterceptor(logging);
             }
+            if(Kitchen.usingHttps){
+                HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
+                httpClient.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager);
+                ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+                        .tlsVersions(TlsVersion.TLS_1_2)
+                        .cipherSuites(
+                                CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                                CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                                CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
+                        .build();
+                httpClient.connectionSpecs(Collections.singletonList(spec));
+            }
+
             if(headerMap!=null && headerMap.size()>0){
                 Interceptor interceptor = new Interceptor() {
                     @Override
@@ -236,7 +305,8 @@ public class Kitchen {
                             Map.Entry<String, String> next = iterator.next();
                             request.addHeader(next.getKey(), next.getValue());
                         }
-                        return chain.proceed(request.build());
+                        Kitchen.currentResponse = chain.proceed(request.build());
+                        return Kitchen.currentResponse;
                     }
                 };
                 httpClient.addInterceptor(interceptor);
@@ -266,11 +336,25 @@ public class Kitchen {
      * @param baseUrl is a string url which you choosed as endpoint,
      *                by example http://www.google.com
      */
-    public static final void preparation(String baseUrl, int conTimeout, int readTimeout, int writeTimeout) {
+    public static final void preparation(String baseUrl, int conTimeout, int readTimeout, int writeTimeout, boolean usingHttps) {
+        Kitchen.currentResponse = null ;
         Kitchen.prodUrl = baseUrl;
+        Kitchen.usingHttps = usingHttps ;
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
                 .connectTimeout(conTimeout, TimeUnit.SECONDS).readTimeout(readTimeout, TimeUnit.SECONDS).writeTimeout(writeTimeout, TimeUnit.SECONDS);
+        if(Kitchen.usingHttps){
+            HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
+            httpClient.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager);
+            ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+                    .tlsVersions(TlsVersion.TLS_1_2)
+                    .cipherSuites(
+                            CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                            CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                            CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
+                    .build();
+            httpClient.connectionSpecs(Collections.singletonList(spec));
+        }
         if(AlfaLibsApplication.DEBUG){
             httpClient.addInterceptor(logging);
         }
@@ -284,10 +368,9 @@ public class Kitchen {
                         Map.Entry<String, String> next = iterator.next();
                         request.addHeader(next.getKey(), next.getValue());
                     }
-                    return chain.proceed(request.build());
+                    Kitchen.currentResponse = chain.proceed(request.build());
+                    return Kitchen.currentResponse;
                 }
-
-
             };
             httpClient.addInterceptor(interceptor);
         }
@@ -299,7 +382,7 @@ public class Kitchen {
     public static void putHanger(String key, String value) {
         headerMap.put(key, value);
         if(prodUrl!=null){
-            preparation(Kitchen.prodUrl, conTimeout, readTimeout, writeTimeout);
+            preparation(Kitchen.prodUrl, Kitchen.conTimeout, Kitchen.readTimeout, Kitchen.writeTimeout, Kitchen.usingHttps);
         }
     }
 
@@ -308,13 +391,6 @@ public class Kitchen {
         if(customlayoutProgress==null || customlayoutProgress.length==0){
             kitchen.progressDialog = ProgressDialog.show(context, "", "Loading...");
             kitchen.progressDialog.getWindow().getDecorView().setBackgroundColor(Color.WHITE);
-//            kitchen.progressDialog = new ProgressDialog(context, ProgressDialog.THEME_HOLO_DARK);
-//            // set indeterminate style
-//            kitchen.progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-//            kitchen.progressDialog.getWindow().getDecorView().setBackgroundColor(Color.WHITE);
-//            // set title and message
-//            kitchen.progressDialog.setTitle("");
-//            kitchen.progressDialog.setMessage("Loading...");
         }else{
             kitchen.progressDialog = new ProgressDialog(context);
             kitchen.progressDialog.getWindow().setContentView(customlayoutProgress[0]);
@@ -373,6 +449,41 @@ public class Kitchen {
             onError.accept(throwable);
         });
     }
+
+    public <T> Disposable pour(Observable<T> observable, Action2<? super T, Response> onAny, Action3<Boolean, ? super Throwable, Response> onError){
+        if(disposable!=null && !disposable.isDisposed()){
+            observable.unsubscribeOn(Schedulers.io());
+            disposable.dispose();
+            if(progressDialog!=null && progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+        }
+        if(connected){
+            observable = with(observable);
+            return disposable = observable.subscribe(t -> {
+                if(progressDialog!=null){
+                    progressDialog.dismiss();
+                }
+                onAny.call(t, Kitchen.currentResponse);
+            },throwable -> {
+                if(progressDialog!=null){
+                    progressDialog.dismiss();
+                }
+                onError.call(connected, throwable, Kitchen.currentResponse);
+            });
+        }else{
+            if(progressDialog!=null){
+                progressDialog.dismiss();
+            }
+            return disposable = observable.subscribe(t -> {
+                new Exception("No Connection Available, Please Check Your Device Connection");
+            },throwable -> {
+                onError.call(connected, throwable, null);
+            });
+        }
+    }
+
+
     public <T> Disposable pour(Observable<T> observable, Consumer<? super T> onAny, Consumer<? super Throwable> onError, boolean disposePrevious){
         if(disposable!=null && !disposable.isDisposed() && disposePrevious){
             observable.unsubscribeOn(Schedulers.io());
@@ -394,6 +505,40 @@ public class Kitchen {
             onError.accept(throwable);
         });
     }
+
+    public <T> Disposable pour(Observable<T> observable, Action2<? super T, Response> onAny, Action3<Boolean, ? super Throwable, Response> onError, boolean disposePrevious){
+        if(disposable!=null && !disposable.isDisposed() && disposePrevious){
+            observable.unsubscribeOn(Schedulers.io());
+            disposable.dispose();
+            if(progressDialog!=null && progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+        }
+        if(connected){
+            observable = with(observable);
+            return disposable = observable.subscribe(t -> {
+                if(progressDialog!=null){
+                    progressDialog.dismiss();
+                }
+                onAny.call(t, Kitchen.currentResponse);
+            },throwable -> {
+                if(progressDialog!=null){
+                    progressDialog.dismiss();
+                }
+                onError.call(connected, throwable, Kitchen.currentResponse);
+            });
+        }else{
+            if(progressDialog!=null){
+                progressDialog.dismiss();
+            }
+            return disposable = observable.subscribe(t -> {
+                new Exception("No Connection Available, Please Check Your Device Connection");
+            },throwable -> {
+                onError.call(connected, throwable, null);
+            });
+        }
+    }
+
 
     public static <T> Disposable cook(Observable<T> observable){
         if(disposable!=null && !disposable.isDisposed()){
@@ -437,5 +582,24 @@ public class Kitchen {
         Kitchen kitchen = new Kitchen();
         return disposable = kitchen.pour(observable, onAny, onError, disposePrevious);
     }
+
+    public static <T> Disposable cook(Observable<T> observable, Action2<? super T, Response> onAny, Action3<Boolean, ? super Throwable, Response> onError){
+        if(disposable!=null && !disposable.isDisposed()){
+            observable.unsubscribeOn(Schedulers.io());
+            disposable.dispose();
+        }
+        Kitchen kitchen = new Kitchen();
+        return disposable = kitchen.pour(observable, onAny, onError);
+    }
+
+    public static <T> Disposable cook(Observable<T> observable, Action2<? super T, Response> onAny, Action3<Boolean, ? super Throwable, Response> onError, boolean disposePrevious){
+        if(disposable!=null && !disposable.isDisposed() && disposePrevious){
+            observable.unsubscribeOn(Schedulers.io());
+            disposable.dispose();
+        }
+        Kitchen kitchen = new Kitchen();
+        return disposable = kitchen.pour(observable, onAny, onError, disposePrevious);
+    }
+
 
 }

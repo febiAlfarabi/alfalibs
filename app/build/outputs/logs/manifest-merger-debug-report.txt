@@ -10,17 +10,18 @@ MERGED from [com.jakewharton:butterknife:8.6.0] /home/alfarabi/.gradle/caches/tr
 MERGED from [com.appeaser.sublimenavigationviewlibrary:sublimenavigationviewlibrary:0.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/sublimenavigationviewlibrary-0.0.1.aar/29dbfc0988d8067e4d94e3ff244ee93a/AndroidManifest.xml:2:1-16:12
 MERGED from [ca.barrenechea.header-decor:header-decor:0.2.8] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/header-decor-0.2.8.aar/4015058e3eb582ec6774c3549899af51/AndroidManifest.xml:17:1-29:12
 MERGED from [com.afollestad.material-dialogs:core:0.9.4.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/core-0.9.4.3.aar/f0a3ee7806bb8b29dbd84bdbdc2808c3/AndroidManifest.xml:2:1-15:12
-MERGED from [com.codewaves.stickyheadergrid:stickyheadergrid:0.9.6] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/stickyheadergrid-0.9.6.aar/b08fe41b9d99915e3cc2ab3f239170ad/AndroidManifest.xml:2:1-12:12
 MERGED from [com.android.support:support-v13:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/47b6267eb45d5ef3dadfb8ea1555cb44/AndroidManifest.xml:17:1-31:12
 MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/library-1.4.0.aar/57877ad5655f52619f8a3ccefafde289/AndroidManifest.xml:6:1-16:12
 MERGED from [org.fingerlinks.mobile.android:Navigator:0.1.5] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/Navigator-0.1.5.aar/70e2944d46a56c68aceb1072b64e585c/AndroidManifest.xml:2:1-15:12
 MERGED from [com.cjj.materialrefeshlayout:library:1.3.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/library-1.3.0.aar/a6d731983cd80b228caee1dd65b761de/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:design:25.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/design-25.0.1.aar/8e941bb2b4a3232fab501c55936a3f58/AndroidManifest.xml:17:1-27:12
 MERGED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:16:1-25:12
 MERGED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:16:1-26:12
 MERGED from [com.google.android.gms:play-services-auth-base:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-10.2.1.aar/3d024b83c5112f40a0a58cceb3373b62/AndroidManifest.xml:2:1-5:12
 MERGED from [com.google.android.gms:play-services-base:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-base-10.2.1.aar/c985b471c0e7494ee87df57eb12ff7bb/AndroidManifest.xml:16:1-21:12
 MERGED from [com.google.android.gms:play-services-tasks:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-tasks-10.2.1.aar/e835a670bffa0dab46f243169b80ba4e/AndroidManifest.xml:2:1-5:12
 MERGED from [com.google.android.gms:play-services-basement:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-basement-10.2.1.aar/67f70b06b001b68775a97d67d97012e2/AndroidManifest.xml:16:1-23:12
+MERGED from [com.android.support:transition:25.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/transition-25.0.1.aar/c9d586ef87fbbe1450007cc3c4cdef16/AndroidManifest.xml:17:1-24:12
 MERGED from [com.yarolegovich:discrete-scrollview:1.2.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/discrete-scrollview-1.2.0.aar/fa4dffa9a8714d5de7b497a238a2c1d3/AndroidManifest.xml:2:1-12:12
 MERGED from [com.github.dmallcott:DismissibleImageView:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/DismissibleImageView-1.0.1.aar/291a336d9c98030cc50ca944acc8e4d5/AndroidManifest.xml:2:1-17:12
 MERGED from [com.github.jrvansuita:CheckNewAppVersionAvailable:v1.0.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/CheckNewAppVersionAvailable-v1.0.0.aar/2e047df67f162afecf6b7402b360d1d3/AndroidManifest.xml:2:1-17:12
@@ -42,6 +43,9 @@ MERGED from [com.github.soroushjavdan:CustomFontWidgets:29426641f6] /home/alfara
 MERGED from [com.devs:acr:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/acr-1.0.1.aar/443e55b1a9d5fe9d4e8a509900089bca/AndroidManifest.xml:2:1-21:12
 MERGED from [com.github.orangegangsters:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/b97f9224ab906c59105f471433cc775c/AndroidManifest.xml:2:1-14:12
 MERGED from [com.github.omadahealth:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/eccd13a125a29eb372b6021d6d5e4bff/AndroidManifest.xml:2:1-14:12
+MERGED from [com.github.OneCodeLabs:StickyGridHeaders:1.0.2] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/StickyGridHeaders-1.0.2.aar/60505be4c82eba3930e17f41abf72e3b/AndroidManifest.xml:2:1-17:12
+MERGED from [io.reactivex:rxandroid:1.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/rxandroid-1.2.1.aar/ee8b0b294ed125f75df40861f541b9c5/AndroidManifest.xml:15:1-21:12
+MERGED from [com.zhy:okhttputils:2.6.2] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/okhttputils-2.6.2.aar/20599817b5421ab9079e3bc8418a8125/AndroidManifest.xml:2:1-11:12
 INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:2:1-22:12
 INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:2:1-22:12
 INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:2:1-22:12
@@ -75,6 +79,8 @@ MERGED from [com.android.support:support-v13:25.3.1] /home/alfarabi/.gradle/cach
 MERGED from [com.android.support:support-v13:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/47b6267eb45d5ef3dadfb8ea1555cb44/AndroidManifest.xml:29:5-20
 MERGED from [org.fingerlinks.mobile.android:Navigator:0.1.5] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/Navigator-0.1.5.aar/70e2944d46a56c68aceb1072b64e585c/AndroidManifest.xml:11:5-13:44
 MERGED from [org.fingerlinks.mobile.android:Navigator:0.1.5] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/Navigator-0.1.5.aar/70e2944d46a56c68aceb1072b64e585c/AndroidManifest.xml:11:5-13:44
+MERGED from [com.android.support:design:25.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/design-25.0.1.aar/8e941bb2b4a3232fab501c55936a3f58/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:design:25.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/design-25.0.1.aar/8e941bb2b4a3232fab501c55936a3f58/AndroidManifest.xml:25:5-20
 MERGED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:24:5-19
 MERGED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:24:5-19
 MERGED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:19:5-25:19
@@ -85,6 +91,8 @@ MERGED from [com.google.android.gms:play-services-tasks:10.2.1] /home/alfarabi/.
 MERGED from [com.google.android.gms:play-services-tasks:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-tasks-10.2.1.aar/e835a670bffa0dab46f243169b80ba4e/AndroidManifest.xml:4:5-19
 MERGED from [com.google.android.gms:play-services-basement:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-basement-10.2.1.aar/67f70b06b001b68775a97d67d97012e2/AndroidManifest.xml:19:5-21:19
 MERGED from [com.google.android.gms:play-services-basement:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-basement-10.2.1.aar/67f70b06b001b68775a97d67d97012e2/AndroidManifest.xml:19:5-21:19
+MERGED from [com.android.support:transition:25.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/transition-25.0.1.aar/c9d586ef87fbbe1450007cc3c4cdef16/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:transition:25.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/transition-25.0.1.aar/c9d586ef87fbbe1450007cc3c4cdef16/AndroidManifest.xml:22:5-20
 MERGED from [com.github.dmallcott:DismissibleImageView:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/DismissibleImageView-1.0.1.aar/291a336d9c98030cc50ca944acc8e4d5/AndroidManifest.xml:11:5-15:19
 MERGED from [com.github.dmallcott:DismissibleImageView:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/DismissibleImageView-1.0.1.aar/291a336d9c98030cc50ca944acc8e4d5/AndroidManifest.xml:11:5-15:19
 MERGED from [com.github.jrvansuita:CheckNewAppVersionAvailable:v1.0.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/CheckNewAppVersionAvailable-v1.0.0.aar/2e047df67f162afecf6b7402b360d1d3/AndroidManifest.xml:11:5-15:19
@@ -119,6 +127,8 @@ MERGED from [com.github.orangegangsters:swipy:1.2.3] /home/alfarabi/.gradle/cach
 MERGED from [com.github.orangegangsters:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/b97f9224ab906c59105f471433cc775c/AndroidManifest.xml:11:5-12:19
 MERGED from [com.github.omadahealth:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/eccd13a125a29eb372b6021d6d5e4bff/AndroidManifest.xml:11:5-12:19
 MERGED from [com.github.omadahealth:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/eccd13a125a29eb372b6021d6d5e4bff/AndroidManifest.xml:11:5-12:19
+MERGED from [com.github.OneCodeLabs:StickyGridHeaders:1.0.2] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/StickyGridHeaders-1.0.2.aar/60505be4c82eba3930e17f41abf72e3b/AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.OneCodeLabs:StickyGridHeaders:1.0.2] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/StickyGridHeaders-1.0.2.aar/60505be4c82eba3930e17f41abf72e3b/AndroidManifest.xml:11:5-15:19
 	android:supportsRtl
 		ADDED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml:10:9-35
 	android:label
@@ -163,8 +173,6 @@ MERGED from [ca.barrenechea.header-decor:header-decor:0.2.8] /home/alfarabi/.gra
 MERGED from [ca.barrenechea.header-decor:header-decor:0.2.8] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/header-decor-0.2.8.aar/4015058e3eb582ec6774c3549899af51/AndroidManifest.xml:23:5-25:41
 MERGED from [com.afollestad.material-dialogs:core:0.9.4.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/core-0.9.4.3.aar/f0a3ee7806bb8b29dbd84bdbdc2808c3/AndroidManifest.xml:8:5-11:75
 MERGED from [com.afollestad.material-dialogs:core:0.9.4.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/core-0.9.4.3.aar/f0a3ee7806bb8b29dbd84bdbdc2808c3/AndroidManifest.xml:8:5-11:75
-MERGED from [com.codewaves.stickyheadergrid:stickyheadergrid:0.9.6] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/stickyheadergrid-0.9.6.aar/b08fe41b9d99915e3cc2ab3f239170ad/AndroidManifest.xml:8:5-10:41
-MERGED from [com.codewaves.stickyheadergrid:stickyheadergrid:0.9.6] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/stickyheadergrid-0.9.6.aar/b08fe41b9d99915e3cc2ab3f239170ad/AndroidManifest.xml:8:5-10:41
 MERGED from [com.android.support:support-v13:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/47b6267eb45d5ef3dadfb8ea1555cb44/AndroidManifest.xml:21:5-23:55
 MERGED from [com.android.support:support-v13:25.3.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/support-v13-25.3.1.aar/47b6267eb45d5ef3dadfb8ea1555cb44/AndroidManifest.xml:21:5-23:55
 MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/library-1.4.0.aar/57877ad5655f52619f8a3ccefafde289/AndroidManifest.xml:12:5-14:41
@@ -173,6 +181,8 @@ MERGED from [org.fingerlinks.mobile.android:Navigator:0.1.5] /home/alfarabi/.gra
 MERGED from [org.fingerlinks.mobile.android:Navigator:0.1.5] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/Navigator-0.1.5.aar/70e2944d46a56c68aceb1072b64e585c/AndroidManifest.xml:7:5-9:41
 MERGED from [com.cjj.materialrefeshlayout:library:1.3.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/library-1.3.0.aar/a6d731983cd80b228caee1dd65b761de/AndroidManifest.xml:7:5-9:41
 MERGED from [com.cjj.materialrefeshlayout:library:1.3.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/library-1.3.0.aar/a6d731983cd80b228caee1dd65b761de/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:25.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/design-25.0.1.aar/8e941bb2b4a3232fab501c55936a3f58/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:25.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/design-25.0.1.aar/8e941bb2b4a3232fab501c55936a3f58/AndroidManifest.xml:21:5-23:62
 MERGED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:23:5-43
 MERGED from [com.google.android.gms:play-services-maps:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-maps-10.2.1.aar/4bcf90f29d2b2df4b144d66b7a33605b/AndroidManifest.xml:23:5-43
 MERGED from [com.google.android.gms:play-services-auth:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-auth-10.2.1.aar/37e0c3189633b489070325bbe1fc06a9/AndroidManifest.xml:17:5-43
@@ -185,6 +195,8 @@ MERGED from [com.google.android.gms:play-services-tasks:10.2.1] /home/alfarabi/.
 MERGED from [com.google.android.gms:play-services-tasks:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-tasks-10.2.1.aar/e835a670bffa0dab46f243169b80ba4e/AndroidManifest.xml:3:5-43
 MERGED from [com.google.android.gms:play-services-basement:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-basement-10.2.1.aar/67f70b06b001b68775a97d67d97012e2/AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-basement:10.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/play-services-basement-10.2.1.aar/67f70b06b001b68775a97d67d97012e2/AndroidManifest.xml:17:5-43
+MERGED from [com.android.support:transition:25.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/transition-25.0.1.aar/c9d586ef87fbbe1450007cc3c4cdef16/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:25.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/transition-25.0.1.aar/c9d586ef87fbbe1450007cc3c4cdef16/AndroidManifest.xml:20:5-44
 MERGED from [com.yarolegovich:discrete-scrollview:1.2.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/discrete-scrollview-1.2.0.aar/fa4dffa9a8714d5de7b497a238a2c1d3/AndroidManifest.xml:8:5-10:41
 MERGED from [com.yarolegovich:discrete-scrollview:1.2.0] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/discrete-scrollview-1.2.0.aar/fa4dffa9a8714d5de7b497a238a2c1d3/AndroidManifest.xml:8:5-10:41
 MERGED from [com.github.dmallcott:DismissibleImageView:1.0.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/DismissibleImageView-1.0.1.aar/291a336d9c98030cc50ca944acc8e4d5/AndroidManifest.xml:7:5-9:41
@@ -227,6 +239,12 @@ MERGED from [com.github.orangegangsters:swipy:1.2.3] /home/alfarabi/.gradle/cach
 MERGED from [com.github.orangegangsters:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/b97f9224ab906c59105f471433cc775c/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.omadahealth:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/eccd13a125a29eb372b6021d6d5e4bff/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.omadahealth:swipy:1.2.3] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/swipy-1.2.3.aar/eccd13a125a29eb372b6021d6d5e4bff/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.OneCodeLabs:StickyGridHeaders:1.0.2] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/StickyGridHeaders-1.0.2.aar/60505be4c82eba3930e17f41abf72e3b/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.OneCodeLabs:StickyGridHeaders:1.0.2] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/StickyGridHeaders-1.0.2.aar/60505be4c82eba3930e17f41abf72e3b/AndroidManifest.xml:7:5-9:41
+MERGED from [io.reactivex:rxandroid:1.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/rxandroid-1.2.1.aar/ee8b0b294ed125f75df40861f541b9c5/AndroidManifest.xml:19:5-43
+MERGED from [io.reactivex:rxandroid:1.2.1] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/rxandroid-1.2.1.aar/ee8b0b294ed125f75df40861f541b9c5/AndroidManifest.xml:19:5-43
+MERGED from [com.zhy:okhttputils:2.6.2] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/okhttputils-2.6.2.aar/20599817b5421ab9079e3bc8418a8125/AndroidManifest.xml:7:5-9:41
+MERGED from [com.zhy:okhttputils:2.6.2] /home/alfarabi/.gradle/caches/transforms-1/files-1.1/okhttputils-2.6.2.aar/20599817b5421ab9079e3bc8418a8125/AndroidManifest.xml:7:5-9:41
 INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
 INJECTED from /home/alfarabi/Desktop/Own-Project/Libraries/Android/alfalibs/app/src/main/AndroidManifest.xml
 	tools:overrideLibrary

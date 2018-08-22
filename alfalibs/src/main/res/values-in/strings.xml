@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="swiperecyclerview_has_no_any_action">SwipeRecyclerview doesn\'t contain any action that you set in</string>
+
+
+    <!--FONTS FROM ASSETS-->
+    <string name="amatic_bold">Amatic-Bold</string>
+    <string name="amaticsc_regular">AmaticSC-Regular</string>
+    <string name="capture_it">Capture_it</string>
+    <string name="capture_it_2">Capture_it_2</string>
+    <string name="planer_bold_webfont">planer_bold_webfont</string>
+    <string name="planer_reg_webfont">planer_reg_webfont</string>
+    <string name="montserrat_light">Montserrat-Light</string>
+    <string name="montserrat_black_otf">montserrat/Montserrat-Black</string>
+    <string name="montserrat_bold_otf">montserrat/Montserrat-Bold</string>
+    <string name="montserrat_extrabold_otf">montserrat/Montserrat-ExtraBold</string>
+    <string name="montserrat_extralight_otf">montserrat/Montserrat-ExtraLight</string>
+    <string name="montserrat_light_otf">montserrat/Montserrat-Light</string>
+    <string name="montserrat_medium_otf">montserrat/Montserrat-Medium</string>
+    <string name="montserrat_regular_otf">montserrat/Montserrat-Regular</string>
+    <string name="montserrat_semibold_otf">montserrat/Montserrat-SemiBold</string>
+    <string name="montserrat_thin_otf">montserrat/Montserrat-Thin</string>
+    <string name="montserrat_alternates_black_otf">montserrat/MontserratAlternates-Black</string>
+    <string name="montserrat_alternates_bold_otf">montserrat/MontserratAlternates-Bold</string>
+    <string name="montserrat_alternates_extrabold_otf">montserrat/MontserratAlternates-ExtraBold</string>
+    <string name="montserrat_alternates_extralight_otf">montserrat/MontserratAlternates-ExtraLight</string>
+    <string name="montserrat_alternates_light_otf">montserrat/MontserratAlternates-Light</string>
+    <string name="montserrat_alternates_medium_otf">montserrat/MontserratAlternates-Medium</string>
+    <string name="montserrat_alternates_regular_otf">montserrat/MontserratAlternates-Regular</string>
+    <string name="montserrat_alternates_semibold_otf">montserrat/MontserratAlternates-SemiBold</string>
+    <string name="montserrat_alternates_thin_otf">montserrat/MontserratAlternates-Thin</string>
+
+
+    <string name="required_field">required_field</string>
+    <string name="words_arent_match">Kata tidak cocok</string>
+    <string name="error_invalid_email">Email tidak valid</string>
+
+
+    <string name="permission_deniedd">Permission denied.</string>
+    <string name="permission_required">Permission is required</string>
+    <string name="permission_required_or_close">Permission\'s are required to run, please accept them to get best experience of application</string>
+    <string name="sms_permission_required">SMS permission\'s are required to run, please accept it to get best experience of application</string>
+    <string name="maps_permission">To open map, please grant Application with GPS permission.</string>
+    <string name="service_not_found">Service Not Found</string>
+    <string name="location_not_found">Location not reachable.</string>
+    <string name="location_permission_denied">Location permission denied!</string>
+    <string name="camera_permission">Camera permission denied.</string>
+    <string name="showpicker_permission">Untuk mendapatkan picker mohon izinkan aplikasi membaca dan tulis memory</string>
+    <string name="imagepicker_permission">Permission dibutuhkan untuk membuka image picker</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Batal</string>
+    <string name="password">Password</string>
+    <string name="close">Tutup</string>
+    <string name="yes">Ya</string>
+
+    <string name="api_repeat_confirm">Mendapat response error, apakah anda ingin mengulangi request ini ?</string>
+
+    <string name="timeout">Terputus</string>
+    <string name="connection_timeout">Koneksi Terputus</string>
+    <string name="server_error">Kesalahan Server</string>
+    <string name="retry">Coba Lagi</string>
+    <string name="search_hint">Cari</string>
+    <string name="error">Kesalahan</string>
+    <string name="unexpected_error">Unexpected Error</string>
+    <string name="google_unavailable">Layanan Google tidak tersedia di perangkat Anda, aplikasstri ini tidak akan berjalan hingga Anda memperbarui Layanan Google pada perangkat Anda</string>
+
+
+    <string name="title">Judul</string>
+    <string name="alert">Alert</string>
+    <string name="subtitle">Subtitle</string>
+
+
+
+</resources>

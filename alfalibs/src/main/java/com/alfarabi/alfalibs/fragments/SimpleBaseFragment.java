@@ -11,12 +11,25 @@ import android.view.ViewGroup;
 import com.alfarabi.alfalibs.fragments.interfaze.SimpleFragmentInitiator;
 import com.alfarabi.alfalibs.tools.WLog;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Created by Alfarabi on 6/15/17.
  */
 
 public abstract class SimpleBaseFragment extends Fragment implements SimpleFragmentInitiator{
     public static String TAG = SimpleBaseFragment.class.getName();
+
+    public static int VIEW_DELAY = 1000;
+
+    @Getter@Setter View container ;
+
+    private boolean viewObserved ;
+
+    public void onceViewObserved(){
+
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -44,6 +57,29 @@ public abstract class SimpleBaseFragment extends Fragment implements SimpleFragm
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         WLog.d(TAG,"onActivityCreated()");
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        WLog.d(TAG,"onViewCreated()");
+        super.onViewCreated(view, savedInstanceState);
+        if (view != null) {
+            this.container = view;
+            if(viewObserved){
+                return;
+            }
+            this.container.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+                if(viewObserved){
+                    return;
+                }
+                viewObserved = !viewObserved ;
+                this.container.postDelayed(() -> {
+                    if (getActivity() != null && isVisible()) {
+                        onceViewObserved();
+                    }
+                }, VIEW_DELAY);
+            });
+        }
     }
 
     @Override

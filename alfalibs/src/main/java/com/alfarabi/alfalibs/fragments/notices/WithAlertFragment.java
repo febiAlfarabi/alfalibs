@@ -1,0 +1,267 @@
+package com.alfarabi.alfalibs.fragments.notices;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.Point;
+import android.support.design.widget.Snackbar;
+import android.text.Html;
+import android.view.Display;
+import android.view.View;
+import android.widget.Toast;
+
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.Theme;
+import com.alfarabi.alfalibs.fragments.SimpleBaseFragment;
+
+import java.io.EOFException;
+import java.net.ConnectException;
+import java.net.UnknownHostException;
+import java.util.concurrent.TimeoutException;
+
+import retrofit2.HttpException;
+
+import com.alfarabi.alfalibs.R;
+
+/**
+ * Created by alfarabi on 3/19/18.
+ */
+
+public abstract class WithAlertFragment extends SimpleBaseFragment {
+
+
+
+
+    public int[] getDimension(){
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
+        return new int[]{width, height};
+    }
+
+    protected Snackbar snackbar ;
+    public void showSnackbar(String message, View.OnClickListener onClickListener){
+        if(snackbar!=null && snackbar.isShown()){
+            snackbar.dismiss();
+            snackbar = null ;
+        }
+        snackbar = Snackbar
+                .make(getActivity().getWindow().getDecorView(), Html.fromHtml("<font color=\"#ffffff\">"+message+"</font>"), Snackbar.LENGTH_LONG).setActionTextColor(Color.WHITE).setDuration(5000)
+                .setAction(getString(R.string.close), v -> {
+                    snackbar.dismiss();
+                    onClickListener.onClick(v);
+                });
+        snackbar.show();
+    }
+
+    public <ACT extends Activity> void showSnackbar(Throwable throwable, View.OnClickListener onClickListener, Class<ACT>... actClass){
+        String message = "" ;
+        throwable.printStackTrace();
+        if(throwable instanceof EOFException){
+            message = getString(R.string.server_error);
+        }else if(throwable instanceof UnknownHostException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof HttpException){
+            if(throwable.getMessage().trim().contains("HTTP 503")){
+                if(actClass!=null && actClass.length>0) {
+                    PackageManager pm = getActivity().getPackageManager();
+                    Intent intent = new Intent(getActivity(), actClass[0]);
+                    intent.putExtra("error_code", String.valueOf("503"));
+                    getActivity().getWindow().getDecorView().postDelayed(() -> {
+                        getActivity().finish();
+                        startActivity(intent);
+                    }, 2000);
+                    message = throwable.getMessage();
+                }else {
+                    message = getString(R.string.connection_timeout);
+                }
+            }else{
+                message = getString(R.string.connection_timeout);
+            }
+        }else if(throwable instanceof TimeoutException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof ConnectException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof EOFException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof java.net.SocketTimeoutException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof java.net.SocketException){
+            message = getString(R.string.connection_timeout);
+        } else{
+            message = throwable.getLocalizedMessage();
+        }
+        showSnackbar(message, onClickListener);
+    }
+
+    protected MaterialDialog materialDialog ;
+
+
+    public void showDialog(String message){
+        if(materialDialog!=null && materialDialog.isShowing()){
+            materialDialog.dismiss();
+            materialDialog = null ;
+        }
+        materialDialog = new MaterialDialog.Builder(getActivity()).title(R.string.alert).backgroundColorRes(R.color.white)
+                .content(message).contentColor(Color.BLACK).titleColor(Color.BLACK).positiveColor(Color.BLUE)
+                .positiveText(R.string.ok).theme(Theme.LIGHT).backgroundColor(Color.WHITE)
+                .onPositive((dialog, which) -> {})
+                .show();
+    }
+
+    public void showDialog(Throwable throwable, MaterialDialog.SingleButtonCallback singleButtonCallback){
+        if(materialDialog!=null && materialDialog.isShowing()){
+            materialDialog.dismiss();
+            materialDialog = null ;
+        }
+        materialDialog = new MaterialDialog.Builder(getActivity()).title(R.string.alert).backgroundColorRes(R.color.white)
+                .content(throwable.getMessage()).contentColor(Color.BLACK).titleColor(Color.BLACK).positiveColor(Color.BLUE)
+                .positiveText(R.string.ok).theme(Theme.LIGHT).backgroundColor(Color.WHITE)
+                .onPositive(singleButtonCallback)
+                .show();
+    }
+
+
+    public void showDialog(String message, MaterialDialog.SingleButtonCallback singleButtonCallback){
+        if(materialDialog!=null && materialDialog.isShowing()){
+            materialDialog.dismiss();
+            materialDialog = null ;
+        }
+        materialDialog = new MaterialDialog.Builder(getActivity()).title(R.string.alert).backgroundColorRes(R.color.white)
+                .content(message).contentColor(Color.BLACK).titleColor(Color.BLACK).positiveColor(Color.BLUE)
+                .positiveText(R.string.ok).theme(Theme.LIGHT).backgroundColor(Color.WHITE)
+                .onPositive(singleButtonCallback)
+                .show();
+    }
+    public void showDialog(String title, String message){
+        if(materialDialog!=null && materialDialog.isShowing()){
+            materialDialog.dismiss();
+            materialDialog = null ;
+        }
+        materialDialog = new MaterialDialog.Builder(getActivity()).title(title).backgroundColorRes(R.color.white)
+                .content(message).contentColor(Color.BLACK).titleColor(Color.BLACK).positiveColor(Color.BLUE)
+                .positiveText(R.string.ok).theme(Theme.LIGHT).backgroundColor(Color.WHITE)
+                .onPositive((dialog, which) -> {})
+                .show();
+    }
+    public void showDialog(String title, String message, MaterialDialog.SingleButtonCallback singleButtonCallback){
+        if(materialDialog!=null && materialDialog.isShowing()){
+            materialDialog.dismiss();
+            materialDialog = null ;
+        }
+        materialDialog = new MaterialDialog.Builder(getActivity()).title(title).backgroundColorRes(R.color.white)
+                .content(message).contentColor(Color.BLACK).titleColor(Color.BLACK).positiveColor(Color.BLUE)
+                .positiveText(R.string.ok).theme(Theme.LIGHT).backgroundColor(Color.WHITE)
+                .onPositive(singleButtonCallback)
+                .show();
+    }
+
+
+    public void showDialog(String message, MaterialDialog.SingleButtonCallback okButtonCallback,MaterialDialog.SingleButtonCallback cancelButtonCallback) {
+        if(materialDialog!=null && materialDialog.isShowing()){
+            materialDialog.dismiss();
+            materialDialog = null ;
+        }
+        materialDialog = new MaterialDialog.Builder(getActivity()).title(R.string.alert).backgroundColorRes(R.color.white)
+                .content(message).contentColor(Color.BLACK).titleColor(Color.BLACK).positiveColor(Color.BLUE)
+                .positiveText(R.string.ok).negativeText(R.string.cancel).theme(Theme.LIGHT).backgroundColor(Color.WHITE)
+                .onPositive(okButtonCallback).onNegative(cancelButtonCallback)
+                .show();
+    }
+
+    public void showDialog(String title, String message, MaterialDialog.SingleButtonCallback okButtonCallback,MaterialDialog.SingleButtonCallback cancelButtonCallback) {
+        if(materialDialog!=null && materialDialog.isShowing()){
+            materialDialog.dismiss();
+            materialDialog = null ;
+        }
+        materialDialog = new MaterialDialog.Builder(getActivity()).title(title).backgroundColorRes(R.color.white)
+                .content(message).contentColor(Color.BLACK).titleColor(Color.BLACK).positiveColor(Color.BLUE)
+                .positiveText(R.string.ok).negativeText(R.string.cancel).theme(Theme.LIGHT).backgroundColor(Color.WHITE)
+                .onPositive(okButtonCallback).onNegative(cancelButtonCallback)
+                .show();
+    }
+
+    public <ACT extends Activity> void showDialog(Throwable throwable, MaterialDialog.SingleButtonCallback singleButtonCallback, Class<ACT>... actClass){
+        String message = "" ;
+        throwable.printStackTrace();
+        if(throwable instanceof EOFException){
+            message = getString(R.string.server_error);
+        }else if(throwable instanceof UnknownHostException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof HttpException){
+            if(throwable.getMessage().trim().contains("HTTP 503")){
+                if(actClass!=null && actClass.length>0) {
+                    PackageManager pm = getActivity().getPackageManager();
+                    Intent intent = new Intent(getActivity(), actClass[0]);
+                    intent.putExtra("error_code", String.valueOf("503"));
+                    getActivity().getWindow().getDecorView().postDelayed(() -> {
+                        getActivity().finish();
+                        startActivity(intent);
+                    }, 2000);
+                    message = throwable.getMessage();
+                }else {
+                    message = getString(R.string.connection_timeout);
+                }
+            }else{
+                message = getString(R.string.connection_timeout);
+            }
+        }else if(throwable instanceof TimeoutException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof ConnectException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof EOFException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof java.net.SocketTimeoutException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof java.net.SocketException){
+            message = getString(R.string.connection_timeout);
+        } else{
+            message = throwable.getLocalizedMessage();
+        }
+        showDialog(message, singleButtonCallback);
+    }
+
+    public <ACT extends Activity> void showDialog(Throwable throwable, MaterialDialog.SingleButtonCallback okButtonCallback, MaterialDialog.SingleButtonCallback cancelButtonCallback, Class<ACT>... actClass){
+        String message = "" ;
+        throwable.printStackTrace();
+        if(throwable instanceof EOFException){
+            message = getString(R.string.server_error);
+        }else if(throwable instanceof UnknownHostException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof HttpException){
+            if(throwable.getMessage().trim().contains("HTTP 503")){
+                if(actClass!=null && actClass.length>0) {
+                    PackageManager pm = getActivity().getPackageManager();
+                    Intent intent = new Intent(getActivity(), actClass[0]);
+                    intent.putExtra("error_code", String.valueOf("503"));
+                    getActivity().getWindow().getDecorView().postDelayed(() -> {
+                        getActivity().finish();
+                        startActivity(intent);
+                    }, 2000);
+                    message = throwable.getMessage();
+                }else {
+                    message = getString(R.string.connection_timeout);
+                }
+            }else{
+                message = getString(R.string.connection_timeout);
+            }
+        }else if(throwable instanceof TimeoutException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof ConnectException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof EOFException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof java.net.SocketTimeoutException){
+            message = getString(R.string.connection_timeout);
+        }else if(throwable instanceof java.net.SocketException){
+            message = getString(R.string.connection_timeout);
+        } else{
+            message = throwable.getLocalizedMessage();
+        }
+        showDialog(message, okButtonCallback, cancelButtonCallback);
+    }
+
+}

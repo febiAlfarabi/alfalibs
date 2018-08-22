@@ -2,12 +2,14 @@ package com.alfarabi.alfalibs.adapters.recyclerview.viewholder;
 
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.alfarabi.alfalibs.adapters.interfaze.SimpleHolderCallback;
+import com.alfarabi.alfalibs.adapters.interfaze.StickyHolderInterface;
 import com.alfarabi.alfalibs.fragments.SimpleBaseFragment;
 import com.alfarabi.alfalibs.fragments.interfaze.RecyclerCallback;
-import com.codewaves.stickyheadergrid.StickyHeaderGridAdapter;
+import com.onecode.stickyheadergrid.viewholder.BaseViewHolder;
 
 import butterknife.ButterKnife;
 import lombok.Getter;
@@ -17,17 +19,16 @@ import lombok.Setter;
  * Created by Alfarabi on 6/15/17.
  */
 
-public abstract class StickyBodyViewHolder<F extends Fragment & RecyclerCallback, O, FP> extends StickyHeaderGridAdapter.ItemViewHolder implements SimpleHolderCallback<O, FP> {
+public abstract class StickyBodyViewHolder<F extends Fragment & RecyclerCallback, O extends StickyHolderInterface, FP> extends BaseViewHolder implements SimpleHolderCallback<O, FP> {
 
 
     @Getter@Setter F fragment ;
     @Getter@Setter O object ;
 
-
-    public StickyBodyViewHolder(F fragment, int id, ViewGroup viewGroup){
-        super(LayoutInflater.from(fragment.getActivity()).inflate(id, viewGroup, false));
+    public StickyBodyViewHolder(F fragment, View view){
+        super(view);
         this.fragment = fragment ;
-        ButterKnife.bind(this, itemView);
+        ButterKnife.bind(this, view);
     }
 
     @Override

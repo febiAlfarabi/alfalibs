@@ -40,6 +40,25 @@
                         "endColumns": "10,10",
                         "endOffsets": "17636,18353"
                     }
+                },
+                {
+                    "source": "/home/alfarabi/.gradle/caches/transforms-1/files-1.1/design-25.0.1.aar/8e941bb2b4a3232fab501c55936a3f58/res/values-v21/values-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "244"
+                    },
+                    "to": {
+                        "startLines": "309",
+                        "startColumns": "4",
+                        "startOffsets": "22409",
+                        "endLines": "311",
+                        "endColumns": "12",
+                        "endOffsets": "22598"
+                    }
                 }
             ]
         }

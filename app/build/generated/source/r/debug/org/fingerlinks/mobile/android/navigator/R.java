@@ -11,38 +11,38 @@ public final class R {
         public static final int decelerate_cubic = 0x7f01000b;
         public static final int decelerate_interpolator = 0x7f01000c;
         public static final int decelerate_quint = 0x7f01000d;
-        public static final int fade_in = 0x7f01000f;
-        public static final int fade_out = 0x7f010010;
-        public static final int popup_enter = 0x7f010011;
-        public static final int popup_exit = 0x7f010012;
-        public static final int slide_in_from_bottom = 0x7f010013;
-        public static final int slide_in_from_left = 0x7f010014;
-        public static final int slide_in_from_right = 0x7f010015;
-        public static final int slide_in_from_top = 0x7f010016;
-        public static final int slide_out_to_bottom = 0x7f010017;
-        public static final int slide_out_to_left = 0x7f010018;
-        public static final int slide_out_to_right = 0x7f010019;
-        public static final int slide_out_to_top = 0x7f01001a;
-        public static final int view_flipper_transition_in_left = 0x7f01001b;
-        public static final int view_flipper_transition_in_right = 0x7f01001c;
-        public static final int view_flipper_transition_out_left = 0x7f01001d;
-        public static final int view_flipper_transition_out_right = 0x7f01001e;
+        public static final int fade_in = 0x7f010016;
+        public static final int fade_out = 0x7f010017;
+        public static final int popup_enter = 0x7f010018;
+        public static final int popup_exit = 0x7f010019;
+        public static final int slide_in_from_bottom = 0x7f01001a;
+        public static final int slide_in_from_left = 0x7f01001b;
+        public static final int slide_in_from_right = 0x7f01001c;
+        public static final int slide_in_from_top = 0x7f01001d;
+        public static final int slide_out_to_bottom = 0x7f01001e;
+        public static final int slide_out_to_left = 0x7f01001f;
+        public static final int slide_out_to_right = 0x7f010020;
+        public static final int slide_out_to_top = 0x7f010021;
+        public static final int view_flipper_transition_in_left = 0x7f010022;
+        public static final int view_flipper_transition_in_right = 0x7f010023;
+        public static final int view_flipper_transition_out_left = 0x7f010024;
+        public static final int view_flipper_transition_out_right = 0x7f010025;
     }
     public static final class integer {
         public static final int anim_speed = 0x7f090002;
     }
     public static final class string {
-        public static final int app_name = 0x7f0c0021;
-        public static final int define_navigator = 0x7f0c0037;
-        public static final int library_navigator_author = 0x7f0c003c;
-        public static final int library_navigator_authorWebsite = 0x7f0c003d;
-        public static final int library_navigator_isOpenSource = 0x7f0c003e;
-        public static final int library_navigator_libraryDescription = 0x7f0c003f;
-        public static final int library_navigator_libraryName = 0x7f0c0040;
-        public static final int library_navigator_libraryVersion = 0x7f0c0041;
-        public static final int library_navigator_licenseId = 0x7f0c0042;
-        public static final int library_navigator_owner = 0x7f0c0043;
-        public static final int library_navigator_repositoryLink = 0x7f0c0044;
-        public static final int library_navigator_year = 0x7f0c0045;
+        public static final int app_name = 0x7f0c0023;
+        public static final int define_navigator = 0x7f0c003e;
+        public static final int library_navigator_author = 0x7f0c0045;
+        public static final int library_navigator_authorWebsite = 0x7f0c0046;
+        public static final int library_navigator_isOpenSource = 0x7f0c0047;
+        public static final int library_navigator_libraryDescription = 0x7f0c0048;
+        public static final int library_navigator_libraryName = 0x7f0c0049;
+        public static final int library_navigator_libraryVersion = 0x7f0c004a;
+        public static final int library_navigator_licenseId = 0x7f0c004b;
+        public static final int library_navigator_owner = 0x7f0c004c;
+        public static final int library_navigator_repositoryLink = 0x7f0c004d;
+        public static final int library_navigator_year = 0x7f0c004e;
     }
 }
