@@ -15,14 +15,14 @@ README
 compile 'com.github.febialfarabi:alfalibs:1.0.0'
 ```
 
-We can use these library to simplify our usual big effort to develop our android apps, This Library contains:
+We can use this library to reduce an effort for developing android apps, This Library contains:
 
 - Fragment and Activity navigation helped by @rebus007 library
 - Navigation Slider View, helped by @vikramkakkar
 - Project Lombok
 - Butterknife project
-- WLog, for logging your apps created by me, with control mode whether is Development or Production mode to disable Logging after release
-- Usable Adapter Collection by me (Explanation Later)
+- WLog, for logging your apps in general configuration, with control mode to change mode when app is in Development or Production mode, in simple words we can enable / disable logging mode
+- Usable Adapter Collection e.g RecyclerAdapter, SpinnerAdapter, and so on (Explanation Later)
 
 
 ### Thanks for additional library from these persons:
