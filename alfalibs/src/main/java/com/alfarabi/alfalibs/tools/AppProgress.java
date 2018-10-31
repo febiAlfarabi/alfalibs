@@ -18,9 +18,11 @@ public class AppProgress {
     * cancel is cancelable
     * */
     public static void showBasic(Context context, int message, boolean... indCancel){
-        if(progressBasic!=null){
-            progressBasic.dismiss();
-            progressBasic = null ;
+        if(progressBasic!=null && progressBasic.isShowing()){
+            try{
+                progressBasic.dismiss();
+                progressBasic = null ;
+            }catch (Exception e){ }
         }
         AppProgress.context = context ;
         if(indCancel.length==0){
@@ -34,9 +36,11 @@ public class AppProgress {
         progressBasic.show();
     }
     public static void showBasic(Context context, int title, int message, boolean... indCancel){
-        if(progressBasic!=null){
-            progressBasic.dismiss();
-            progressBasic = null ;
+        if(progressBasic!=null && progressBasic.isShowing()){
+            try{
+                progressBasic.dismiss();
+                progressBasic = null ;
+            }catch (Exception e){ }
         }
         AppProgress.context = context ;
         if(indCancel.length==0){
@@ -51,9 +55,11 @@ public class AppProgress {
     }
 
     public static void dismissBasic(){
-        if(progressBasic!=null){
-            progressBasic.dismiss();
-            progressBasic = null;
+        if(progressBasic!=null && progressBasic.isShowing()){
+            try{
+                progressBasic.dismiss();
+                progressBasic = null ;
+            }catch (Exception e){ }
         }
     }
 }

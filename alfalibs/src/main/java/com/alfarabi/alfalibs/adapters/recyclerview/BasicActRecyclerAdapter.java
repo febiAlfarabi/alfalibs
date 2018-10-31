@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 
 import com.alfarabi.alfalibs.activity.SimpleBaseActivity;
 import com.alfarabi.alfalibs.adapters.recyclerview.viewholder.ACTViewHolder;
-import com.alfarabi.alfalibs.adapters.recyclerview.viewholder.SimpleViewHolder;
-import com.alfarabi.alfalibs.helper.model.ObjectAdapterInterface;
 import com.alfarabi.alfalibs.tools.UISimulation;
 
 import java.lang.reflect.Field;
@@ -26,14 +24,14 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
-public class ActRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, ACT extends SimpleBaseActivity, VH extends ACTViewHolder> extends Adapter<VH> {
+public class BasicActRecyclerAdapter<OBJ extends Object, ACT extends SimpleBaseActivity, VH extends ACTViewHolder> extends Adapter<VH> {
     @Getter @Setter Class<VH> vhClass;
     @Getter @Setter ACT activity ;
     @Getter @Setter List<OBJ> objects;
     @Getter @Setter List<OBJ> copiedObjects = new ArrayList();
     @Getter @Setter HashMap<OBJ, VH> viewHolders = new HashMap();
 
-    public ActRecyclerAdapter(ACT activity, Class<VH> vhClass, List<OBJ> objects) {
+    public BasicActRecyclerAdapter(ACT activity, Class<VH> vhClass, List<OBJ> objects) {
         this.vhClass = vhClass;
         this.activity = activity;
         this.objects = objects;
@@ -41,7 +39,7 @@ public class ActRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, ACT
         this.copiedObjects.addAll(objects);
     }
 
-    public ActRecyclerAdapter initRecyclerView(RecyclerView recyclerView, LayoutManager layoutManager) {
+    public BasicActRecyclerAdapter initRecyclerView(RecyclerView recyclerView, LayoutManager layoutManager) {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(this);
         this.notifyDataSetChanged();
@@ -98,41 +96,5 @@ public class ActRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, ACT
         return super.getItemViewType(position);
     }
 
-    public void filter(String text) {
-        if(this.objects != null && this.copiedObjects != null) {
-            this.objects.clear();
-            if(text.isEmpty()) {
-                this.objects.addAll(this.copiedObjects);
-            } else {
-                text = text.toLowerCase();
-                int cursor = 0;
-
-                for(Iterator var3 = this.copiedObjects.iterator(); var3.hasNext(); ++cursor) {
-                    OBJ item = (OBJ) var3.next();
-                    if(!((ObjectAdapterInterface)item).isSearchable()) {
-                        return;
-                    }
-
-                    try {
-                        Class fieldClass = item.getClass();
-                        Field field = fieldClass.getDeclaredField(((ObjectAdapterInterface)item).canSearchByField());
-                        field.setAccessible(true);
-                        String value = (String)field.get(item);
-                        if(value.toLowerCase().contains(text)) {
-                            this.objects.add(item);
-                        }
-
-                        if(this.viewHolders.get(item) != null) {
-                            ((ACTViewHolder)this.viewHolders.get(item)).find(text);
-                        }
-                    } catch (Exception var8) {
-                        var8.printStackTrace();
-                    }
-                }
-            }
-
-            this.notifyDataSetChanged();
-        }
-    }
 
 }

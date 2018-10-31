@@ -19,6 +19,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import io.github.lizhangqu.coreprogress.ProgressHelper;
+import io.github.lizhangqu.coreprogress.ProgressUIListener;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -32,6 +34,7 @@ import okhttp3.ConnectionSpec;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -78,12 +81,10 @@ public class Kitchen {
     static @Getter@Setter Gson gson = new GsonBuilder().setLenient().create();
     static @Getter@Setter HashMap<String, String> headerMap = new HashMap<>();
 
-    @Getter@Setter public ProgressDialog progressDialog ;
-
     private int kitchenMode = LIVE_MODE;
 
 
-    private static Response currentResponse ;
+    public static Response currentResponse ;
 
     public Kitchen() {}
 
@@ -124,7 +125,6 @@ public class Kitchen {
             }
 
             if(headerMap!=null && headerMap.size()>0){
-
                 CustomInterceptor interceptor = new CustomInterceptor() {
                     @Override
                     public Response intercept(Chain chain) throws IOException {
@@ -139,6 +139,15 @@ public class Kitchen {
                     }
                 };
                 httpClient.addInterceptor(interceptor);
+            }
+            if(Kitchen.progressUIListener!=null){
+                Interceptor progressInterceptor = chain -> {
+                    Request request = chain.request();
+                    ProgressHelper.withProgress(request.body(), Kitchen.progressUIListener);
+                    Kitchen.currentResponse = chain.proceed(request);
+                    return Kitchen.currentResponse ;
+                };
+                httpClient.addInterceptor(progressInterceptor);
             }
             Kitchen.passedUrl = passedUrl[0];
             retroMaps.put(Kitchen.passedUrl, (new Retrofit.Builder()).baseUrl(
@@ -199,6 +208,15 @@ public class Kitchen {
                 };
                 httpClient.addInterceptor(interceptor);
             }
+            if(Kitchen.progressUIListener!=null){
+                Interceptor progressInterceptor = chain -> {
+                    Request request = chain.request();
+                    ProgressHelper.withProgress(request.body(), Kitchen.progressUIListener);
+                    Kitchen.currentResponse = chain.proceed(request);
+                    return Kitchen.currentResponse ;
+                };
+                httpClient.addInterceptor(progressInterceptor);
+            }
             Kitchen.passedUrl = passedUrl[0];
             retroMaps.put(Kitchen.passedUrl, (new Retrofit.Builder()).baseUrl(
                     Kitchen.passedUrl).client(httpClient.build())
@@ -235,8 +253,6 @@ public class Kitchen {
                         .build();
                 httpClient.connectionSpecs(Collections.singletonList(spec));
             }
-
-
             if(headerMap!=null && headerMap.size()>0){
                 Interceptor interceptor = chain -> {
                     Request.Builder request = chain.request().newBuilder();
@@ -248,6 +264,15 @@ public class Kitchen {
                     Kitchen.currentResponse = chain.proceed(request.build());
                     return Kitchen.currentResponse;
                 };
+            }
+            if(Kitchen.progressUIListener!=null){
+                Interceptor progressInterceptor = chain -> {
+                    Request request = chain.request();
+                    ProgressHelper.withProgress(request.body(), Kitchen.progressUIListener);
+                    Kitchen.currentResponse = chain.proceed(request);
+                    return Kitchen.currentResponse ;
+                };
+                httpClient.addInterceptor(progressInterceptor);
             }
             Kitchen.passedUrl = passedUrl[0];
             retroMaps.put(Kitchen.passedUrl, (new Retrofit.Builder()).baseUrl(
@@ -310,6 +335,15 @@ public class Kitchen {
                     }
                 };
                 httpClient.addInterceptor(interceptor);
+            }
+            if(Kitchen.progressUIListener!=null){
+                Interceptor progressInterceptor = chain -> {
+                    Request request = chain.request();
+                    ProgressHelper.withProgress(request.body(), Kitchen.progressUIListener);
+                    Kitchen.currentResponse = chain.proceed(request);
+                    return Kitchen.currentResponse ;
+                };
+                httpClient.addInterceptor(progressInterceptor);
             }
             retroMaps.put(Initial.DOMAIN_MOCK,
                     new Retrofit.Builder().client(httpClient.build())
@@ -386,18 +420,11 @@ public class Kitchen {
         }
     }
 
-    public static Kitchen usePan(Context context, int... customlayoutProgress){
+
+    static ProgressUIListener progressUIListener ;
+    public static Kitchen usePan(ProgressUIListener progressUIListener){
         Kitchen kitchen = new Kitchen();
-        if(customlayoutProgress==null || customlayoutProgress.length==0){
-            kitchen.progressDialog = ProgressDialog.show(context, "", "Loading...");
-            kitchen.progressDialog.getWindow().getDecorView().setBackgroundColor(Color.WHITE);
-        }else{
-            kitchen.progressDialog = new ProgressDialog(context);
-            kitchen.progressDialog.getWindow().setContentView(customlayoutProgress[0]);
-            kitchen.progressDialog.getWindow().getDecorView().setBackgroundColor(Color.WHITE);
-            kitchen.progressDialog.setMessage("Loading...");
-            kitchen.progressDialog.show();
-        }
+        kitchen.progressUIListener = progressUIListener;
         return  kitchen ;
     }
 
@@ -405,9 +432,6 @@ public class Kitchen {
         if(disposable!=null && !disposable.isDisposed()){
             observable.unsubscribeOn(Schedulers.io());
             disposable.dispose();
-            if(progressDialog!=null && progressDialog.isShowing()){
-                progressDialog.dismiss();
-            }
         }
         observable = with(observable);
         return disposable = observable.subscribe();
@@ -416,15 +440,9 @@ public class Kitchen {
         if(disposable!=null && !disposable.isDisposed()){
             observable.unsubscribeOn(Schedulers.io());
             disposable.dispose();
-            if(progressDialog!=null && progressDialog.isShowing()){
-                progressDialog.dismiss();
-            }
         }
         observable = with(observable);
         return disposable = observable.subscribe(t -> {
-            if(progressDialog!=null){
-                progressDialog.dismiss();
-            }
             onAny.accept(t);
         });
     }
@@ -432,20 +450,11 @@ public class Kitchen {
         if(disposable!=null && !disposable.isDisposed()){
             observable.unsubscribeOn(Schedulers.io());
             disposable.dispose();
-            if(progressDialog!=null && progressDialog.isShowing()){
-                progressDialog.dismiss();
-            }
         }
         observable = with(observable);
         return disposable = observable.subscribe(t -> {
-            if(progressDialog!=null){
-                progressDialog.dismiss();
-            }
             onAny.accept(t);
         },throwable -> {
-            if(progressDialog!=null){
-                progressDialog.dismiss();
-            }
             onError.accept(throwable);
         });
     }
@@ -454,27 +463,15 @@ public class Kitchen {
         if(disposable!=null && !disposable.isDisposed()){
             observable.unsubscribeOn(Schedulers.io());
             disposable.dispose();
-            if(progressDialog!=null && progressDialog.isShowing()){
-                progressDialog.dismiss();
-            }
         }
         if(connected){
             observable = with(observable);
             return disposable = observable.subscribe(t -> {
-                if(progressDialog!=null){
-                    progressDialog.dismiss();
-                }
                 onAny.call(t, Kitchen.currentResponse);
             },throwable -> {
-                if(progressDialog!=null){
-                    progressDialog.dismiss();
-                }
                 onError.call(connected, throwable, Kitchen.currentResponse);
             });
         }else{
-            if(progressDialog!=null){
-                progressDialog.dismiss();
-            }
             return disposable = observable.subscribe(t -> {
                 new Exception("No Connection Available, Please Check Your Device Connection");
             },throwable -> {
@@ -488,20 +485,11 @@ public class Kitchen {
         if(disposable!=null && !disposable.isDisposed() && disposePrevious){
             observable.unsubscribeOn(Schedulers.io());
             disposable.dispose();
-            if(progressDialog!=null && progressDialog.isShowing()){
-                progressDialog.dismiss();
-            }
         }
         observable = with(observable);
         return disposable = observable.subscribe(t -> {
-            if(progressDialog!=null){
-                progressDialog.dismiss();
-            }
             onAny.accept(t);
         },throwable -> {
-            if(progressDialog!=null){
-                progressDialog.dismiss();
-            }
             onError.accept(throwable);
         });
     }
@@ -510,27 +498,15 @@ public class Kitchen {
         if(disposable!=null && !disposable.isDisposed() && disposePrevious){
             observable.unsubscribeOn(Schedulers.io());
             disposable.dispose();
-            if(progressDialog!=null && progressDialog.isShowing()){
-                progressDialog.dismiss();
-            }
         }
         if(connected){
             observable = with(observable);
             return disposable = observable.subscribe(t -> {
-                if(progressDialog!=null){
-                    progressDialog.dismiss();
-                }
                 onAny.call(t, Kitchen.currentResponse);
             },throwable -> {
-                if(progressDialog!=null){
-                    progressDialog.dismiss();
-                }
                 onError.call(connected, throwable, Kitchen.currentResponse);
             });
         }else{
-            if(progressDialog!=null){
-                progressDialog.dismiss();
-            }
             return disposable = observable.subscribe(t -> {
                 new Exception("No Connection Available, Please Check Your Device Connection");
             },throwable -> {
