@@ -47,7 +47,7 @@ afterEvaluate { project ->
 
                 pom.groupId = 'com.github.febialfarabi'
                 pom.artifactId = 'alfalibs'
-                pom.version = '2.1.5'
+                pom.version = '2.1.6'
 
                 repository(url: getReleaseRepositoryUrl()) {
                     authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
@@ -59,7 +59,7 @@ afterEvaluate { project ->
                 pom.project {
                     name 'Alfalibs'
                     packaging 'aar'
-                    description 'Design Pattern Collection for simplifying Android Development Process'
+                    description 'Utility exception to reduce lot of efforts when building android application base on java'
                     url 'https://github.com/febiAlfarabi/alfalibs.git'
 
                     scm {
