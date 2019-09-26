@@ -20,7 +20,7 @@ publish {
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+//    buildToolsVersion '26.0.2'
 
     defaultConfig {
         minSdkVersion 16
@@ -61,7 +61,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'org.fingerlinks.mobile.android:Navigator:0.1.5'
     implementation 'com.appeaser.sublimenavigationviewlibrary:sublimenavigationviewlibrary:0.0.1'
-    provided 'org.projectlombok:lombok:1.16.16'
+    compileOnly 'org.projectlombok:lombok:1.16.16'
     annotationProcessor 'org.projectlombok:lombok:1.16.16'
     implementation 'com.jakewharton:butterknife:8.6.0'
     implementation 'ca.barrenechea.header-decor:header-decor:0.2.8'
