@@ -12,7 +12,7 @@ README
  }
 ```
 ```java
-compile 'com.github.febialfarabi:alfalibs:1.0.0'
+compile 'com.github.febialfarabi:alfalibs:2.2.56'
 ```
 
 We can use this library to reduce an effort for developing android apps, This Library contains:
