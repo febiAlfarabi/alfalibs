@@ -1,12 +1,5 @@
 package com.alfarabi.alfalibs.helper;
 
-import com.alfarabi.alfalibs.tools.WLog;
-import com.alfarabi.alfalibs.views.AlfaRecyclerView;
-import com.paginate.Paginate;
-
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * Created by Alfarabi on 8/7/17.
  */

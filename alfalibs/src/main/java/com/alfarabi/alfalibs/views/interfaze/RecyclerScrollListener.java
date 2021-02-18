@@ -1,8 +1,11 @@
 package com.alfarabi.alfalibs.views.interfaze;
 
+//import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.GridLayoutManager;
+//import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+//import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 /**
@@ -17,7 +20,7 @@ public abstract class RecyclerScrollListener extends RecyclerView.OnScrollListen
     private int currentPage = 0;
     // The total number of items in the dataset after the last load
     private int previousTotalItemCount = 0;
-    // True if we are still waiting for the last set of data to load.
+    // True if we are still waiting for the last set of data to load.R
     private boolean loading = true;
     // Sets the starting page index
     private int startingPageIndex = 0;

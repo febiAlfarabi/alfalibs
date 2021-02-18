@@ -1,6 +1,5 @@
 package com.alfarabi.alfalibs.helper;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +7,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import java.util.HashSet;
+
+import android.support.v7.app.AppCompatActivity;
 
 public class ConnectivityReceiver extends BroadcastReceiver {
  
@@ -40,13 +41,13 @@ public class ConnectivityReceiver extends BroadcastReceiver {
     }
 
 
-    public static <ACT extends Activity & ConnectivityReceiverListener> boolean addConnectionListener(ACT listener){
+    public static <ACT extends AppCompatActivity & ConnectivityReceiverListener> boolean addConnectionListener(ACT listener){
         boolean connected = connected(listener);
         connectivityReceiverListeners.add(listener);
         return connected ;
     }
 
-    public static <ACT extends Activity & ConnectivityReceiverListener> boolean removeConnectionListener(ACT listener){
+    public static <ACT extends AppCompatActivity & ConnectivityReceiverListener> boolean removeConnectionListener(ACT listener){
         boolean connected = connected(listener);
         connectivityReceiverListeners.remove(listener);
         return connected ;

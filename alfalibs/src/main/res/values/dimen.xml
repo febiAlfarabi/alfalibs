@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="topbot">12.7dp</dimen>
+    <dimen name="leftright">16.7dp</dimen>
+    <dimen name="textSizeDefault">11.7sp</dimen>
+
+    <dimen name="top">10dp</dimen>
+    <dimen name="left">0dp</dimen>
+    <dimen name="right">10dp</dimen>
+    <dimen name="right_object">5dp</dimen>
+    <dimen name="bottom">0dp</dimen>
+    <dimen name="size_container">164dp</dimen>
+    <dimen name="size_container2">316.3dp</dimen>
+    <dimen name="size_object">117dp</dimen>
+    <dimen name="size_13sp">13.1sp</dimen>
+    <dimen name="size_14sp">14sp</dimen>
+
+
+    <dimen name="none">0dp</dimen>
+    <dimen name="one">1dp</dimen>
+    <dimen name="two">2dp</dimen>
+
+    <dimen name="avatar_size">46dp</dimen>
+
+    <!-- margins and paddings, n x 2dp -->
+    <dimen name="margin_micro">0.5dp</dimen>
+    <dimen name="margin_verytiny">1dp</dimen>
+    <dimen name="margin_tiny">2dp</dimen>
+    <dimen name="margin_verysmall">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_xsmall">4dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_xlarge_min">-64dp</dimen>
+    <dimen name="margin_xlarge">56dp</dimen>
+    <dimen name="margin_verylarge">64dp</dimen>
+    <dimen name="margin_huge">128dp</dimen>
+    <dimen name="margin_middle_huge">196dp</dimen>
+    <dimen name="margin_very_huge">256dp</dimen>
+    <dimen name="margin_small_to_medium">12dp</dimen>
+    <dimen name="margin_big">24dp</dimen>
+
+    <!-- elevations (shadows), n + 4dp -->
+    <dimen name="elevation_low">4dp</dimen>
+    <dimen name="elevation_medium">8dp</dimen>
+
+    <dimen name="text_verysmall">4sp</dimen>
+    <dimen name="text_small">8sp</dimen>
+    <dimen name="text_small_to_middle">10sp</dimen>
+    <dimen name="text_middle">12sp</dimen>
+    <dimen name="text_standar_13">13sp</dimen>
+    <dimen name="text_standar">14sp</dimen>
+    <dimen name="text_standar_to_default">15sp</dimen>
+    <dimen name="text_medium">18sp</dimen>
+    <dimen name="text_medium_to_large">22sp</dimen>
+    <dimen name="text_large">32sp</dimen>
+
+    <dimen name="text_big">28sp</dimen>
+
+    <dimen name="text_standar_to_medium">16sp</dimen>
+    <dimen name="text_more_medium">20sp</dimen>
+    <dimen name="text_medium_to_big">24sp</dimen>
+    <dimen name="text_lower_big">26sp</dimen>
+
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html -->
+    <dimen name="navigation_drawer_width">240dp</dimen>
+    <dimen name="very_litle">2dp</dimen>
+    <dimen name="little">4dp</dimen>
+    <dimen name="little_to_small">6dp</dimen>
+    <dimen name="small">8dp</dimen>
+    <dimen name="small_to_medium">12dp</dimen>
+    <dimen name="negative_small">-8dp</dimen>
+    <dimen name="negative_below_small">-6dp</dimen>
+    <dimen name="negative_xsmall">-4dp</dimen>
+    <dimen name="medium_lower">14dp</dimen>
+    <dimen name="medium">16dp</dimen>
+    <dimen name="medium_to_big">20dp</dimen>
+    <dimen name="big">24dp</dimen>
+    <dimen name="big_to_large">28dp</dimen>
+    <dimen name="large">32dp</dimen>
+    <dimen name="above_large">40dp</dimen>
+    <dimen name="large_to_x">48dp</dimen>
+    <dimen name="min_above_verylarge">-72dp</dimen>
+    <dimen name="xlarge">56dp</dimen>
+    <dimen name="verylarge">64dp</dimen>
+    <dimen name="above_verylarge">72dp</dimen>
+    <dimen name="verylarge_to_x">80dp</dimen>
+    <dimen name="chart_drop">86dp</dimen>
+    <dimen name="barchart_view_width">256dp</dimen>
+    <dimen name="xverylarge">96dp</dimen>
+    <dimen name="above_xverylarge">124dp</dimen>
+    <dimen name="x_to_xxverylarge">164dp</dimen>
+    <dimen name="xxverylarge">192dp</dimen>
+    <dimen name="xxxverylarge">248dp</dimen>
+    <dimen name="profile_weight">96dp</dimen>
+    <dimen name="thumbnail_medium">96dp</dimen>
+    <dimen name="thumbnail_small">48dp</dimen>
+    <dimen name="min_line">-0.5dp</dimen>
+    <dimen name="xline">0.5dp</dimen>
+    <dimen name="neg_xline">-0.5dp</dimen>
+    <dimen name="line">1dp</dimen>
+    <dimen name="neg_line">-1dp</dimen>
+    <dimen name="line_standard">1dp</dimen>
+    <dimen name="min_line_standard">-1dp</dimen>
+    <dimen name="line_middle">2dp</dimen>
+    <dimen name="min_line_middle">-2dp</dimen>
+    <dimen name="line_big">4dp</dimen>
+    <dimen name="line_large">8dp</dimen>
+    <dimen name="image_picker_width">128dp</dimen>
+    <dimen name="similiar_place_width">128dp</dimen>
+
+    <dimen name="fab_normal">56dp</dimen>
+    <dimen name="fab_mini">48dp</dimen>
+    <dimen name="fab_xmini">36dp</dimen>
+
+    <dimen name="banner_height">150dp</dimen>
+    <dimen name="home_height">330dp</dimen>
+    <dimen name="dot_height">8dp</dimen>
+
+
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_6">6dp</dimen>
+    <dimen name="margin_7">7dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_16">16.3dp</dimen>
+    <dimen name="margin_17">17dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_27">27dp</dimen>
+    <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_33">33.3dp</dimen>
+    <dimen name="margin_38">38.7dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
+    <dimen name="margin_60">60dp</dimen>
+    <dimen name="margin_73">73.3dp</dimen>
+    <dimen name="margin_74">74dp</dimen>
+    <dimen name="margin_80">80dp</dimen>
+    <dimen name="margin_100">100dp</dimen>
+    <dimen name="margin_120">120dp</dimen>
+    <dimen name="margin_160">160dp</dimen>
+    <dimen name="margin_216">216.7dp</dimen>
+    <dimen name="margin_217">217dp</dimen>
+    <dimen name="margin_225">225dp</dimen>
+    <dimen name="margin_250">250dp</dimen>
+    <dimen name="margin_266">266.7dp</dimen>
+    <dimen name="margin_300">300dp</dimen>
+    <dimen name="margin_320">320dp</dimen>
+    <dimen name="margin_360">360dp</dimen>
+    <dimen name="margin_top">26.7dp</dimen>
+    <dimen name="zero_widht">0dp</dimen>
+    <dimen name="paddig70">70dp</dimen>
+    <dimen name="width217">217dp</dimen>
+    <dimen name="textsize16">16.5sp</dimen>
+    <dimen name="linespacingmin">-2.8sp</dimen>
+    <dimen name="width21">21dp</dimen>
+    <dimen name="width1">1dp</dimen>
+    <dimen name="margin66">66.7dp</dimen>
+    <dimen name="margintp">17.7dp</dimen>
+    <dimen name="margin215">215.3dp</dimen>
+    <dimen name="height433">433.3dp</dimen>
+    <dimen name="bottommargin">54.3dp</dimen>
+    <dimen name="topmargin">45dp</dimen>
+    <dimen name="height">33.3dp</dimen>
+    <dimen name="scroll600">600dp</dimen>
+    <dimen name="margin7">7dp</dimen>
+    <dimen name="margin116">116.7dp</dimen>
+    <dimen name="margin49">49dp</dimen>
+    <dimen name="paddingleft">13.7dp</dimen>
+    <dimen name="width_200">200dp</dimen>
+    <dimen name="height23">23.3dp</dimen>
+    <dimen name="extra">2.3dp</dimen>
+    <dimen name="med_to_big">21dp</dimen>
+    <dimen name="padding47">47dp</dimen>
+    <dimen name="margin13">13dp</dimen>
+    <dimen name="margin15">15dp</dimen>
+
+
+    <dimen name="edittext_height">48dp</dimen>
+    <dimen name="edittext_small_height">21dp</dimen>
+    <dimen name="button_height">42dp</dimen>
+
+    <dimen name="text_min8">-8sp</dimen>
+    <dimen name="text_15">15sp</dimen>
+    <dimen name="text_40">40sp</dimen>
+
+    <dimen name="box_text_height">40dp</dimen>
+
+    <dimen name="menu_width">130dp</dimen>
+    <dimen name="photo_profile_width">130dp</dimen>
+
+</resources>

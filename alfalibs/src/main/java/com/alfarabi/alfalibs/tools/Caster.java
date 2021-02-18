@@ -1,8 +1,10 @@
 package com.alfarabi.alfalibs.tools;
 
-import android.app.Activity;
 
 import com.google.gson.internal.Primitives;
+
+//import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by Alfarabi on 8/24/17.
@@ -11,7 +13,7 @@ import com.google.gson.internal.Primitives;
 public class Caster {
 
 
-    public static <T extends Activity> T activity(Activity activity, Class<T> tClass){
+    public static <T extends AppCompatActivity> T activity(AppCompatActivity activity, Class<T> tClass){
         return Primitives.wrap(tClass).cast(activity);
     }
 

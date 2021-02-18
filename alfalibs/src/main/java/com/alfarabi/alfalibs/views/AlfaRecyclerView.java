@@ -1,9 +1,7 @@
 package com.alfarabi.alfalibs.views;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +9,15 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.alfarabi.alfalibs.R;
-import com.alfarabi.alfalibs.helper.PaginationCallback;
 import com.alfarabi.alfalibs.views.interfaze.EmptyLayoutListener;
 import com.alfarabi.alfalibs.views.interfaze.LoadingInterface;
-import com.paginate.Paginate;
-import com.paginate.recycler.LoadingListItemSpanLookup;
-import com.paginate.recycler.RecyclerPaginate;
 
 import java.util.List;
 
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -27,7 +25,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-public final class AlfaRecyclerView<E> extends android.support.v7.widget.RecyclerView implements LoadingInterface {
+public final class AlfaRecyclerView<E> extends RecyclerView implements LoadingInterface {
 
     private String TAG = AlfaRecyclerView.class.getName();
 
@@ -72,14 +70,10 @@ public final class AlfaRecyclerView<E> extends android.support.v7.widget.Recycle
             setEmptyView(emptyView);
         }
         if(a.getResourceId(R.styleable.AlfaRecyclerView_loading_view, 0)!=0){
-            loadingView = ((Activity)context).findViewById(a.getResourceId(R.styleable.AlfaRecyclerView_loading_view, 0));
+            loadingView = ((AppCompatActivity)context).findViewById(a.getResourceId(R.styleable.AlfaRecyclerView_loading_view, 0));
             setLoadingView(loadingView);
         }
 
-    }
-
-    public void setEmptyView(View view){
-        this.emptyView = view ;
     }
 
     final private AdapterDataObserver observer = new AdapterDataObserver() {

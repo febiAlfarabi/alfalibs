@@ -1,5 +1,4 @@
-package com.alfarabi.alfalibsapps;
-import java.util.ArrayList;
+package com.alfarabi.apps;
 import java.util.List;
 
 import retrofit2.Call;

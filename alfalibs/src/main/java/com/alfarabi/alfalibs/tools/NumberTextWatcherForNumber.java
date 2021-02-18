@@ -2,9 +2,12 @@ package com.alfarabi.alfalibs.tools;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.EditText;
 
 import java.util.StringTokenizer;
+
+//import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.AppCompatEditText;
+
 
 /**
  * Created by Shreekrishna Ban on 12/14/2015.
@@ -25,10 +28,10 @@ import java.util.StringTokenizer;
  */
 public class NumberTextWatcherForNumber implements TextWatcher {
 
-    EditText editText;
+    AppCompatEditText editText;
 
 
-    public NumberTextWatcherForNumber(EditText editText) {
+    public NumberTextWatcherForNumber(AppCompatEditText editText) {
         this.editText = editText;
 
     }

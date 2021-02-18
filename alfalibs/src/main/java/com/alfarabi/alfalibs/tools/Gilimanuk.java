@@ -1,23 +1,20 @@
 package com.alfarabi.alfalibs.tools;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 
 import org.fingerlinks.mobile.android.navigator.Navigator;
-import org.fingerlinks.mobile.android.navigator.builder.Builders;
 import org.fingerlinks.mobile.android.navigator.builder.Builders.Any.F;
 import org.fingerlinks.mobile.android.navigator.builder.Builders.Any.G;
 
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 public class Gilimanuk {
     public static final String TAG = Gilimanuk.class.getName();
@@ -447,12 +444,16 @@ public class Gilimanuk {
         }
     }
 
-    public static Disposable currentFragment(FragmentActivity activity) {
-        return Observable.fromCallable(() -> {
-            return actualFragmentTag(activity) == null?null:activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
-        }).subscribe();
+//    public static Disposable currentFragment(FragmentActivity activity) {
+//        return Observable.fromCallable(() -> {
+//            return actualFragmentTag(activity) == null?null:activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
+//        }).subscribe();
+//    }
 
+    public static Fragment currentFragment(FragmentActivity activity) {
+        return actualFragmentTag(activity) == null?null:activity.getSupportFragmentManager().findFragmentByTag(actualFragmentTag(activity));
     }
+
 
     public static boolean currentIs(FragmentActivity a, Class c) {
         WLog.i(TAG, "TAG OF CURRENT FRAGMENT IS = " + actualFragmentTag(a));
@@ -495,15 +496,15 @@ public class Gilimanuk {
         return tag;
     }
 
-    public static void restart(@NonNull Context context, @NonNull Class<? extends Activity> nextActivityClass) {
+    public static void restart(@NonNull Context context, @NonNull Class<? extends AppCompatActivity> nextActivityClass) {
         restart(context, new Intent(context, nextActivityClass));
     }
 
     public static void restart(@NonNull Context context, @NonNull Intent nextActivity) {
         nextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(nextActivity);
-        if(context instanceof Activity) {
-            ((Activity)context).finish();
+        if(context instanceof AppCompatActivity) {
+            ((AppCompatActivity)context).finish();
         }
 
         Runtime.getRuntime().exit(0);
@@ -512,7 +513,7 @@ public class Gilimanuk {
     public static Intent startActivity(Context from, Class to) {
         Intent intent = new Intent(from, to);
         from.startActivity(intent);
-        ((Activity)from).finish();
+        ((AppCompatActivity)from).finish();
         return intent;
     }
 
@@ -520,7 +521,7 @@ public class Gilimanuk {
         Intent intent = new Intent(from, to);
         from.startActivity(intent);
         if(finish) {
-            ((Activity)from).finish();
+            ((AppCompatActivity)from).finish();
         }
 
         return intent;
@@ -528,15 +529,15 @@ public class Gilimanuk {
 
     public static Intent startActivityForResult(Context from, Class to, int requestCode) {
         Intent intent = new Intent(from, to);
-        ((Activity)from).startActivityForResult(intent, requestCode);
-        ((Activity)from).finish();
+        ((AppCompatActivity)from).startActivityForResult(intent, requestCode);
+        ((AppCompatActivity)from).finish();
         return intent;
     }
 
 
     public static Intent startActivity(Context from, Intent intent) {
         from.startActivity(intent);
-        ((Activity)from).finish();
+        ((AppCompatActivity)from).finish();
         return intent;
     }
 
@@ -544,7 +545,7 @@ public class Gilimanuk {
 //        Intent intent = new Intent(from, to);
         from.startActivity(intent);
         if(finish) {
-            ((Activity)from).finish();
+            ((AppCompatActivity)from).finish();
         }
 
         return intent;
@@ -552,25 +553,25 @@ public class Gilimanuk {
 
     public static Intent startActivityForResult(Context from, Intent intent, int requestCode) {
 //        Intent intent = new Intent(from, to);
-        ((Activity)from).startActivityForResult(intent, requestCode);
-        ((Activity)from).finish();
+        ((AppCompatActivity)from).startActivityForResult(intent, requestCode);
+        ((AppCompatActivity)from).finish();
         return intent;
     }
 
     public static Intent startActivityForResult(Context from, Intent intent, int requestCode, boolean finish) {
 //        Intent intent = new Intent(from, to);
-        ((Activity)from).startActivityForResult(intent, requestCode);
+        ((AppCompatActivity)from).startActivityForResult(intent, requestCode);
         if(finish){
-            ((Activity)from).finish();
+            ((AppCompatActivity)from).finish();
         }
         return intent;
     }
 
     public static Intent startActivityForResult(Context from, Class to, int requestCode, boolean finish) {
         Intent intent = new Intent(from, to);
-        ((Activity)from).startActivityForResult(intent, requestCode);
+        ((AppCompatActivity)from).startActivityForResult(intent, requestCode);
         if(finish){
-            ((Activity)from).finish();
+            ((AppCompatActivity)from).finish();
         }
         return intent;
     }

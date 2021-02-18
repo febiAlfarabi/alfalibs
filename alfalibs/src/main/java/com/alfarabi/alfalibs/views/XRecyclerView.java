@@ -5,8 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
-import com.alfarabi.alfalibs.adapters.recyclerview.VerticalRecyclerAdapter;
-
 /**
  * Created by Alfarabi on 6/19/17.
  */

@@ -14,11 +14,9 @@ import com.alfarabi.alfalibs.activity.SimpleBaseActivity;
 import com.alfarabi.alfalibs.adapters.recyclerview.viewholder.ACTViewHolder;
 import com.alfarabi.alfalibs.tools.UISimulation;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import lombok.Getter;
@@ -27,7 +25,7 @@ import lombok.Setter;
 public class BasicActRecyclerAdapter<OBJ extends Object, ACT extends SimpleBaseActivity, VH extends ACTViewHolder> extends Adapter<VH> {
     @Getter @Setter Class<VH> vhClass;
     @Getter @Setter ACT activity ;
-    @Getter @Setter List<OBJ> objects;
+    @Getter List<OBJ> objects;
     @Getter @Setter List<OBJ> copiedObjects = new ArrayList();
     @Getter @Setter HashMap<OBJ, VH> viewHolders = new HashMap();
 

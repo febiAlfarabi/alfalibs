@@ -23,6 +23,22 @@ public class InputTools {
         return ret;
     }
 
+    public static boolean isComplete(boolean withTooltip, @NonNull EditText... editTexts){
+        boolean ret = true ;
+        for (EditText editText : editTexts) {
+            if(editText.getText().toString().isEmpty()){
+                if(ret){
+                    ret = false ;
+                }
+                if(withTooltip){
+                    editText.setError(editText.getContext().getResources().getString(R.string.required_field));
+                }
+            }
+        }
+        return ret;
+    }
+
+
     public static boolean isComplete(@NonNull EditText... editTexts){
         boolean ret = true ;
         for (EditText editText : editTexts) {

@@ -1,6 +1,4 @@
-package com.alfarabi.alfalibsapps;
-
-import android.app.Application;
+package com.alfarabi.apps;
 
 import com.alfarabi.alfalibs.AlfaLibsApplication;
 import com.alfarabi.alfalibs.http.HttpInstance;

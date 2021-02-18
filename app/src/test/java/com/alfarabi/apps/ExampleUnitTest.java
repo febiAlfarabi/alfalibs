@@ -1,4 +1,4 @@
-package com.alfarabi.alfalibsapps;
+package com.alfarabi.apps;
 
 import org.junit.Test;
 

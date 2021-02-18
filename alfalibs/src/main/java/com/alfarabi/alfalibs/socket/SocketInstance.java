@@ -1,7 +1,5 @@
 package com.alfarabi.alfalibs.socket;
 
-import com.alfarabi.alfalibs.service.SocketService;
-
 public class SocketInstance {
 
     static SocketInstance socketInstance ;

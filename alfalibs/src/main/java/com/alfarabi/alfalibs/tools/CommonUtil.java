@@ -1,21 +1,17 @@
 package com.alfarabi.alfalibs.tools;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,6 +19,10 @@ import java.io.OutputStream;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatEditText;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -37,7 +37,7 @@ public class CommonUtil {
      *
      * @param editText edit text that want to disabled
      */
-    public static void disableKeyboard(@NonNull EditText editText) {
+    public static void disableKeyboard(@NonNull AppCompatEditText editText) {
         editText.setOnTouchListener((v, event) -> {
             v.onTouchEvent(event);
             InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -72,9 +72,9 @@ public class CommonUtil {
 //
 //    }
 
-    public static void disableKeyboard(@NonNull EditText... editTexts) {
+    public static void disableKeyboard(@NonNull AppCompatEditText... editTexts) {
         if (editTexts != null && editTexts.length > 0) {
-            for (EditText editText : editTexts) {
+            for (AppCompatEditText editText : editTexts) {
                 if (editText != null) {
                     editText.setOnTouchListener((v, event) -> {
                         v.onTouchEvent(event);
@@ -153,7 +153,7 @@ public class CommonUtil {
         }
     }
 
-    public static File storeImage(Activity activity, Bitmap imageData) throws Exception{
+    public static File storeImage(AppCompatActivity activity, Bitmap imageData) throws Exception{
         File photoFile = createImageFile(activity);
         String filePath = photoFile.toString();
         FileOutputStream fileOutputStream = new FileOutputStream(filePath);
@@ -164,7 +164,7 @@ public class CommonUtil {
         bos.close();
         return photoFile ;
     }
-    public static File storeImage(Activity activity, Bitmap imageData, String filename) throws Exception{
+    public static File storeImage(AppCompatActivity activity, Bitmap imageData, String filename) throws Exception{
         File photoFile = createImageFile(activity, filename);
         String filePath = photoFile.toString();
         FileOutputStream fileOutputStream = new FileOutputStream(filePath);
@@ -177,7 +177,7 @@ public class CommonUtil {
     }
 
 
-    public static File createImageFile(Activity activity) throws IOException, java.io.IOException {
+    public static File createImageFile(AppCompatActivity activity) throws IOException, java.io.IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = getAppName(activity)+ timeStamp + "_";
@@ -190,7 +190,7 @@ public class CommonUtil {
     }
 
 
-    public static File createImageFile(Activity activity, String filename) throws IOException, java.io.IOException {
+    public static File createImageFile(AppCompatActivity activity, String filename) throws IOException, java.io.IOException {
         WLog.i(TAG, "FILENAME $$$$ "+filename);
         File storageDir = activity.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 //        if(!activity.getCacheDir().exists()){
@@ -210,7 +210,7 @@ public class CommonUtil {
 
 
 
-    public static void deleteImageFile(Activity activity) throws IOException, java.io.IOException {
+    public static void deleteImageFile(AppCompatActivity activity) throws IOException, java.io.IOException {
         File storageDir = activity.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File[] files = storageDir.listFiles();
         if(files!=null){
@@ -222,7 +222,7 @@ public class CommonUtil {
         }
     }
 
-    public static File openFile(Activity activity, String filename){
+    public static File openFile(AppCompatActivity activity, String filename){
         WLog.i(TAG, "FILE NAME "+filename);
         File storageDir = activity.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File file = new File(storageDir, filename);
@@ -231,7 +231,7 @@ public class CommonUtil {
     }
 
 
-    public static String getAppName(Activity activity) {
+    public static String getAppName(AppCompatActivity activity) {
         try {
             return activity.getPackageManager().getPackageInfo(activity.getPackageName(), 0).applicationInfo.name;
         } catch (PackageManager.NameNotFoundException e) {
@@ -243,7 +243,7 @@ public class CommonUtil {
         return new File(uri.getPath());
     }
 
-    public static File writeResponseBodyToDisk(Activity activity, ResponseBody body) {
+    public static File writeResponseBodyToDisk(AppCompatActivity activity, ResponseBody body) {
         try {
             // todo change the file location/name according to your needs
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());

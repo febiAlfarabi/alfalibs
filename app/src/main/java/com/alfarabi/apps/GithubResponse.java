@@ -1,4 +1,5 @@
-package com.alfarabi.alfalibsapps;
+package com.alfarabi.apps;
+
 
 import com.alfarabi.alfalibs.http.ContentResponse;
 

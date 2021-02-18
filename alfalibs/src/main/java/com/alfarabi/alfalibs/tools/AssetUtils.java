@@ -1,11 +1,10 @@
 package com.alfarabi.alfalibs.tools;
 
-import android.app.Activity;
-
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import java.io.IOException;
 import java.io.InputStream;
+
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by Alfarabi on 9/5/17.
@@ -14,7 +13,7 @@ import java.io.InputStream;
 public class AssetUtils {
 
 
-    public static String readHtmlFile(Activity activity, String pathname){
+    public static String readHtmlFile(AppCompatActivity activity, String pathname){
         InputStream is = null;
         try {
             is = activity.getAssets().open(pathname);

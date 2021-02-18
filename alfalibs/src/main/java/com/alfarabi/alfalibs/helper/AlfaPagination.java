@@ -47,6 +47,7 @@ public abstract class AlfaPagination implements PaginationInterface {
         onLoading(completion);
 
         AlfaRecyclerView.Adapter adapter = alfaRecyclerView.getAdapter();
+
         wrapperAdapter = new WrapperAdapter(adapter, new LoadingListItemCreator() {
             @Override
             public AlfaRecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -56,9 +57,10 @@ public abstract class AlfaPagination implements PaginationInterface {
             }
 
             @Override
-            public void onBindViewHolder(AlfaRecyclerView.ViewHolder holder, int position) {
+            public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
             }
+
         });
 
         adapter.registerAdapterDataObserver(mDataObserver);

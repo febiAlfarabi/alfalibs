@@ -4,7 +4,6 @@ package com.alfarabi.alfalibs.http;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.Callback;
 
 /**
  * Created by Alfarabi on 6/30/17.

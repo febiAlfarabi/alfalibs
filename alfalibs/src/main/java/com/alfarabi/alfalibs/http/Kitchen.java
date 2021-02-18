@@ -1,8 +1,7 @@
 package com.alfarabi.alfalibs.http;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Color;
+
 import android.support.v4.app.Fragment;
 
 import com.alfarabi.alfalibs.AlfaLibsApplication;
@@ -10,10 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.zhy.http.okhttp.https.HttpsUtils;
 
-import org.reactivestreams.Subscription;
-
 import java.io.IOException;
-import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -35,18 +31,14 @@ import okhttp3.ConnectionSpec;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.functions.Action;
-import rx.functions.Action1;
 import rx.functions.Action2;
 import rx.functions.Action3;
-import rx.functions.Func2;
 
 /**
  * Created by User on 02/07/2017.

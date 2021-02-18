@@ -1,9 +1,6 @@
 package com.alfarabi.alfalibs.http;
 
-import com.alfarabi.alfalibs.tools.WLog;
-
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
 
 /**

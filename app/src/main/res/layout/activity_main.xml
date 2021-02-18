@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.alfarabi.alfalibsapps.MainActivity">
+    tools:context="com.alfarabi.apps.MainActivity">
 
-    <!--<com.alfarabi.alfalibs.views.AlfaBannerView-->
+    <!--<com.alfarabi.apps.views.AlfaBannerView-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"-->
         <!--app:dsv_orientation="horizontal"/>-->
@@ -15,11 +15,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="9dp">
-        <net.soroushjavdan.customfontwidgets.CTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TESSSS"
-            app:customFont="@string/montserrat_light"/>
+        <!--<net.soroushjavdan.customfontwidgets.CTextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="TESSSS"-->
+            <!--app:customFont="@string/montserrat_light"/>-->
     </LinearLayout>
 
 

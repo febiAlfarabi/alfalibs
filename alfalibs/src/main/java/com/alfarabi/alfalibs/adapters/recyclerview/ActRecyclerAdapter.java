@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 
 import com.alfarabi.alfalibs.activity.SimpleBaseActivity;
 import com.alfarabi.alfalibs.adapters.recyclerview.viewholder.ACTViewHolder;
-import com.alfarabi.alfalibs.adapters.recyclerview.viewholder.SimpleViewHolder;
 import com.alfarabi.alfalibs.helper.model.ObjectAdapterInterface;
 import com.alfarabi.alfalibs.tools.UISimulation;
 
@@ -29,7 +28,7 @@ import lombok.Setter;
 public class ActRecyclerAdapter<OBJ extends Object & ObjectAdapterInterface, ACT extends SimpleBaseActivity, VH extends ACTViewHolder> extends Adapter<VH> {
     @Getter @Setter Class<VH> vhClass;
     @Getter @Setter ACT activity ;
-    @Getter @Setter List<OBJ> objects;
+    @Getter List<OBJ> objects;
     @Getter @Setter List<OBJ> copiedObjects = new ArrayList();
     @Getter @Setter HashMap<OBJ, VH> viewHolders = new HashMap();
 

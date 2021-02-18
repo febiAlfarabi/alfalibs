@@ -6,8 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
 import com.alfarabi.alfalibs.fragments.interfaze.SimpleFragmentInitiator;
+import com.alfarabi.alfalibs.tools.Gilimanuk;
 import com.alfarabi.alfalibs.tools.WLog;
-import com.alfarabi.alfalibs.tools.WindowFlow;
 
 
 /**
@@ -59,8 +59,8 @@ public abstract class SimpleBaseActivity extends AppCompatActivity implements Si
     @Override
     public void onBackPressed() {
         WLog.d(TAG,"onBackPressed()");
-        if(WindowFlow.currentFragment(this)!=null){
-            Fragment fragment = WindowFlow.currentFragment(this); //getSupportFragmentManager().findFragmentByTag(getFragmentTag());
+        if(Gilimanuk.currentFragment(this)!=null){
+            Fragment fragment = Gilimanuk.currentFragment(this); //getSupportFragmentManager().findFragmentByTag(getFragmentTag());
             if(fragment !=null && fragment instanceof SimpleFragmentInitiator){
                 if(!((SimpleFragmentInitiator) fragment).onBackPressed()){
                     // Disable Back During Fragment OnBack Pressed Returned FALSE
@@ -69,9 +69,9 @@ public abstract class SimpleBaseActivity extends AppCompatActivity implements Si
                 }
             }
         }
-        if(WindowFlow.canGoBack(this)){
+        if(Gilimanuk.canGoBack(this)){
             // Will be navigate to previous fragment
-            WindowFlow.backstack(this);
+            Gilimanuk.backstack(this);
             return ;
         }
         // Will be navigate to previous activity nor finish current

@@ -2,9 +2,7 @@ package com.alfarabi.alfalibs.service;
 
 import android.app.Service;
 import android.content.Intent;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Looper;
 
 import com.alfarabi.alfalibs.socket.SocketInstance;
 import com.alfarabi.alfalibs.socket.SocketListener;

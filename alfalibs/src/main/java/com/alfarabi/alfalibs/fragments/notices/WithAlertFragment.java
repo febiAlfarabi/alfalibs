@@ -1,18 +1,17 @@
 package com.alfarabi.alfalibs.fragments.notices;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Point;
-import android.support.design.widget.Snackbar;
+//import android.support.design.widget.Snackbar;
 import android.text.Html;
 import android.view.Display;
 import android.view.View;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.Theme;
+import com.alfarabi.alfalibs.R;
 import com.alfarabi.alfalibs.fragments.SimpleBaseFragment;
 
 import java.io.EOFException;
@@ -20,9 +19,8 @@ import java.net.ConnectException;
 import java.net.UnknownHostException;
 import java.util.concurrent.TimeoutException;
 
+import android.support.v7.app.AppCompatActivity;
 import retrofit2.HttpException;
-
-import com.alfarabi.alfalibs.R;
 
 /**
  * Created by alfarabi on 3/19/18.
@@ -42,22 +40,22 @@ public abstract class WithAlertFragment extends SimpleBaseFragment {
         return new int[]{width, height};
     }
 
-    protected Snackbar snackbar ;
+//    protected Snackbar snackbar ;
     public void showSnackbar(String message, View.OnClickListener onClickListener){
-        if(snackbar!=null && snackbar.isShown()){
-            snackbar.dismiss();
-            snackbar = null ;
-        }
-        snackbar = Snackbar
-                .make(getActivity().getWindow().getDecorView(), Html.fromHtml("<font color=\"#ffffff\">"+message+"</font>"), Snackbar.LENGTH_LONG).setActionTextColor(Color.WHITE).setDuration(5000)
-                .setAction(getString(R.string.close), v -> {
-                    snackbar.dismiss();
-                    onClickListener.onClick(v);
-                });
-        snackbar.show();
+//        if(snackbar!=null && snackbar.isShown()){
+//            snackbar.dismiss();
+//            snackbar = null ;
+//        }
+//        snackbar = Snackbar
+//                .make(getActivity().getWindow().getDecorView(), Html.fromHtml("<font color=\"#ffffff\">"+message+"</font>"), Snackbar.LENGTH_LONG).setActionTextColor(Color.WHITE).setDuration(5000)
+//                .setAction(getString(R.string.close), v -> {
+//                    snackbar.dismiss();
+//                    onClickListener.onClick(v);
+//                });
+//        snackbar.show();
     }
 
-    public <ACT extends Activity> void showSnackbar(Throwable throwable, View.OnClickListener onClickListener, Class<ACT>... actClass){
+    public <ACT extends AppCompatActivity> void showSnackbar(Throwable throwable, View.OnClickListener onClickListener, Class<ACT>... actClass){
         String message = "" ;
         throwable.printStackTrace();
         if(throwable instanceof EOFException){
@@ -184,7 +182,7 @@ public abstract class WithAlertFragment extends SimpleBaseFragment {
                 .show();
     }
 
-    public <ACT extends Activity> void showDialog(Throwable throwable, MaterialDialog.SingleButtonCallback singleButtonCallback, Class<ACT>... actClass){
+    public <ACT extends AppCompatActivity> void showDialog(Throwable throwable, MaterialDialog.SingleButtonCallback singleButtonCallback, Class<ACT>... actClass){
         String message = "" ;
         throwable.printStackTrace();
         if(throwable instanceof EOFException){
@@ -224,7 +222,7 @@ public abstract class WithAlertFragment extends SimpleBaseFragment {
         showDialog(message, singleButtonCallback);
     }
 
-    public <ACT extends Activity> void showDialog(Throwable throwable, MaterialDialog.SingleButtonCallback okButtonCallback, MaterialDialog.SingleButtonCallback cancelButtonCallback, Class<ACT>... actClass){
+    public <ACT extends AppCompatActivity> void showDialog(Throwable throwable, MaterialDialog.SingleButtonCallback okButtonCallback, MaterialDialog.SingleButtonCallback cancelButtonCallback, Class<ACT>... actClass){
         String message = "" ;
         throwable.printStackTrace();
         if(throwable instanceof EOFException){

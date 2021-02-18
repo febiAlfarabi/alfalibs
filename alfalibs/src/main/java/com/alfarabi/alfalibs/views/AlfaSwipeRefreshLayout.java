@@ -1,7 +1,6 @@
 package com.alfarabi.alfalibs.views;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.Toast;
 
@@ -9,14 +8,9 @@ import android.widget.Toast;
 import com.alfarabi.alfalibs.R;
 import com.alfarabi.alfalibs.helper.SwipeCallback;
 import com.alfarabi.alfalibs.http.HttpInstance;
-import com.alfarabi.alfalibs.tools.WindowFlow;
 import com.alfarabi.alfalibs.views.interfaze.LoadingInterface;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
-import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
-import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
-
-import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;

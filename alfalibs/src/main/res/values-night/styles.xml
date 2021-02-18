@@ -16,37 +16,37 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppThemeBase" parent="Theme.AppCompat">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="snvHintTextAppearance">@style/NavHintTextAppearance</item>
-    </style>
+    <!--<style name="AppThemeBase" parent="Theme.AppCompat">-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <!--&lt;!&ndash;<item name="snvHintTextAppearance">@style/NavHintTextAppearance</item>&ndash;&gt;-->
+    <!--</style>-->
 
-    <style name="AppTheme" parent="AppThemeBase">
+    <!--<style name="AppTheme" parent="AppThemeBase">-->
 
-    </style>
+    <!--</style>-->
 
-    <style name="NavigationViewStyle" parent="SnvSublimeNavigationView">
-        <item name="android:background">@color/snv_background_material_dark</item>
-        <item name="android:textColor">@color/left_menu_text_color</item>
-    </style>
+    <!--<style name="NavigationViewStyle" parent="SnvSublimeNavigationView">-->
+        <!--<item name="android:background">@color/snv_background_material_dark</item>-->
+        <!--<item name="android:textColor">@color/left_menu_text_color</item>-->
+    <!--</style>-->
 
-    <style name="NavItemTextAppearance" parent="TextAppearance.AppCompat.Body2">
-        <item name="android:textSize">25sp</item>
-        <item name="android:textColor">@color/left_menu_text_color</item>
-    </style>
+    <!--<style name="NavItemTextAppearance" parent="TextAppearance.AppCompat.Body2">-->
+        <!--<item name="android:textSize">25sp</item>-->
+        <!--<item name="android:textColor">@color/left_menu_text_color</item>-->
+    <!--</style>-->
 
-    <style name="NavHintTextAppearance" parent="SnvDefaultHintTextAppearance">
-        <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/left_menu_text_color</item>
-    </style>
+    <!--<style name="NavHintTextAppearance" parent="SnvDefaultHintTextAppearance">-->
+        <!--<item name="android:textSize">15sp</item>-->
+        <!--<item name="android:textColor">@color/left_menu_text_color</item>-->
+    <!--</style>-->
 
-    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <!--<item name="colorControlNormal">#FFDDD3</item>-->
-        <item name="android:textColor">@color/left_menu_text_color</item>
-    </style>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <!--<style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">-->
+        <!--&lt;!&ndash;<item name="colorControlNormal">#FFDDD3</item>&ndash;&gt;-->
+        <!--<item name="android:textColor">@color/left_menu_text_color</item>-->
+    <!--</style>-->
+    <!--<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />-->
+    <!--<style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />-->
 
 </resources>

@@ -48,10 +48,6 @@ public abstract class PaginationCallback implements Paginate.Callbacks {
 //    @Override
 //    public void onLoadMore() {}
 
-    @Override
-    public boolean isLoading() {
-        return loading;
-    }
 
     @Override
     public boolean hasLoadedAllItems() {

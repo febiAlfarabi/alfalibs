@@ -12,7 +12,6 @@ import com.alfarabi.alfalibs.http.Kitchen;
 import com.alfarabi.alfalibs.tools.AppProgress;
 
 import io.reactivex.Observable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import okhttp3.Response;
 import rx.functions.Action2;

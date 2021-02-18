@@ -17,11 +17,11 @@
 
 package com.alfarabi.alfalibs.tools;
 
-import android.app.Activity;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +30,7 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.PopupWindow;
 
 import com.alfarabi.alfalibs.R;
+
 
 
 /**
@@ -57,18 +58,18 @@ public class KeyboardHeightProvider extends PopupWindow {
     private View parentView;
 
     /** The root activity that uses this KeyboardHeightProvider */
-    private Activity activity;
+    private AppCompatActivity activity;
 
     /** 
      * Construct a new KeyboardHeightProvider
      * 
      * @param activity The parent activity
      */
-    public KeyboardHeightProvider(Activity activity) {
+    public KeyboardHeightProvider(AppCompatActivity activity) {
 		super(activity);
         this.activity = activity;
 
-        LayoutInflater inflator = (LayoutInflater) activity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflator = (LayoutInflater) activity.getSystemService(AppCompatActivity.LAYOUT_INFLATER_SERVICE);
         this.popupView = inflator.inflate(R.layout.popupwindow, null, false);
         setContentView(popupView);
 

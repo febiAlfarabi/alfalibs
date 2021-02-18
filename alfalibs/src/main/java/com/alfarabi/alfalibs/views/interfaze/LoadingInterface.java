@@ -1,8 +1,5 @@
 package com.alfarabi.alfalibs.views.interfaze;
 
-import com.alfarabi.alfalibs.http.HttpInstance;
-import com.alfarabi.alfalibs.views.AlfaRecyclerView;
-
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;

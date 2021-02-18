@@ -1,10 +1,12 @@
-package com.alfarabi.alfalibsapps;
+package com.alfarabi.apps;
 
+import android.app.Activity;
 import android.os.Bundle;
+
 import com.alfarabi.alfalibs.activity.APIBaseActivity;
 import butterknife.ButterKnife;
 
-public class MainActivity extends APIBaseActivity {
+public class MainActivity extends Activity {
     public static final String TAG = MainActivity.class.getName();
 
     @Override
@@ -19,13 +21,13 @@ public class MainActivity extends APIBaseActivity {
         super.onResume();
     }
 
-    @Override
-    public String getTAG() {
-        return TAG;
-    }
-
-    @Override
-    public int contentXmlLayout() {
-        return R.layout.activity_main;
-    }
+//    @Override
+//    public String getTAG() {
+//        return TAG;
+//    }
+//
+//    @Override
+//    public int contentXmlLayout() {
+//        return R.layout.activity_main;
+//    }
 }

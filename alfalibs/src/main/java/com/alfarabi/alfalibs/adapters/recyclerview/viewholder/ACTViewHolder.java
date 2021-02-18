@@ -1,13 +1,11 @@
 package com.alfarabi.alfalibs.adapters.recyclerview.viewholder;
 
-import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.alfarabi.alfalibs.activity.SimpleBaseActivity;
 import com.alfarabi.alfalibs.adapters.interfaze.SimpleHolderCallback;
-import com.alfarabi.alfalibs.fragments.SimpleBaseFragment;
 import com.alfarabi.alfalibs.fragments.interfaze.RecyclerCallback;
 
 import butterknife.ButterKnife;
