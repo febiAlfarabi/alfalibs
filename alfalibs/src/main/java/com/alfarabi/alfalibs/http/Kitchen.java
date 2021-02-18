@@ -403,7 +403,7 @@ public class Kitchen {
         }
         retroMaps.put(Kitchen.prodUrl, (new Retrofit.Builder()).baseUrl(Kitchen.prodUrl).client(httpClient.build())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create()).build());
+                .addConverterFactory(GsonConverterFactory.create(gson)).build());
     }
 
     public static void putHanger(String key, String value) {
