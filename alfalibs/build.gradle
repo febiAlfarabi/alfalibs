@@ -18,7 +18,7 @@ ext {
     siteUrl = 'https://github.com/febiAlfarabi'
     gitUrl = 'https://github.com/febiAlfarabi.git'
 
-    libraryVersion = '2.2.55'
+    libraryVersion = '2.2.56'
 
     developerId = 'febialfarabi'
     developerName = 'Alfarabi Dwi Karuniawan'
@@ -37,7 +37,7 @@ android {
         minSdkVersion 22
         targetSdkVersion 28
         versionCode 1
-        versionName "2.2.55"
+        versionName "2.2.56"
 //        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         javaCompileOptions {
