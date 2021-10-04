@@ -84,7 +84,9 @@ dependencies {
     /*
     * EMBED
     * */
-    embed 'org.fingerlinks.mobile.android:Navigator:0.1.5'
+    
+    // has removed from source
+    //embed 'org.fingerlinks.mobile.android:Navigator:0.1.5'
     embed 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.1@aar'
     embed 'ca.barrenechea.header-decor:header-decor:0.2.8'
     embed 'com.cjj.materialrefeshlayout:library:1.3.0'
